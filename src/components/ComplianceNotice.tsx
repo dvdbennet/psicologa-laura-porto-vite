@@ -1,9 +1,8 @@
-import React from 'react';
-import { AlertTriangle, Shield, FileText } from 'lucide-react';
+import { AlertTriangle, FileText, Shield } from "lucide-react";
 
 const ComplianceNotice = () => {
   return (
-    <section className="py-12 bg-yellow-50 border-t border-yellow-200">
+    <section className="py-12 bg-gray-100 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-8">
           <AlertTriangle className="text-yellow-600 mx-auto mb-4" size={48} />
@@ -59,30 +58,40 @@ const ComplianceNotice = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
             <div>
-              <h4 className="font-medium text-slate-800 mb-2">Código de Ética Profissional:</h4>
+              <h4 className="font-medium text-slate-800 mb-2">
+                Código de Ética Profissional:
+              </h4>
               <p>
-                Todos os atendimentos seguem rigorosamente o Código de Ética Profissional 
-                do Psicólogo, estabelecido pelo Conselho Federal de Psicologia (CFP).
+                Todos os atendimentos seguem rigorosamente o Código de Ética
+                Profissional do Psicólogo, estabelecido pelo Conselho Federal de
+                Psicologia (CFP).
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-slate-800 mb-2">LGPD - Lei Geral de Proteção de Dados:</h4>
+              <h4 className="font-medium text-slate-800 mb-2">
+                LGPD - Lei Geral de Proteção de Dados:
+              </h4>
               <p>
-                Seus dados pessoais são protegidos conforme a LGPD. Utilizamos apenas 
-                as informações necessárias para o atendimento psicológico.
+                Seus dados pessoais são protegidos conforme a LGPD. Utilizamos
+                apenas as informações necessárias para o atendimento
+                psicológico.
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-slate-800 mb-2">Resolução CFP nº 011/2018:</h4>
+              <h4 className="font-medium text-slate-800 mb-2">
+                Resolução CFP nº 011/2018:
+              </h4>
               <p>
-                Atendimentos online seguem as diretrizes do CFP para prestação de 
-                serviços psicológicos por meio de tecnologias da informação.
+                Atendimentos online seguem as diretrizes do CFP para prestação
+                de serviços psicológicos por meio de tecnologias da informação.
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-slate-800 mb-2">Sigilo Profissional:</h4>
+              <h4 className="font-medium text-slate-800 mb-2">
+                Sigilo Profissional:
+              </h4>
               <p>
-                Garantia absoluta de sigilo profissional conforme Art. 9º do 
+                Garantia absoluta de sigilo profissional conforme Art. 9º do
                 Código de Ética Profissional do Psicólogo.
               </p>
             </div>
@@ -91,8 +100,9 @@ const ComplianceNotice = () => {
 
         <div className="mt-6 text-center text-xs text-slate-500">
           <p>
-            Este website está em conformidade com as diretrizes do Google Ads para anúncios 
-            de serviços de saúde no Brasil e regulamentações do Conselho Federal de Psicologia.
+            Este website está em conformidade com as diretrizes do Google Ads
+            para anúncios de serviços de saúde no Brasil e regulamentações do
+            Conselho Federal de Psicologia.
           </p>
         </div>
       </div>

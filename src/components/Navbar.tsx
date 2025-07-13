@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,12 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50"
+      className="sticky top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
               <Heart className="text-white" size={20} />
             </div>
@@ -32,7 +33,7 @@ const Navbar = () => {
               </div>
               <div className="text-slate-600 text-xs">CRP 01/28432</div>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

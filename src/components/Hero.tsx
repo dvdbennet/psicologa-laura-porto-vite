@@ -30,9 +30,11 @@ const Hero = () => {
               <span>CRP 06/123456 - Psicóloga Clínica</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-6xl font-light text-slate-800 mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-light text-slate-800 mb-6 leading-tight">
               Psicóloga{" "}
-              <span className="text-emerald-600 font-large">Laura Porto</span>{" "}
+              <span className="text-emerald-600 whitespace-nowrap font-large">
+                Laura Porto
+              </span>{" "}
             </h1>
 
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
@@ -42,26 +44,9 @@ const Hero = () => {
               mental.
             </p>
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6 text-sm text-slate-700">
-              <p className="font-medium mb-2">⚠️ Informações Importantes:</p>
-              <ul className="space-y-1 text-xs">
-                <li>
-                  • Este site é apenas informativo e não substitui consulta
-                  médica ou psicológica
-                </li>
-                <li>• Resultados podem variar de pessoa para pessoa</li>
-                <li>
-                  • Em casos de emergência, procure atendimento médico imediato
-                </li>
-                <li>
-                  • CRP 01/28432 - Conselho Regional de Psicologia de Brasília -
-                  DF
-                </li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col  sm:flex-row gap-14 mb-8">
               <motion.a
+                target="_blankm"
                 href="https://wa.me/5561999914224?text=Ol%C3%A1,%20quero%20marcar%20uma%20consulta.%20Quais%20s%C3%A3o%20as%20disponibilidade%20de%20hor%C3%A1rios?"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -70,23 +55,13 @@ const Hero = () => {
                 <Calendar size={20} />
                 <span>Agendar Consulta</span>
               </motion.a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-50 transition-colors"
-              >
-                Saiba Mais
-              </motion.button>
-            </div>
-
-            <div className="flex items-center space-x-8 text-slate-600">
               <div className="flex items-center space-x-2">
                 <Video size={20} className="text-emerald-600" />
-                <span>Sessões Online</span>
+                <span> Online</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin size={20} className="text-emerald-600" />
-                <span>Presencial Disponível</span>
+                <span>Presencial </span>
               </div>
             </div>
           </motion.div>
@@ -115,7 +90,7 @@ const Hero = () => {
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                   <span className="text-slate-700 font-medium">
-                    Available Today
+                    Disponível Agora
                   </span>
                 </div>
               </motion.div>
@@ -127,8 +102,12 @@ const Hero = () => {
                 className="absolute -right-6 bottom-20 bg-white rounded-2xl p-4 shadow-xl border border-slate-200"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-emerald-600">15+</div>
-                  <div className="text-slate-600 text-sm">Years Experience</div>
+                  <div className="text-2xl font-bold text-emerald-600">
+                    200+
+                  </div>
+                  <div className="text-slate-600 text-sm">
+                    Pacientes Atendidos
+                  </div>
                 </div>
               </motion.div>
             </div>

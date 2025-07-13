@@ -102,6 +102,7 @@ const Testimonials = () => {
               consultation to discuss your goals and how I can support you.
             </p>
             <motion.a
+              target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="https://wa.me/5561999914224?text=Ol%C3%A1,%20quero%20marcar%20uma%20consulta.%20Quais%20s%C3%A3o%20as%20disponibilidade%20de%20hor%C3%A1rios?"

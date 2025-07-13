@@ -1,4 +1,5 @@
 import { Heart, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -106,15 +107,15 @@ const Footer = () => {
               © 2024 Dra. Laura Porto. Todos os direitos reservados.
             </div>
             <div className="flex items-center space-x-6 text-slate-400 text-sm">
-              <a href="#" className="hover:text-white transition-colors">
+              <Link
+                to="/privacidade"
+                className="hover:text-white transition-colors"
+              >
                 Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
+              </Link>
+              <Link to="/termos" className="hover:text-white transition-colors">
                 Termos de Serviço
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Código de Ética
-              </a>
+              </Link>
             </div>
           </div>
         </div>
