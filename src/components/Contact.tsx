@@ -16,7 +16,7 @@ const Contact = () => {
     // Handle form submission here
     console.log("Form submitted:", formData);
     alert(
-      "Thank you for your message! I will get back to you within 24 hours."
+      "Obrigado por entrar em contato! Responderemos o mais breve possível."
     );
   };
 
@@ -41,11 +41,12 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
-            Get <span className="text-emerald-600 font-medium">In Touch</span>
+            Entre em <span className="text-emerald-600 font-medium">Contato</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to take the first step? I'm here to answer your questions and
-            help you begin your journey toward healing and growth.
+            Estou aqui para ajudar você em sua jornada de autoconhecimento e
+            bem-estar emocional. Entre em contato
+            pelos meus canais de comunicação.
           </p>
         </motion.div>
 
@@ -59,7 +60,7 @@ const Contact = () => {
           >
             <div>
               <h3 className="text-2xl font-semibold text-slate-800 mb-6">
-                Contact Information
+                Informação de Contato
               </h3>
 
               <div className="space-y-6">
@@ -69,10 +70,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium text-slate-800">
-                      (555) 123-4567
+                      (61) 99991-4224
                     </div>
                     <div className="text-slate-600">
-                      Call or text for appointments
+                      WhatsApp
                     </div>
                   </div>
                 </div>
@@ -83,10 +84,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium text-slate-800">
-                      laura.porto@email.com
+                      lauraporto.psi@gmail.com
                     </div>
                     <div className="text-slate-600">
-                      Secure email communication
+                      Email p/ contato
                     </div>
                   </div>
                 </div>
@@ -97,9 +98,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium text-slate-800">
-                      123 Wellness Drive, Suite 200
+                      Sudoeste - Clsw  5 Bloco A, Sala 202
                     </div>
-                    <div className="text-slate-600">Los Angeles, CA 90210</div>
+                    <div className="text-slate-600">Brasília - DF</div>
                   </div>
                 </div>
 
@@ -109,9 +110,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium text-slate-800">
-                      Online Sessions Available
+                      Sessões Online
                     </div>
-                    <div className="text-slate-600">Secure video platform</div>
+                    <div className="text-slate-600">Plataforma de vídeo segura</div>
                   </div>
                 </div>
               </div>
@@ -121,25 +122,22 @@ const Contact = () => {
               <div className="flex items-center space-x-3 mb-4">
                 <Clock className="text-emerald-600" size={24} />
                 <h4 className="text-xl font-semibold text-slate-800">
-                  Office Hours
+                  HORÁRIO DE ATENDIMENTO
                 </h4>
               </div>
               <div className="space-y-2 text-slate-700">
                 <div className="flex justify-between">
-                  <span>Monday - Thursday</span>
-                  <span>9:00 AM - 7:00 PM</span>
+                  <span>Segunda - Sexta</span>
+                  <span>8:00 - 20:00 </span>
+                </div>
+               
+                <div className="flex justify-between">
+                  <span>Sábado</span>
+                  <span>10:00 - 16:00</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Friday</span>
-                  <span>9:00 AM - 5:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span>10:00 AM - 3:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span>Closed</span>
+                  <span>Domingo</span>
+                  <span>Fechado</span>
                 </div>
               </div>
             </div>

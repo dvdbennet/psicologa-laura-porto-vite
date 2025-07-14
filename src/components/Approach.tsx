@@ -1,37 +1,41 @@
-import avatarImage from '../assets/images/avatar.avif';
-import { motion } from 'framer-motion';
-import { Lightbulb, Target, Compass, Shield } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Compass, Lightbulb, Shield, Target } from "lucide-react";
+import avatarImage from "../assets/images/avatar.avif";
 
 const approaches = [
   {
     icon: Lightbulb,
-    title: 'Cognitive Behavioral Therapy (CBT)',
-    description: 'Evidence-based approach focusing on identifying and changing negative thought patterns and behaviors.'
+    title: "Terapia Cognitivo-Comportamental (TCC)",
+    description:
+      "Abordagem baseada em evidências com foco na identificação e mudança de padrões de pensamento e comportamentos negativos.",
   },
   {
     icon: Target,
-    title: 'Dialectical Behavior Therapy (DBT)',
-    description: 'Skills-based therapy emphasizing mindfulness, distress tolerance, and emotional regulation.'
+    title: "Terapia Comportamental Dialética (TCC)",
+    description:
+      "Terapia baseada em habilidades com ênfase em atenção plena, tolerância ao sofrimento e regulação emocional.",
   },
   {
     icon: Compass,
-    title: 'Mindfulness-Based Therapy',
-    description: 'Incorporating mindfulness practices to increase awareness and reduce stress and anxiety.'
+    title: "Terapia Baseada em Mindfulness",
+    description:
+      "Incorporando práticas de mindfulness para aumentar a consciência e reduzir o estresse e a ansiedade.",
   },
   {
     icon: Shield,
-    title: 'Trauma-Informed Care',
-    description: 'Specialized approach for healing from trauma with safety, trust, and empowerment.'
-  }
+    title: "Cuidados com Traumas",
+    description:
+      "Abordagem especializada para a cura de traumas com segurança, confiança e empoderamento.",
+  },
 ];
 
 const principles = [
-  'Client-centered and collaborative approach',
-  'Culturally sensitive and inclusive practice',
-  'Strength-based perspective',
-  'Evidence-based treatment methods',
-  'Holistic view of mental health',
-  'Emphasis on personal empowerment'
+  "Abordagem centrada no cliente",
+  "Prática culturalmente sensível e inclusiva",
+  "Perspectiva baseada em pontos fortes",
+  "Métodos de tratamento baseados em evidências",
+  "Visão holística da saúde mental",
+  "Ênfase no empoderamento pessoal",
 ];
 
 const Approach = () => {
@@ -45,12 +49,16 @@ const Approach = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
-            My{' '}
-            <span className="text-emerald-600 font-medium">Approach</span>
+            Minha {" "}
+            <span className="text-emerald-600 font-medium">Abordagem</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            I believe in a personalized approach to therapy, drawing from various 
-            evidence-based methods to create a treatment plan that works best for you.
+            Eu adoto uma abordagem integrativa e centrada no cliente, combinando
+            diferentes técnicas terapêuticas para atender às suas necessidades
+            únicas. Meu objetivo é criar um espaço seguro e acolhedor onde você
+            possa explorar seus pensamentos e sentimentos, desenvolver
+            habilidades de enfrentamento e trabalhar em direção a mudanças
+            positivas.
           </p>
         </motion.div>
 
@@ -70,11 +78,11 @@ const Approach = () => {
               >
                 <approach.icon className="text-emerald-600" size={36} />
               </motion.div>
-              
+
               <h3 className="text-xl font-semibold text-slate-800 mb-4">
                 {approach.title}
               </h3>
-              
+
               <p className="text-slate-600 leading-relaxed">
                 {approach.description}
               </p>
@@ -90,10 +98,10 @@ const Approach = () => {
             transition={{ duration: 0.8 }}
           >
             <h3 className="text-3xl font-light text-slate-800 mb-8">
-              Core{' '}
-              <span className="text-emerald-600 font-medium">Principles</span>
+              {" "}
+              <span className="text-emerald-600 font-medium">Princípios</span>
             </h3>
-            
+
             <div className="space-y-4">
               {principles.map((principle, index) => (
                 <motion.div
@@ -119,9 +127,9 @@ const Approach = () => {
           >
             <div className="text-6xl text-emerald-200 mb-4">"</div>
             <blockquote className="text-xl text-slate-700 leading-relaxed mb-6">
-              My goal is to create a safe, non-judgmental space where you can 
-              explore your thoughts and feelings, develop coping strategies, 
-              and work toward positive change at your own pace.
+             Meu objetivo é criar um espaço seguro e sem julgamentos, onde você possa
+explorar seus pensamentos e sentimentos, desenvolver estratégias de enfrentamento e
+trabalhar em direção a uma mudança positiva em seu próprio ritmo.
             </blockquote>
             <div className="flex items-center space-x-4">
               <img
@@ -130,8 +138,12 @@ const Approach = () => {
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div>
-                <div className="font-semibold text-slate-800">Dr. Laura Porto</div>
-                <div className="text-slate-600">Licensed Clinical Psychologist</div>
+                <div className="font-semibold text-slate-800">
+                  Dr. Laura Porto
+                </div>
+                <div className="text-slate-600">
+                  Psicóloga Clínica CRP 01/28432
+                </div>
               </div>
             </div>
           </motion.div>

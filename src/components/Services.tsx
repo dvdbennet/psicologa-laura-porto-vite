@@ -1,41 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Video, MapPin, Clock, Users, Brain, Heart } from 'lucide-react';
+import { Video, MapPin, Clock, Users, Brain, Heart, User } from 'lucide-react';
 
 const services = [
   {
     icon: Brain,
-    title: 'Individual Therapy',
-    description: 'One-on-one sessions focused on your personal growth and healing journey.',
-    features: ['Anxiety & Depression', 'Trauma Recovery', 'Life Transitions', 'Self-Esteem']
+    title: 'Adultos',
+    description: 'Atendo adultos que buscam compreender seus comportamentos diante de desafios cotidianos, como emoções difíceis, estresse e relações interpessoais. A partir da Análise do Comportamento, identificamos padrões que precisam ser fortalecidos ou enfraquecidos conforme o contexto.',
+    features: ['Gestão da ansiedade e estresse', 'Regulação emocional', 'Transições de vida e crescimento pessoal']
   },
   {
-    icon: Heart,
-    title: 'Couples Therapy',
-    description: 'Strengthen your relationship through improved communication and understanding.',
-    features: ['Communication Skills', 'Conflict Resolution', 'Intimacy Issues', 'Pre-marital Counseling']
+    icon: User,
+    title: 'Adolescentes',
+    description: 'Um espaço que favorece a compreensão de seus comportamentos diante de temas como identidade, relações sociais e enfrentamento de dificuldades. Busco fortalecer repertórios que contribuam para escolhas mais funcionais e coerentes com suas necessidades.',
+    features: ['Exploração da identidade e autoestima', 'Relacionamentos sociais e comunicação', 'Estresse acadêmico e planejamento futuro']
   },
-  {
-    icon: Users,
-    title: 'Group Therapy',
-    description: 'Connect with others facing similar challenges in a supportive group setting.',
-    features: ['Social Anxiety', 'Grief Support', 'Mindfulness Groups', 'Skills Training']
-  }
+  
 ];
 
 const sessionTypes = [
   {
     icon: Video,
-    title: 'Online Sessions',
-    description: 'Convenient therapy from the comfort of your home',
-    features: ['Secure video platform', 'Flexible scheduling', 'Same quality care', 'No travel required'],
+    title: 'Online',
+    description: 'Formato conveninete do conforto da sua casa',
+    features: ['Plataforma de víde segura', 'Flexibilidade', 'Sem trânsito'],
     popular: true
   },
   {
     icon: MapPin,
-    title: 'In-Person Sessions',
-    description: 'Traditional face-to-face therapy in a welcoming office',
-    features: ['Comfortable office space', 'Private parking', 'Central location', 'Personal connection'],
+    title: 'Presencial',
+    description: 'Formato tradicional cara a cara',
+    features: ['Consultório confortável', 'Bem localizado', 'Conexão pessoal'],
     popular: false
   }
 ];
@@ -55,7 +50,7 @@ const Services = () => {
             <span className="text-emerald-600 font-medium">Psicoterapia</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Ofereço uma gama de serviços terapêuticos projetados para atender suas 
+            Ofereço serviços terapêuticos para adultos e adolescentes, projetados para atender suas 
             necessidades únicas e apoiar sua jornada em direção ao bem-estar mental.
           </p>
         </motion.div>
@@ -102,12 +97,11 @@ const Services = () => {
           className="text-center mb-12"
         >
           <h3 className="text-3xl font-light text-slate-800 mb-4">
-            Choose Your{' '}
-            <span className="text-emerald-600 font-medium">Preferred Format</span>
+            Escolha seu {' '}
+            <span className="text-emerald-600 font-medium">Formato Preferido</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            I offer both online and in-person sessions to accommodate your 
-            preferences and lifestyle needs.
+            Eu ofereço sessões tanto online quanto presenciais, para que você possa escolher o formato que melhor se adapta à sua rotina e preferências. 
           </p>
         </motion.div>
 

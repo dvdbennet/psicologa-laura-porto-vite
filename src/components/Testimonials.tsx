@@ -3,28 +3,28 @@ import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
-    text: "Dr. Porto helped me through one of the most difficult periods of my life. Her compassionate approach and practical strategies made all the difference.",
+    name: "Mulher 45 anos",
+    text: "Dra. Laura Porto me ajudou a entender melhor minhas emoções e a lidar com o estresse do dia a dia. Sinto que estou mais no controle da minha vida.",
     rating: 5,
-    session: "Individual Therapy",
+    session: "Online",
   },
   {
-    name: "Michael & Jennifer R.",
-    text: "Our couples therapy sessions with Dr. Porto transformed our relationship. We learned to communicate better and reconnect with each other.",
+    name: "Casal 12 anos de casados",
+    text: "Nossa terapia de casal com a Dra. Laura foi transformadora. Aprendemos a nos comunicar melhor e a resolver nossos conflitos de forma saudável.",
     rating: 5,
-    session: "Couples Therapy",
+    session: "Online",
   },
   {
-    name: "David L.",
-    text: "The online sessions were incredibly convenient and just as effective as in-person therapy. Dr. Porto made me feel comfortable from day one.",
+    name: "Homem 33 anos",
+    text: "A terapia com a Laura me ajudou a superar minha ansiedade e a encontrar um novo propósito na vida. Sou muito grato por todo o apoio.",
     rating: 5,
-    session: "Online Therapy",
+    session: "Online",
   },
   {
-    name: "Maria C.",
-    text: "I was skeptical about therapy at first, but Dr. Porto's warm and professional approach put me at ease. I've made tremendous progress.",
+    name: "Mãe de adolescente",
+    text: "Como mãe, eu estava preocupada com o bem-estar do meu filho adolescente. A Laura criou um ambiente seguro para ele se abrir e trabalhar suas questões.",
     rating: 5,
-    session: "Individual Therapy",
+    session: "Presencial",
   },
 ];
 
@@ -39,12 +39,17 @@ const Testimonials = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
-            Client{" "}
-            <span className="text-emerald-600 font-medium">Testimonials</span>
+            Testemunho de {" "}
+            <span className="text-emerald-600 font-medium">Clientes</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Read what my clients have to say about their therapy experience and
-            the positive changes they've achieved.
+            Leia o que meus clientes dizem sobre suas experiências de terapia. Seus testemunhos refletem a eficácia e o
+            valor do trabalho terapêutico que realizamos juntos.
+            
+          </p>
+           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            
+            (Todas as indentidades foram alteradas para preservar a privacidade dos clientes.)
           </p>
         </motion.div>
 
@@ -95,11 +100,10 @@ const Testimonials = () => {
         >
           <div className="bg-emerald-50 rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-semibold text-slate-800 mb-4">
-              Ready to Start Your Journey?
+              Pronto para começar sua jornada de transformação?
             </h3>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              Take the first step toward positive change. Schedule a
-              consultation to discuss your goals and how I can support you.
+              Agende uma consulta hoje e descubra como a terapia pode ajudá-lo a alcançar seus objetivos pessoais e emocionais.
             </p>
             <motion.a
               target="_blank"

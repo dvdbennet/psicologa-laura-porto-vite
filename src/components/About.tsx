@@ -42,9 +42,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Com mais de 15 anos de experiência em psicologia clínica, sou
-            dedicada a ajudar pessoas a navegarem pelos desafios da vida e
-            descobrirem sua força interior e resilência.
+            Sou Psicóloga Clínica, formada pelo UniCEUB e atualmente cursando pós-graduação em Análise do Comportamento (IBAC) e Neuropsicologia (IPOG). Realizo atendimentos psicológicos online voltados para adultos e adolescentes, com a proposta de oferecer um ambiente acolhedor, seguro e empático, onde você possa lidar com questões emocionais, aprofundar o autoconhecimento e cuidar da sua saúde mental.
           </p>
         </motion.div>
 
@@ -70,17 +68,10 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-slate-700 leading-relaxed">
-              I believe that every person has the capacity for growth and
-              healing. My approach is collaborative, compassionate, and tailored
-              to each individual's unique needs and goals.
+             Durante as sessões, busco aliar uma escuta atenta, sensibilidade nas relações e embasamento técnico, colaborando com cada pessoa na construção de caminhos alinhados aos seus valores e à vida que deseja levar. Vejo a psicoterapia como uma ferramenta poderosa de transformação — não apenas para aliviar o sofrimento, mas também para ampliar possibilidades e desenvolver recursos diante dos desafios cotidianos.
             </p>
 
-            <p className="text-lg text-slate-700 leading-relaxed">
-              I specialize in working with adults facing anxiety, depression,
-              relationship challenges, life transitions, and trauma. My practice
-              integrates evidence-based therapies with a warm, supportive
-              approach.
-            </p>
+           
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {credentials.map((credential, index) => (

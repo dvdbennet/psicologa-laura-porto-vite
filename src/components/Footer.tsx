@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className="text-white font-semibold text-lg">
                   Dra. Laura Porto
                 </div>
-                <div className="text-slate-400 text-sm">CRP 06/123456</div>
+                <div className="text-slate-400 text-sm">CRP 01/28432</div>
               </div>
             </div>
             <p className="text-slate-400 leading-relaxed mb-6">
@@ -25,20 +25,20 @@ const Footer = () => {
               crescimento pessoal.
             </p>
             <div className="text-slate-400 text-sm">
-              CRP 06/123456 • Conselho Regional de Psicologia de São Paulo
+              CRP 01/28432 • Conselho Regional de Psicologia do Distrito Federal
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-white font-semibold mb-6">Navegação</h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#about"
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  About Dr. Porto
+                  Sobre Dra. Laura
                 </a>
               </li>
               <li>
@@ -46,7 +46,7 @@ const Footer = () => {
                   href="#services"
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  Services
+                  Serviços
                 </a>
               </li>
               <li>
@@ -54,7 +54,7 @@ const Footer = () => {
                   href="#approach"
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  My Approach
+                  Minha Abordagem
                 </a>
               </li>
               <li>
@@ -62,7 +62,7 @@ const Footer = () => {
                   href="#testimonials"
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  Testimonials
+                  Depoimentos
                 </a>
               </li>
               <li>
@@ -70,7 +70,7 @@ const Footer = () => {
                   href="#contact"
                   className="text-slate-400 hover:text-white transition-colors"
                 >
-                  Contact
+                  Contato
                 </a>
               </li>
             </ul>
@@ -79,22 +79,22 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-white font-semibold mb-6">
-              Contact Information
+              Informação de Contato
             </h3>
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Phone className="text-emerald-400" size={18} />
-                <span className="text-slate-400">(555) 123-4567</span>
+                <span className="text-slate-400">(61) 99991-4224</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-emerald-400" size={18} />
-                <span className="text-slate-400">laura.porto@email.com</span>
+                <span className="text-slate-400">lauraporto.psi@gmail.com</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="text-emerald-400 mt-1" size={18} />
                 <div className="text-slate-400">
-                  <div>123 Wellness Drive, Suite 200</div>
-                  <div>Los Angeles, CA 90210</div>
+                  <div>Sudoeste - Clsw  5 Bloco A, Sala 202</div>
+                  <div>Brasília - DF</div>
                 </div>
               </div>
             </div>

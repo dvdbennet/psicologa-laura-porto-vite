@@ -18,10 +18,10 @@ const ComplianceNotice = () => {
               Registro Profissional
             </h3>
             <ul className="text-sm text-slate-600 space-y-2">
-              <li>• CRP 06/123456</li>
-              <li>• Conselho Regional de Psicologia de São Paulo</li>
-              <li>• Formação: Psicologia - USP</li>
-              <li>• Especialização em Psicologia Clínica</li>
+              <li>• CRP 01/28432</li>
+              <li>• Conselho Regional de Psicologia do Distrito Federal</li>
+              <li>• Formação: Psicologia - UniCEUB </li>
+             
             </ul>
           </div>
 
@@ -32,7 +32,7 @@ const ComplianceNotice = () => {
             </h3>
             <ul className="text-sm text-slate-600 space-y-2">
               <li>• Este site é apenas informativo</li>
-              <li>• Não substitui consulta presencial</li>
+              <li>• Não substitui consulta</li>
               <li>• Resultados podem variar</li>
               <li>• Em emergências, procure atendimento médico</li>
             </ul>
