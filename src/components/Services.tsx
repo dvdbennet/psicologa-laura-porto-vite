@@ -6,14 +6,14 @@ const services = [
   {
     icon: Brain,
     title: 'Adultos',
-    description: 'Atendo adultos que buscam compreender seus comportamentos diante de desafios cotidianos, como emoções difíceis, estresse e relações interpessoais. A partir da Análise do Comportamento, identificamos padrões que precisam ser fortalecidos ou enfraquecidos conforme o contexto.',
-    features: ['Gestão da ansiedade e estresse', 'Regulação emocional', 'Transições de vida e crescimento pessoal']
+    description: 'Atendo adultos que desejam entender melhor suas reações diante das situações do dia a dia, como lidar com emoções intensas, estresse e dificuldades nos relacionamentos. Buscamos juntos reconhecer e trabalhar padrões que precisam ser fortalecidos ou modificados de acordo com cada contexto.',
+    features: ['Controle da ansiedade e estresse', 'Desenvolvimento da inteligência emocional', 'Momentos de mudança e crescimento pessoal']
   },
   {
     icon: User,
     title: 'Adolescentes',
-    description: 'Um espaço que favorece a compreensão de seus comportamentos diante de temas como identidade, relações sociais e enfrentamento de dificuldades. Busco fortalecer repertórios que contribuam para escolhas mais funcionais e coerentes com suas necessidades.',
-    features: ['Exploração da identidade e autoestima', 'Relacionamentos sociais e comunicação', 'Estresse acadêmico e planejamento futuro']
+    description: 'Um ambiente acolhedor para promover a compreensão de seus comportamentos em questões relacionadas à identidade, vínculos sociais e superação de desafios. Meu objetivo é ampliar habilidades que possibilitem decisões mais alinhadas com seus valores e necessidades.',
+    features: ['Descoberta da identidade e fortalecimento da autoestima', 'Relações interpessoais e habilidades de comunicação', 'Pressões acadêmicas e organização para o futuro']
   },
   
 ];
@@ -157,12 +157,11 @@ const Services = () => {
           <div className="bg-emerald-50 rounded-2xl p-8 max-w-3xl mx-auto">
             <Clock className="text-emerald-600 mx-auto mb-4" size={48} />
             <h3 className="text-2xl font-semibold text-slate-800 mb-4">
-              Flexible Scheduling
+              Duração das Sessões
             </h3>
             <p className="text-slate-600 leading-relaxed">
-              I offer evening and weekend appointments to accommodate your busy schedule. 
-              Sessions are typically 50 minutes and can be scheduled weekly or bi-weekly 
-              based on your needs.
+              As sessões de psicoterapia têm duração de 50 minutos, proporcionando tempo suficiente para explorar suas preocupações e desenvolver estratégias eficazes. 
+              A frequência recomendada é semanal, mas pode ser ajustada conforme necessário.
             </p>
           </div>
         </motion.div>
