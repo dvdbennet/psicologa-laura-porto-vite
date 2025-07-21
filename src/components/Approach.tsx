@@ -1,40 +1,40 @@
 import { motion } from "framer-motion";
 import { Compass, Lightbulb, Shield, Target } from "lucide-react";
-import avatarImage from "../assets/images/avatar.avif";
+import avatarImage from "../assets/images/wppimage.jpeg";
 
 const approaches = [
   {
     icon: Lightbulb,
-    title: "Terapia Cognitivo-Comportamental (TCC)",
+    title: "Análise do Comportamento",
     description:
-      "Abordagem baseada em evidências com foco na identificação e mudança de padrões de pensamento e comportamentos negativos.",
+      "Compreende o comportamento para promover mudanças significativas, utilizando princípios para identificar padrões, reforçar avanços e favorecer o desenvolvimento pessoal.",
   },
   {
     icon: Target,
-    title: "Terapia Comportamental Dialética (TCC)",
+    title: "Intervenções Baseadas em Evidências",
     description:
-      "Terapia baseada em habilidades com ênfase em atenção plena, tolerância ao sofrimento e regulação emocional.",
+      "Planejamento individualizado, focado em metas reais e mensuráveis, respeitando o ritmo e as necessidades únicas de cada pessoa.",
   },
   {
     icon: Compass,
-    title: "Terapia Baseada em Mindfulness",
+    title: " Construção de repertórios e fortalecimento de habilidades",
     description:
-      "Incorporando práticas de mindfulness para aumentar a consciência e reduzir o estresse e a ansiedade.",
+      "Elaboramos estratégias práticas para desenvolver essas competências, aumentando a autonomia e o bem-estar no dia a dia.",
   },
   {
     icon: Shield,
-    title: "Cuidados com Traumas",
+    title: "Atendimento com escuta ativa e ética",
     description:
-      "Abordagem especializada para a cura de traumas com segurança, confiança e empoderamento.",
+      "Um espaço seguro, com acolhimento e sem julgamentos, onde você pode se expressar livremente, explorar suas emoções, compreender seus desafios.",
   },
 ];
 
 const principles = [
-  "Abordagem centrada no cliente",
-  "Prática culturalmente sensível e inclusiva",
-  "Perspectiva baseada em pontos fortes",
-  "Métodos de tratamento baseados em evidências",
-  "Visão holística da saúde mental",
+  "Foco na individualidade do cliente",
+  "Atendimento culturalmente sensível e inclusivo",
+  "Fortalecimento de repertórios e habilidades",
+  "Intervenções baseadas em evidências científicas",
+  "Compromisso com a segurança psicológica",
   "Ênfase no empoderamento pessoal",
 ];
 
@@ -53,12 +53,11 @@ const Approach = () => {
             <span className="text-emerald-600 font-medium">Abordagem</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Eu adoto uma abordagem integrativa e centrada no cliente, combinando
-            diferentes técnicas terapêuticas para atender às suas necessidades
-            únicas. Meu objetivo é criar um espaço seguro e acolhedor onde você
-            possa explorar seus pensamentos e sentimentos, desenvolver
-            habilidades de enfrentamento e trabalhar em direção a mudanças
-            positivas.
+            Atuo com base na Análise do Comportamento, focando na compreensão
+             das relações entre o comportamento e o ambiente. O processo terapêutico
+            busca identificar padrões que mantêm comportamentos disfuncionais
+            e desenvolver repertórios mais eficazes, promovendo autonomia,
+             adaptação e qualidade de vida.
           </p>
         </motion.div>
 
@@ -127,9 +126,10 @@ const Approach = () => {
           >
             <div className="text-6xl text-emerald-200 mb-4">"</div>
             <blockquote className="text-xl text-slate-700 leading-relaxed mb-6">
-             Meu objetivo é criar um espaço seguro e sem julgamentos, onde você possa
-explorar seus pensamentos e sentimentos, desenvolver estratégias de enfrentamento e
-trabalhar em direção a uma mudança positiva em seu próprio ritmo.
+             Meu compromisso é oferecer um espaço de escuta ativa, acolhedor e sem julgamentos.
+              Aqui, você poderá compreender seus comportamentos dentro do seu contexto de vida,
+               e juntos vamos construir estratégias que favoreçam sua autonomia,
+                bem-estar e relações mais saudáveis.
             </blockquote>
             <div className="flex items-center space-x-4">
               <img

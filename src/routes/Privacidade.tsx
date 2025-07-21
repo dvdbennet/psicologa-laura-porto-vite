@@ -9,45 +9,94 @@ function Privacidade() {
       <div className="p-16">
         <h1 className="text-3xl font-bold mb-4">Política de Privacidade</h1>
         <p className="mb-4">
-          Esta Política de Privacidade descreve como coletamos, usamos e
-          protegemos suas informações pessoais ao acessar e utilizar nosso site.
-          Ao usar nosso site, você concorda com a coleta e uso de informações de
-          acordo com esta política.
-        </p>
-        <h2 className="text-2xl font-semibold mb-2">Informações Coletadas</h2>
+          Esta Política de Privacidade descreve como [Laura Porto / Psicóloga CRP: 01/28432]
+         coleta, usa,armazena e protege suas informações
+         pessoais quando você visita nosso site [lauraportopsi.com] ou utiliza nossos serviços.
+       </p>
+        <h2 className="text-2xl font-semibold mb-2">2. Informações Coletadas</h2>
         <p className="mb-4">
-          Coletamos informações pessoais identificáveis, como nome, e-mail e
-          outras informações que você nos fornece voluntariamente ao se
-          registrar ou entrar em contato conosco. Também coletamos informações
-          não pessoais, como dados de navegação e uso do site, para melhorar
-          nossos serviços.
+          2.1 Dados fornecidos voluntariamente:
+•⁠  ⁠Nome completo
+•⁠  ⁠E-mail
+•⁠  ⁠Telefone
+•⁠  ⁠Idade
+•⁠  ⁠Informações sobre sua demanda psicológica (quando fornecidas em conversas ou formulários)
+•⁠  ⁠Histórico de comunicações conosco
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Uso das Informações</h2>
+         <p className="mb-4">
+         2.2 Dados coletados automaticamente:
+•⁠  ⁠Endereço IP
+•⁠  ⁠Tipo de navegador e dispositivo
+•⁠  ⁠Páginas visitadas em nosso site
+•⁠  ⁠Tempo de permanência no site
+•⁠  ⁠Origem do acesso (como chegou ao nosso site)
+•⁠  ⁠Cookies e tecnologias similares
+
+        </p>
+         <p className="mb-4">
+         2.3 Dados de terceiros:
+•⁠  ⁠Informações provenientes de plataformas de anúncios (Google Ads, Facebook Ads)
+•⁠  ⁠Dados de redes sociais (quando você interage com nossos perfis)
+        </p>
+        <h2 className="text-2xl font-semibold mb-2">3. Uso das Informações</h2>
         <p className="mb-4">
-          As informações coletadas são usadas para fornecer, manter e melhorar
-          nossos serviços, personalizar sua experiência no site, responder a
-          solicitações e enviar comunicações relacionadas ao serviço. Não
-          vendemos ou alugamos suas informações pessoais a terceiros sem o seu
-          consentimento, exceto quando exigido por lei.
+         3.1 Finalidades do tratamento:
+•⁠  ⁠Responder às suas consultas e solicitações
+•⁠  ⁠Agendar consultas e sessões
+•⁠  ⁠Enviar informações sobre nossos serviços
+•⁠  ⁠Melhorar nosso site e serviços
+•⁠  ⁠Cumprir obrigações legais e regulamentares
+•⁠  ⁠Realizar campanhas de marketing e publicidade
+•⁠  ⁠Análise de dados para otimização de anúncios
+        </p>
+          <p className="mb-4">
+         3.2 Base legal (LGPD):
+•⁠  ⁠Consentimento do titular dos dados
+•⁠  ⁠Execução de contrato ou procedimentos preliminares
+•⁠  ⁠Legítimo interesse
+•⁠  ⁠Cumprimento de obrigação legal
+
         </p>
         <h2 className="text-2xl font-semibold mb-2">
-          Segurança das Informações
+          4. Segurança das Informações
         </h2>
         <p className="mb-4">
-          Implementamos medidas de segurança adequadas para proteger suas
-          informações pessoais contra acesso não autorizado, divulgação,
-          alteração ou destruição. No entanto, nenhuma transmissão de dados pela
-          internet é completamente segura, e não podemos garantir a segurança
-          absoluta de suas informações.
+          4.1 Não compartilhamos suas informações pessoais com terceiros, exceto:
+•⁠  ⁠Quando necessário para prestação do serviço
+•⁠  ⁠Para cumprimento de obrigações legais
+•⁠  ⁠Com seu consentimento expresso
+•⁠  ⁠Com prestadores de serviços que nos auxiliam (sempre com contratos de confidencialidade)
+
         </p>
-        <h2 className="text-2xl font-semibold mb-2">Cookies</h2>
+                <p className="mb-4">
+          4.2 Serviços de terceiros utilizados:
+•⁠  ⁠Google Analytics (análise de tráfego)
+•⁠  ⁠Google Ads (publicidade)
+•⁠  ⁠Plataformas de agendamento online
+•⁠  ⁠Provedores de hospedagem
+•⁠  ⁠Sistemas de e-mail marketing
+
+        </p>
+        <h2 className="text-2xl font-semibold mb-2">5. Cookies</h2>
         <p className="mb-4">
-          Nosso site pode usar cookies e tecnologias semelhantes para melhorar a
-          experiência do usuário. Os cookies são pequenos arquivos de texto
-          armazenados no seu dispositivo que ajudam a lembrar suas preferências
-          e atividades no site. Você pode optar por desativar os cookies nas
-          configurações do seu navegador, mas isso pode afetar a funcionalidade
-          do site.
+        5.1 Utilizamos cookies para:
+•⁠  ⁠Melhorar a experiência do usuário
+•⁠  ⁠Analisar o tráfego do site
+•⁠  ⁠Personalizar anúncios
+•⁠  ⁠Lembrar suas preferências
+        </p>
+           <p className="mb-4">
+        5.2 Tipos de cookies:
+•⁠  ⁠Cookies essenciais: Necessários para funcionamento do site
+•⁠  ⁠Cookies de desempenho: Coletam informações sobre uso do site
+•⁠  ⁠Cookies de funcionalidade: Lembram suas escolhas e preferências
+•⁠  ⁠Cookies de marketing: Utilizados para mostrar anúncios relevantes
+        </p>
+                   <p className="mb-4">
+        5.3 Gerenciamento de cookies:
+Você pode controlar e/ou deletar cookies conforme desejar.
+Pode deletar todos os cookies já armazenados em seu computador
+ e configurar a maioria dos navegadores para impedir que sejam armazenados
         </p>
         <h2 className="text-2xl font-semibold mb-2">
           Alterações nesta Política
@@ -63,14 +112,14 @@ function Privacidade() {
         <p className="mb-4">
           Se você tiver alguma dúvida ou preocupação sobre esta Política de
           Privacidade, entre em contato conosco através do e-mail fornecido em
-          nosso site ou pelo formulário de contato.
+          nosso site ou pela áreacontato.
         </p>
         <p className="mb-4">
           Esta Política de Privacidade é eficaz a partir da data de sua
           publicação. Agradecemos por confiar em nós com suas informações
           pessoais e estamos comprometidos em protegê-las.
         </p>
-        <p className="mb-4">Última atualização: [Data da última atualização]</p>
+        <p className="mb-4">Última atualização: [21/07/2025]</p>
       </div>
       <Contact />
       <Footer />
