@@ -7,6 +7,7 @@ import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
+import WhatsApp from "../components/WhatsApp";
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
       <Contact />
       <ComplianceNotice />
       <Footer />
+      <WhatsApp />
     </div>
   );
 }

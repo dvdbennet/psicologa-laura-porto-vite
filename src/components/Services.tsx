@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Video, MapPin, Clock, Users, Brain, Heart, User } from 'lucide-react';
+import { Brain, Calendar, Clock, MapPin, User, Video } from 'lucide-react';
+import { whatsapp } from '../config';
 
 const services = [
   {
@@ -15,7 +15,7 @@ const services = [
     description: 'Um ambiente acolhedor para promover a compreensão de seus comportamentos em questões relacionadas à identidade, vínculos sociais e superação de desafios. Meu objetivo é ampliar habilidades que possibilitem decisões mais alinhadas com seus valores e necessidades.',
     features: ['Descoberta da identidade e fortalecimento da autoestima', 'Relações interpessoais e habilidades de comunicação', 'Pressões acadêmicas e organização para o futuro']
   },
-  
+
 ];
 
 const sessionTypes = [
@@ -50,7 +50,7 @@ const Services = () => {
             <span className="text-emerald-600 font-medium">Psicoterapia</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Ofereço serviços terapêuticos para adultos e adolescentes, projetados para atender suas 
+            Ofereço serviços terapêuticos para adultos e adolescentes, projetados para atender suas
             necessidades únicas e apoiar sua jornada em direção ao bem-estar mental.
           </p>
         </motion.div>
@@ -68,11 +68,11 @@ const Services = () => {
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
                 <service.icon className="text-emerald-600" size={32} />
               </div>
-              
+
               <h3 className="text-2xl font-semibold text-slate-800 mb-4">
                 {service.title}
               </h3>
-              
+
               <p className="text-slate-600 mb-6 leading-relaxed">
                 {service.description}
               </p>
@@ -101,7 +101,7 @@ const Services = () => {
             <span className="text-emerald-600 font-medium">Formato Preferido</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Eu ofereço sessões tanto online quanto presenciais, para que você possa escolher o formato que melhor se adapta à sua rotina e preferências. 
+            Eu ofereço sessões tanto online quanto presenciais, para que você possa escolher o formato que melhor se adapta à sua rotina e preferências.
           </p>
         </motion.div>
 
@@ -127,11 +127,11 @@ const Services = () => {
               <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
                 <type.icon className="text-emerald-600" size={32} />
               </div>
-              
+
               <h3 className="text-2xl font-semibold text-slate-800 mb-4">
                 {type.title}
               </h3>
-              
+
               <p className="text-slate-600 mb-6 leading-relaxed">
                 {type.description}
               </p>
@@ -160,10 +160,20 @@ const Services = () => {
               Duração das Sessões
             </h3>
             <p className="text-slate-600 leading-relaxed">
-              As sessões de psicoterapia têm duração de 50 minutos, proporcionando tempo suficiente para explorar suas preocupações e desenvolver estratégias eficazes. 
+              As sessões de psicoterapia têm duração de 50 minutos, proporcionando tempo suficiente para explorar suas preocupações e desenvolver estratégias eficazes.
               A frequência recomendada é semanal, mas pode ser ajustada conforme necessário.
             </p>
           </div>
+          <motion.a
+            target="_blank"
+            href={whatsapp()}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-emerald-600 mx-auto max-w-xs mt-8 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-700 transition-colors flex items-center justify-center space-x-2"
+          >
+            <Calendar size={20} />
+            <span>Agendar Consulta</span>
+          </motion.a>
         </motion.div>
       </div>
     </section>

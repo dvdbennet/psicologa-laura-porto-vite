@@ -1,4 +1,4 @@
-import { Heart, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-                <Heart className="text-white" size={20} />
+                <img src="/favicon.ico" alt="" />
               </div>
               <div>
                 <div className="text-white font-semibold text-lg">

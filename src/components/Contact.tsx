@@ -1,36 +1,7 @@
 import { motion } from "framer-motion";
 import { Clock, Mail, MapPin, Phone, Video } from "lucide-react";
-import React, { useState } from "react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    sessionType: "online",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert(
-      "Obrigado por entrar em contato! Responderemos o mais breve possível."
-    );
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -56,7 +27,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-9"
+            className="grid md:grid-cols-2 gap-9"
           >
             <div>
               <h3 className="text-2xl font-semibold text-slate-800 mb-6">
@@ -130,7 +101,7 @@ const Contact = () => {
                   <span>Segunda - Sexta</span>
                   <span>8:00 - 20:00 </span>
                 </div>
-               
+
                 <div className="flex justify-between">
                   <span>Sábado</span>
                   <span>10:00 - 16:00</span>

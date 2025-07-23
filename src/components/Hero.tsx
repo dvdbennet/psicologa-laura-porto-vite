@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Star, Video } from "lucide-react";
 import heroImage from "../assets/images/hero-image-2.jpeg";
+import { whatsapp } from "../config";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="pt-24 pb-16 bg-gradient-to-br from-emerald-50 via-white to-teal-50 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-6">
@@ -46,8 +40,8 @@ const Hero = () => {
 
             <div className="flex flex-col  sm:flex-row gap-14 mb-8">
               <motion.a
-                target="_blankm"
-                href="https://wa.me/5561999914224?text=Ol%C3%A1,%20quero%20marcar%20uma%20consulta.%20Quais%20s%C3%A3o%20as%20disponibilidade%20de%20hor%C3%A1rios?"
+                target="_blank"
+                href={whatsapp()}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-700 transition-colors flex items-center justify-center space-x-2"

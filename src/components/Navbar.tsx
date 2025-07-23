@@ -1,18 +1,11 @@
 import { motion } from "framer-motion";
-import { Heart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
+import { whatsapp } from "../config";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
 
   return (
     <motion.nav
@@ -25,7 +18,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-              <Heart className="text-white" size={20} />
+              <img src="/favicon.ico" alt="" />
             </div>
             <div>
               <div className="text-slate-800 font-semibold text-lg">
@@ -37,33 +30,33 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("about")}
+            <a
+              href="#about"
               className="text-slate-700 hover:text-emerald-600 transition-colors"
             >
               Sobre
-            </button>
-            <button
-              onClick={() => scrollToSection("services")}
+            </a>
+            <a
+              href="#services"
               className="text-slate-700 hover:text-emerald-600 transition-colors"
             >
               Serviços
-            </button>
-            <button
-              onClick={() => scrollToSection("approach")}
+            </a>
+            <a
+              href="#approach"
               className="text-slate-700 hover:text-emerald-600 transition-colors"
             >
               Abordagem
-            </button>
-            <button
-              onClick={() => scrollToSection("testimonials")}
+            </a>
+            <a
+              href="#testimonials"
               className="text-slate-700 hover:text-emerald-600 transition-colors"
             >
               Depoimentos
-            </button>
+            </a>
             <motion.a
               target="_blank"
-              href="https://wa.me/5561999914224?text=Ol%C3%A1,%20quero%20marcar%20uma%20consulta.%20Quais%20s%C3%A3o%20as%20disponibilidade%20de%20hor%C3%A1rios?"
+              href={whatsapp()}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-colors"
@@ -89,36 +82,36 @@ const Navbar = () => {
             className="md:hidden py-4 border-t border-slate-200"
           >
             <div className="flex flex-col space-y-4">
-              <button
-                onClick={() => scrollToSection("about")}
+              <a
+                href="#about"
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
                 Sobre
-              </button>
-              <button
-                onClick={() => scrollToSection("services")}
+              </a>
+              <a
+                href="#services"
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
                 Serviços
-              </button>
-              <button
-                onClick={() => scrollToSection("approach")}
+              </a>
+              <a
+                href="#approach"
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
                 Abordagem
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
+              </a>
+              <a
+                href="#testimonials"
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
                 Testemunhos
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
+              </a>
+              <a
+                href="#contact"
                 className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-colors w-fit"
               >
               Agende sua Consulta
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

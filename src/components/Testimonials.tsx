@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
+import { whatsapp } from "../config";
 
 const testimonials = [
   {
@@ -45,10 +46,10 @@ const Testimonials = () => {
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Leia o que meus clientes dizem sobre suas experiências de terapia. Seus testemunhos refletem a eficácia e o
             valor do trabalho terapêutico que realizamos juntos.
-            
+
           </p>
            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            
+
             (Todas as indentidades foram alteradas para preservar a privacidade dos clientes.)
           </p>
         </motion.div>
@@ -109,7 +110,7 @@ const Testimonials = () => {
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://wa.me/5561999914224?text=Ol%C3%A1,%20quero%20marcar%20uma%20consulta.%20Quais%20s%C3%A3o%20as%20disponibilidade%20de%20hor%C3%A1rios?"
+              href={whatsapp()}
               className="bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-700 transition-colors"
             >
               Agendar Consulta
