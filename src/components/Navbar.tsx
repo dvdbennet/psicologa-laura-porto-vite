@@ -93,31 +93,31 @@ const Navbar = () => {
                 onClick={() => scrollToSection("about")}
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
-                About
+                Sobre
               </button>
               <button
                 onClick={() => scrollToSection("services")}
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
-                Services
+                Serviços
               </button>
               <button
                 onClick={() => scrollToSection("approach")}
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
-                Approach
+                Abordagem
               </button>
               <button
                 onClick={() => scrollToSection("testimonials")}
                 className="text-slate-700 hover:text-emerald-600 transition-colors text-left"
               >
-                Testimonials
+                Testemunhos
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
                 className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition-colors w-fit"
               >
-                Book Session
+              Agende sua Consulta
               </button>
             </div>
           </motion.div>
