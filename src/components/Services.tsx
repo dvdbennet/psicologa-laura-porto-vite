@@ -23,7 +23,7 @@ const sessionTypes = [
     icon: Video,
     title: 'Online',
     description: 'Formato conveninete do conforto da sua casa',
-    features: ['Plataforma de víde segura', 'Flexibilidade', 'Sem trânsito'],
+    features: ['Plataforma de vídeo segura', 'Flexibilidade', 'Sem trânsito'],
     popular: true
   },
   {
@@ -119,7 +119,7 @@ const Services = () => {
               {type.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-medium">
-                    Most Popular
+                    Mais Popular
                   </span>
                 </div>
               )}
