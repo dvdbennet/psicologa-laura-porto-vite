@@ -1,0 +1,37 @@
+{
+  "path": "/brasilia",
+  "url": "https://psilauraporto.com/brasilia",
+  "title": "Psicóloga em Brasília no Sudoeste | Presencial e Online | Laura Porto",
+  "description": "Psicóloga no Sudoeste, Brasília-DF (CRP 01/28432). Terapia presencial no consultório do Sudoeste e online para todo o DF e o Brasil. Agende pelo WhatsApp.",
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "Psychologist",
+    "name": "Dra. Laura Porto - Psicóloga em Brasília",
+    "description": "Psicoterapia presencial no Sudoeste, Brasília-DF, e online para todo o Brasil.",
+    "url": "https://psilauraporto.com/brasilia",
+    "telephone": "+55-61-99991-4224",
+    "email": "lauraporto.psi@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sudoeste",
+      "addressLocality": "Brasília",
+      "addressRegion": "DF",
+      "addressCountry": "BR"
+    },
+    "areaServed": ["Sudoeste", "Brasília", "Distrito Federal", "Brasil"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ]
+  }
+}
