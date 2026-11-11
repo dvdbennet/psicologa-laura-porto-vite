@@ -17,7 +17,8 @@ import IconeWhats from "./IconeWhats";
  */
 
 // URL do Web App do Apps Script (termina em /exec). Vazio = não envia para planilha.
-const LEADS_ENDPOINT = "";
+const LEADS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbyhP1ykjfGi7K6WYQZRo0-65DEvDoUg8GXPT1R871bUKQ3gY97T1fG4LWV3n1lVjGhc/exec";
 
 const LEAD_DONE_KEY = "lp_lead_enviado";
 const LEAD_DONE_DAYS = 30;
@@ -67,8 +68,9 @@ function mensagemComNome(waUrl: string, nome: string) {
   const novo = texto.startsWith("Olá, Dra. Laura!")
     ? texto.replace("Olá, Dra. Laura!", `Olá, Dra. Laura! Sou ${primeiro}.`)
     : `Olá, Dra. Laura! Sou ${primeiro}. ${texto}`;
-  url.searchParams.set("text", novo);
-  return url.toString();
+  // encodeURIComponent usa %20 para espaço (URLSearchParams usaria "+",
+  // que alguns WhatsApps mostram literalmente na mensagem)
+  return `${url.origin}${url.pathname}?text=${encodeURIComponent(novo)}`;
 }
 
 export default function LeadModal() {
