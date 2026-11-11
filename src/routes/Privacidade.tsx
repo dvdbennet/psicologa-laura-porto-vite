@@ -44,9 +44,11 @@ function Privacidade() {
             consentimento expresso. Ficam guardados com acesso restrito à Dra.
             Laura, sob sigilo profissional, e não são vendidos nem
             compartilhados. Para medir quais anúncios trazem contatos, o
-            identificador do clique no anúncio do Google é registrado junto, sem
-            enviar seu nome, telefone ou e-mail ao Google. Você pode pedir a
-            exclusão dos seus dados a qualquer momento pelo WhatsApp.
+            identificador do clique no anúncio do Google é registrado junto, e
+            seu telefone e e-mail são enviados ao Google Ads apenas de forma
+            criptografada (hash), sem que seja possível lê-los, exclusivamente
+            para essa medição. Seu nome não é enviado ao Google. Você pode pedir
+            a exclusão dos seus dados a qualquer momento pelo WhatsApp.
           </p>
           <h2 className="font-display text-2xl text-ink-900 mt-10 mb-3">
             3. Uso das Informações
