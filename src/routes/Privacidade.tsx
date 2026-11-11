@@ -36,6 +36,18 @@ function Privacidade() {
             de anúncios (Google Ads, Facebook Ads) •⁠ ⁠Dados de redes sociais
             (quando você interage com nossos perfis)
           </p>
+          <p className="mb-4">
+            2.4 Formulário de contato: ao clicar em um botão de WhatsApp no
+            site, pedimos seu nome, seu número de WhatsApp e, opcionalmente,
+            seu e-mail. Esses dados são usados somente para que a Dra. Laura
+            possa responder e dar continuidade ao seu atendimento, com o seu
+            consentimento expresso. Ficam guardados com acesso restrito à Dra.
+            Laura, sob sigilo profissional, e não são vendidos nem
+            compartilhados. Para medir quais anúncios trazem contatos, o
+            identificador do clique no anúncio do Google é registrado junto, sem
+            enviar seu nome, telefone ou e-mail ao Google. Você pode pedir a
+            exclusão dos seus dados a qualquer momento pelo WhatsApp.
+          </p>
           <h2 className="font-display text-2xl text-ink-900 mt-10 mb-3">
             3. Uso das Informações
           </h2>
@@ -108,7 +120,7 @@ function Privacidade() {
             publicação. Agradecemos por confiar em nós com suas informações
             pessoais e estamos comprometidos em protegê-las.
           </p>
-          <p className="mb-4">Última atualização: 11/09/2026</p>
+          <p className="mb-4">Última atualização: 11/11/2026</p>
         </div>
         <Contact />
         <Footer />
