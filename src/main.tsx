@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import CookieBanner from "./components/CookieBanner.tsx";
-import LeadModal from "./components/LeadModal.tsx";
 import "./index.css";
 import Adolescente from "./routes/Adolescente.tsx";
 import Brasilia from "./routes/Brasilia.tsx";
@@ -24,6 +23,5 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/brasilia" element={<Brasilia />} />
     </Routes>
     <CookieBanner />
-    <LeadModal />
   </BrowserRouter>,
 );

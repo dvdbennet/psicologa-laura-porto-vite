@@ -37,18 +37,16 @@ function Privacidade() {
             (quando você interage com nossos perfis)
           </p>
           <p className="mb-4">
-            2.4 Formulário de contato: ao clicar em um botão de WhatsApp no
-            site, pedimos seu nome, seu número de WhatsApp e, opcionalmente,
-            seu e-mail. Esses dados são usados somente para que a Dra. Laura
-            possa responder e dar continuidade ao seu atendimento, com o seu
-            consentimento expresso. Ficam guardados com acesso restrito à Dra.
-            Laura, sob sigilo profissional, e não são vendidos nem
-            compartilhados. Para medir quais anúncios trazem contatos, o
-            identificador do clique no anúncio do Google é registrado junto, e
-            seu telefone e e-mail são enviados ao Google Ads apenas de forma
-            criptografada (hash), sem que seja possível lê-los, exclusivamente
-            para essa medição. Seu nome não é enviado ao Google. Você pode pedir
-            a exclusão dos seus dados a qualquer momento pelo WhatsApp.
+            2.4 Registro de cliques no WhatsApp: quando você chega ao site por
+            um anúncio do Google, o site guarda no seu navegador, por até 90
+            dias, o identificador desse clique no anúncio (um código gerado
+            pelo Google, que não contém seu nome nem seu telefone). Se você
+            clicar em um botão de WhatsApp, registramos a data e a hora do
+            clique, a página, o tipo de aparelho (celular ou computador) e esse
+            identificador. Nenhum dado da sua conversa, nome ou número é
+            enviado ao site ou ao Google. O registro serve somente para medir
+            quais anúncios geram contatos e consultas, fica com acesso restrito
+            à Dra. Laura e não é vendido nem compartilhado.
           </p>
           <h2 className="font-display text-2xl text-ink-900 mt-10 mb-3">
             3. Uso das Informações
@@ -122,7 +120,7 @@ function Privacidade() {
             publicação. Agradecemos por confiar em nós com suas informações
             pessoais e estamos comprometidos em protegê-las.
           </p>
-          <p className="mb-4">Última atualização: 11/11/2026</p>
+          <p className="mb-4">Última atualização: 13/11/2026</p>
         </div>
         <Contact />
         <Footer />

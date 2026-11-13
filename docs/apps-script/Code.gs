@@ -1,19 +1,22 @@
 /**
  * Leads do site — Dra. Laura Porto
  *
- * setup()  → roda UMA vez: cria as abas "Upload" e "Leads".
- * doPost() → recebe cada formulário enviado no site e grava uma linha em "Leads".
- * aoEditar() → (acionador instalado pelo setup) quando a Laura muda o "Status" de um lead, grava a data e manda
- *            a conversão para a aba "Upload" (que o Google Ads importa todo dia).
+ * setup()        → roda UMA vez: cria as abas "Upload" e "Leads" (formulário, hoje desligado no site).
+ * setupCliques() → roda UMA vez: cria a aba "Cliques" (registro de clique no WhatsApp, desde 13/11/2026).
+ * doPost()       → recebe do site:
+ *                    - tipo "clique": quem veio de anúncio e clicou no WhatsApp → linha em "Cliques"
+ *                    - formulário (legado): nome/telefone → linha em "Leads"
+ * aoEditar()     → (acionador instalado pelo setup) quando a Laura muda o "Status" em "Cliques" ou "Leads",
+ *                  grava a data e manda a conversão para a aba "Upload" (que o Google Ads importa todo dia).
  *
- * A Laura só usa a aba "Leads": toca no WhatsApp da pessoa e escolhe o Status.
+ * A Laura usa a aba "Cliques": chegou mensagem nova no WhatsApp → acha o clique do mesmo minuto → escolhe o Status.
  */
 
 // ID da planilha "Conversões Offline — Laura (Google Ads)"
 const PLANILHA_ID = '1uLtyYu5Aw84qvnAqFiYBSIPwEuvJsQVj3BpH96L4jQ8';
 const planilha = () => SpreadsheetApp.openById(PLANILHA_ID);
 
-const VALOR_FECHOU = 800;     // R$ por paciente fechado (mensal)
+const VALOR_FECHOU = 600;     // R$ por paciente fechado (mensalidade)
 const VALOR_CONVERSOU = 0;    // conversa séria: sem valor, só sinal para o Google
 
 const STATUS = ['Conversou', 'Fechou', 'Não respondeu'];
@@ -23,6 +26,12 @@ const COL = {
   DATA: 1, NOME: 2, WHATS: 3, EMAIL: 4, STATUS: 5,          // visíveis para a Laura
   CONVERSOU_EM: 6, FECHOU_EM: 7, GCLID: 8, GBRAID: 9,       // técnicas (ocultas)
   WBRAID: 10, PAGINA: 11, TELEFONE: 12, CONSENTIMENTO: 13,
+};
+
+// Colunas da aba Cliques (1 = A)
+const COLC = {
+  DATA: 1, APARELHO: 2, PAGINA: 3, STATUS: 4,                // visíveis para a Laura
+  CONVERSOU_EM: 5, FECHOU_EM: 6, GCLID: 7, GBRAID: 8, WBRAID: 9, // técnicas (ocultas)
 };
 
 function setup() {
@@ -74,7 +83,25 @@ function setup() {
   Logger.log('Pronto! Planilha: ' + ss.getUrl());
 }
 
-/** Recebe o formulário do site. */
+/** Roda UMA vez: cria a aba "Cliques" (logo depois de "Upload"). */
+function setupCliques() {
+  const ss = planilha();
+  const cliques = ss.getSheetByName('Cliques') || ss.insertSheet('Cliques', 1);
+  cliques.getRange(1, 1, 1, 9).setValues([[
+    'Data e hora do clique', 'Aparelho', 'Página', 'Status',
+    'Conversou em', 'Fechou em', 'gclid', 'gbraid', 'wbraid',
+  ]]).setFontWeight('bold').setBackground('#d1fae5');
+  cliques.setFrozenRows(1);
+  cliques.setColumnWidth(COLC.DATA, 170);
+  cliques.setColumnWidth(COLC.APARELHO, 110);
+  cliques.setColumnWidth(COLC.PAGINA, 110);
+  cliques.setColumnWidth(COLC.STATUS, 140);
+  cliques.hideColumns(COLC.CONVERSOU_EM, COLC.WBRAID - COLC.CONVERSOU_EM + 1);
+  ss.setActiveSheet(cliques);
+  Logger.log('Aba Cliques pronta.');
+}
+
+/** Recebe do site: clique no WhatsApp (tipo "clique") ou formulário (legado). */
 function doPost(e) {
   let d;
   try {
@@ -82,6 +109,8 @@ function doPost(e) {
   } catch (err) {
     return ContentService.createTextOutput('invalid');
   }
+
+  if (d.tipo === 'clique') return registrarClique(d);
 
   // Filtro anti-spam: campo invisível preenchido = robô; dados mínimos obrigatórios
   if (d.website || !d.nome || !d.telefone || !d.consentimento) {
@@ -115,10 +144,50 @@ function doPost(e) {
   return ContentService.createTextOutput('ok');
 }
 
-/** Quando a Laura muda o Status: registra a data e envia a conversão para "Upload". */
+/** Clique de quem veio de anúncio: linha nova no TOPO da aba Cliques (mais recente primeiro). */
+function registrarClique(d) {
+  const limpa = (v, n) => String(v || '').replace(/[^\w\-]/g, '').slice(0, n);
+  const gclid = limpa(d.gclid, 200), gbraid = limpa(d.gbraid, 200), wbraid = limpa(d.wbraid, 200);
+  if (!gclid && !gbraid && !wbraid) return ContentService.createTextOutput('ignored');
+
+  const aparelho = d.aparelho === 'Computador' ? 'Computador' : 'Celular';
+  const pagina = String(d.pagina || '/').replace(/[^\w\/\-]/g, '').slice(0, 60) || '/';
+
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    const cliques = planilha().getSheetByName('Cliques');
+    if (!cliques) return ContentService.createTextOutput('sem aba Cliques');
+
+    // Mesmo gclid em menos de 2 min = clique repetido (dois botões, aba reaberta): não duplica
+    if (cliques.getLastRow() >= 2 && gclid) {
+      const topo = cliques.getRange(2, 1, 1, 9).getValues()[0];
+      if (topo[COLC.GCLID - 1] === gclid && (new Date() - new Date(topo[COLC.DATA - 1])) < 2 * 60 * 1000) {
+        return ContentService.createTextOutput('dup');
+      }
+    }
+
+    cliques.insertRowBefore(2);
+    cliques.getRange(2, 1, 1, 9).setValues([[
+      new Date(), aparelho, pagina, '', '', '', gclid, gbraid, wbraid,
+    ]]);
+    cliques.getRange(2, 1, 1, 9).setFontWeight('normal').setBackground(null);
+    cliques.getRange(2, COLC.DATA).setNumberFormat('ddd dd/mm "às" hh:mm:ss');
+    cliques.getRange(2, COLC.STATUS).setDataValidation(
+      SpreadsheetApp.newDataValidation().requireValueInList(STATUS, true).setAllowInvalid(false).build()
+    );
+  } finally {
+    lock.releaseLock();
+  }
+  return ContentService.createTextOutput('ok');
+}
+
+/** Quando a Laura muda o Status (aba Cliques ou Leads): registra a data e envia a conversão para "Upload". */
 function aoEditar(e) {
   const sheet = e.range.getSheet();
-  if (sheet.getName() !== 'Leads' || e.range.getColumn() !== COL.STATUS || e.range.getRow() < 2) return;
+  const nome = sheet.getName();
+  const C = nome === 'Cliques' ? COLC : nome === 'Leads' ? COL : null;
+  if (!C || e.range.getColumn() !== C.STATUS || e.range.getRow() < 2) return;
 
   const row = e.range.getRow();
   const status = e.range.getValue();
@@ -126,9 +195,9 @@ function aoEditar(e) {
 
   let colData, nomeConversao, valor;
   if (status === 'Conversou') {
-    colData = COL.CONVERSOU_EM; nomeConversao = 'Lead Qualificado'; valor = VALOR_CONVERSOU;
+    colData = C.CONVERSOU_EM; nomeConversao = 'Lead Qualificado'; valor = VALOR_CONVERSOU;
   } else if (status === 'Fechou') {
-    colData = COL.FECHOU_EM; nomeConversao = 'Paciente Fechou'; valor = VALOR_FECHOU;
+    colData = C.FECHOU_EM; nomeConversao = 'Paciente Fechou'; valor = VALOR_FECHOU;
   } else {
     return; // "Não respondeu" ou vazio: nada a enviar
   }
@@ -137,7 +206,7 @@ function aoEditar(e) {
   if (sheet.getRange(row, colData).getValue()) return;
   sheet.getRange(row, colData).setValue(agora);
 
-  const gclid = sheet.getRange(row, COL.GCLID).getValue();
+  const gclid = sheet.getRange(row, C.GCLID).getValue();
   if (!gclid) return; // lead que não veio do Google Ads: fica só na planilha
 
   const horario = Utilities.formatDate(agora, 'America/Sao_Paulo', "yyyy-MM-dd HH:mm:ss") + '-03:00';

@@ -66,8 +66,11 @@ function leadJaEnviado() {
 }
 
 function abrirWhatsApp(url: string) {
-  const w = window.open(url, "_blank", "noopener");
-  if (!w) window.location.href = url;
+  // Sem o 3º parâmetro "noopener": com ele o navegador SEMPRE devolve null,
+  // e o fallback abaixo rodava junto (WhatsApp abria duas vezes).
+  const w = window.open(url, "_blank");
+  if (w) w.opener = null;
+  else window.location.href = url;
 }
 
 /** Troca o "Olá, Dra. Laura!" inicial por "Olá, Dra. Laura! Sou <Nome>." */
