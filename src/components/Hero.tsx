@@ -106,8 +106,8 @@ export type HeroProps = {
 
 const Hero = ({
   chip = "CRP 01/28432 · Psicóloga Clínica",
-  title = "Cansou de fingir que está tudo bem?",
-  accent = ["bem"],
+  title = "Cuidar da sua saúde mental é o maior investimento em você.",
+  accent = ["investimento"],
   lead = "Psicoterapia online para entender o que está pesando e voltar a respirar.",
   leadMore = "Ansiedade, tristeza, esgotamento ou conflitos: com escuta atenta, método científico e sigilo.",
   ctaLabel = "Agendar minha sessão",
