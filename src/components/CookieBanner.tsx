@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "cookie-consent-accepted";
 
+/**
+ * Aviso de cookies compacto: uma linha no rodapé, para não cobrir o botão do
+ * WhatsApp no hero do celular (antes ocupava ~1/5 da tela na primeira visita).
+ */
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     try {
-      if (localStorage.getItem(STORAGE_KEY) !== "true") {
-        setVisible(true);
-      }
+      if (localStorage.getItem(STORAGE_KEY) !== "true") setVisible(true);
     } catch {
       setVisible(true);
     }
@@ -27,18 +29,22 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed left-4 right-4 bottom-4 z-[2000] mx-auto flex max-w-xl flex-wrap items-center justify-between gap-3 rounded-2xl bg-ink-900/95 backdrop-blur px-5 py-4 text-white shadow-lifted border border-white/10">
-      <p className="m-0 flex-1 basis-64 text-sm text-white/70">
-        Usamos cookies para melhorar sua experiência e analisar o tráfego. Ao
-        continuar, você concorda.
-      </p>
-      <button
-        type="button"
-        onClick={accept}
-        className="flex-none rounded-full bg-emerald-500 px-5 py-2 font-semibold text-white hover:bg-emerald-600 transition-colors"
-      >
-        Aceitar
-      </button>
+    <div className="safe-bottom fixed inset-x-0 bottom-0 z-[2000] px-3 lg:bottom-4 lg:px-4">
+      <div className="mx-auto flex max-w-lg items-center gap-3 rounded-2xl border border-white/10 bg-ink-900/95 py-2 pl-4 pr-2 text-white shadow-lifted backdrop-blur">
+        <p className="m-0 flex-1 text-[12.5px] leading-snug text-white/75">
+          Usamos cookies para analisar o tráfego.{" "}
+          <a href="/privacidade" className="underline underline-offset-2 hover:text-white">
+            Saiba mais
+          </a>
+        </p>
+        <button
+          type="button"
+          onClick={accept}
+          className="h-10 flex-none rounded-full bg-white/10 px-4 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+        >
+          Ok
+        </button>
+      </div>
     </div>
   );
 }

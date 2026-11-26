@@ -1,191 +1,232 @@
 import { useWhatsApp } from "@/context/WhatsAppProvider";
-import { motion } from "framer-motion";
-import { ArrowDown, ShieldCheck, Sparkles, Video } from "lucide-react";
-import heroImage from "../assets/images/hero-image-7.webp";
+import { trackWhatsApp } from "@/lib/track";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { ArrowDown } from "lucide-react";
+import { useRef } from "react";
+import hero1200 from "../assets/images/laura-hero-1200.webp";
+import hero1800 from "../assets/images/laura-hero-1800.webp";
+import hero720 from "../assets/images/laura-hero-720.webp";
+import BlobCanvas from "./hero/BlobCanvas";
 import IconeWhats from "./IconeWhats";
-import Orbs from "./ui/Orbs";
 
-const bullets = [
-  "Atendimento online para todo o Brasil",
-  "Psicoterapia para adultos e adolescentes",
-  "Espaço seguro, ético e acolhedor",
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const trust = [
+  { big: "400+", small: "pacientes atendidos" },
+  { big: "Adultos", small: "e adolescentes" },
+  { big: "Online", small: "todo o Brasil" },
 ];
 
-const trustPoints = [
-  { icon: ShieldCheck, label: "CRP 01/28432 registrada" },
-  { icon: Sparkles, label: "+400 pacientes atendidos" },
-  { icon: Video, label: "100% online, todo o Brasil" },
-];
+/** Título revelado palavra por palavra, cada uma subindo de dentro de uma máscara. */
+function RevealTitle({ text, accent }: { text: string; accent: string }) {
+  const words = text.split(" ");
+  return (
+    <h1 className="font-display text-ink-900 text-[2.15rem] leading-[1.06] min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[clamp(3rem,9.2svh,4.4rem)] lg:leading-[1.02] tracking-[-0.015em] text-balance">
+      {words.map((w, i) => (
+        <span key={i} className="inline-block overflow-clip pb-[0.1em] -mb-[0.1em] align-top">
+          <motion.span
+            className={`inline-block ${w === accent ? "text-brand" : ""}`}
+            initial={{ y: "110%" }}
+            animate={{ y: "0%" }}
+            transition={{ duration: 0.9, delay: 0.15 + i * 0.055, ease: EASE }}
+          >
+            {w}
+            {i < words.length - 1 ? " " : ""}
+          </motion.span>
+        </span>
+      ))}
+    </h1>
+  );
+}
+
+/** Botão do WhatsApp com efeito magnético no desktop (no toque ele só "afunda"). */
+function MagneticCta({ href }: { href: string }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const x = useSpring(0, { stiffness: 220, damping: 18 });
+  const y = useSpring(0, { stiffness: 220, damping: 18 });
+
+  return (
+    <motion.a
+      id="hero-cta"
+      ref={ref}
+      href={href}
+      target="_blank"
+      rel="noopener"
+      onClick={() => trackWhatsApp("hero")}
+      onPointerMove={(e) => {
+        if (e.pointerType !== "mouse" || !ref.current) return;
+        const r = ref.current.getBoundingClientRect();
+        x.set((e.clientX - r.left - r.width / 2) * 0.25);
+        y.set((e.clientY - r.top - r.height / 2) * 0.35);
+      }}
+      onPointerLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
+      style={{ x, y }}
+      whileTap={{ scale: 0.97 }}
+      className="group relative flex h-[58px] w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-brand px-8 text-[1.05rem] font-semibold text-white shadow-[0_18px_36px_-14px_rgba(14,138,106,0.75)] sm:w-auto lg:h-16 lg:text-lg"
+    >
+      {/* brilho que atravessa o botão no hover */}
+      <span className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/25 blur-md transition-transform duration-700 ease-out group-hover:translate-x-[420%]" />
+      <span className="relative h-[22px] w-[22px]">
+        <IconeWhats />
+      </span>
+      <span className="relative">Agendar no WhatsApp</span>
+    </motion.a>
+  );
+}
 
 const Hero = () => {
   const whatsapp = useWhatsApp();
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-[#fbfaf8] to-teal-50 pt-8 lg:pt-16 pb-20">
-      <Orbs />
-      <div className="grain-overlay" />
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center min-h-[80vh] lg:min-h-0">
-          {/* Left Content */}
+  // inclinação 3D do arco seguindo o mouse (desktop)
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rotY = useSpring(useTransform(mx, [-1, 1], [-7, 7]), { stiffness: 120, damping: 20 });
+  const rotX = useSpring(useTransform(my, [-1, 1], [6, -6]), { stiffness: 120, damping: 20 });
+
+  // parallax ao rolar: foto desce mais devagar e aproxima levemente
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const photoY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "12%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.08]);
+  const copyY = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "-10%"]);
+
+  return (
+    <section
+      ref={sectionRef}
+      onPointerMove={(e) => {
+        if (e.pointerType !== "mouse") return;
+        mx.set((e.clientX / window.innerWidth) * 2 - 1);
+        my.set((e.clientY / window.innerHeight) * 2 - 1);
+      }}
+      className="relative overflow-x-clip bg-mist"
+    >
+      {/* luz ambiente */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[70%] bg-[radial-gradient(60%_60%_at_50%_20%,rgba(127,224,194,0.28),transparent_70%)] lg:bg-[radial-gradient(45%_70%_at_75%_40%,rgba(127,224,194,0.3),transparent_70%)]"
+      />
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-x-12 px-5 pb-10 pt-3 sm:px-8 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.05fr_1fr] lg:py-10">
+        {/* ---------- FOTO + FORMA 3D ---------- */}
+        <div
+          className="relative order-1 mx-auto w-full max-w-[420px] lg:order-2 lg:max-w-none"
+          style={{ perspective: 1200 }}
+        >
+          <BlobCanvas className="absolute left-1/2 top-[48%] h-[135%] w-[150%] -translate-x-1/2 -translate-y-1/2 lg:h-[125%] lg:w-[135%]" />
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.1, ease: EASE }}
+            style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
+            className="relative mx-auto aspect-[3/4] h-[clamp(220px,calc(100svh-440px),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
           >
+            <div className="absolute inset-0 overflow-clip rounded-t-[999px] rounded-b-[28px] bg-mint-100 shadow-[0_40px_80px_-30px_rgba(15,42,34,0.45)] [mask-image:linear-gradient(#000_78%,transparent)] lg:[mask-image:none]">
+              <motion.img
+                src={hero1200}
+                srcSet={`${hero720} 720w, ${hero1200} 1200w, ${hero1800} 1800w`}
+                sizes="(min-width: 1024px) 500px, 82vw"
+                alt="Psicóloga Laura Porto sorrindo em seu consultório"
+                width={1200}
+                height={1600}
+                loading="eager"
+                // @ts-expect-error -- fetchpriority ainda não está nos tipos do React 18
+                fetchpriority="high"
+                style={{ y: photoY, scale: photoScale }}
+                className="h-full w-full object-cover object-[50%_16%]"
+              />
+            </div>
+
+            {/* selo flutuante que "respira" junto com a forma (camada à frente no 3D) */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-emerald-200 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-medium mb-7 shadow-soft"
+              transition={{ delay: 1.1, duration: 0.7, ease: EASE }}
+              style={{ transform: "translateZ(60px)" }}
+              className="absolute -right-6 bottom-[9%] flex items-center gap-2.5 rounded-full border border-white/70 bg-white/80 py-2 pl-2 pr-4 text-[12.5px] font-medium text-ink-800 shadow-soft backdrop-blur-md lg:-right-10 lg:bottom-[22%] lg:text-sm"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="relative grid h-6 w-6 place-items-center">
+                <span className="absolute inset-0 rounded-full bg-mint-300/60 animate-breathe" />
+                <span className="relative h-2.5 w-2.5 rounded-full bg-brand" />
               </span>
-              <span>CRP 01/28432 · Psicóloga Clínica</span>
+              Respire. Você chegou.
             </motion.div>
-
-            <h1 className="font-display text-[2.75rem] leading-[1.05] sm:text-6xl md:text-7xl text-ink-900 mb-6 tracking-tight text-balance">
-              Cuide da sua{" "}
-              <span className="relative inline-block text-emerald-700">
-                mente
-                <svg
-                  aria-hidden
-                  viewBox="0 0 200 12"
-                  className="absolute left-0 -bottom-1 w-full h-3 text-emerald-300"
-                >
-                  <path
-                    d="M2 9 C 50 2, 150 2, 198 9"
-                    stroke="currentColor"
-                    strokeWidth="5"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{" "}
-              com quem entende de verdade.
-            </h1>
-
-            <div className="text-lg text-ink-600 space-y-4 mb-8 leading-relaxed max-w-xl">
-              <p>
-                Psicoterapia online para quem quer cuidar da saúde mental com
-                seriedade.
-              </p>
-              <p>
-                Se você enfrenta{" "}
-                <strong className="text-ink-800 font-semibold">
-                  ansiedade, depressão, tristeza, conflitos emocionais
-                </strong>
-                , a terapia pode ajudar a compreender seus sentimentos e
-                construir novos caminhos.
-              </p>
-            </div>
-
-            <ul className="grid sm:grid-cols-1 gap-3 mb-9">
-              {bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-ink-800">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                  </span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <motion.a
-                target="_blank"
-                href={whatsapp}
-                onClick={() => {
-                  if (typeof window !== "undefined" && window.dataLayer) {
-                    window.dataLayer.push({
-                      event: "whatsapp_click",
-                      click_location: "hero",
-                    });
-                  }
-                }}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-glow hover:bg-emerald-700 transition-colors"
-              >
-                <IconeWhats width={22} />
-                <span>Agendar no WhatsApp</span>
-              </motion.a>
-              <a
-                href="#testimonials"
-                className="inline-flex items-center justify-center gap-2 text-ink-700 font-medium px-2 py-3 hover:text-emerald-700 transition-colors"
-              >
-                Ver depoimentos
-                <ArrowDown size={16} />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right Content - Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
-          >
-            <div className="absolute -inset-4 rounded-[2.5rem] border border-emerald-200/70 -rotate-2" />
-            <div className="relative">
-              <img
-                src={heroImage}
-                alt="Dra. Laura Porto em sessão de psicoterapia"
-                className="rounded-[2rem] shadow-lifted w-full h-[420px] lg:h-[600px] object-cover object-[50%_18%]"
-                loading="eager"
-                // @ts-expect-error -- fetchpriority is valid HTML but not yet in React's DOM typings
-                fetchpriority="high"
-              />
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-ink-900/25 via-transparent to-transparent" />
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
-                className="absolute -right-4 top-8 lg:-right-6 lg:top-12 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-lifted border border-white"
-              >
-                <div className="flex items-center space-x-3">
-                  <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
-                  <span className="text-ink-800 font-medium text-sm">
-                    Disponível Agora
-                  </span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 }}
-                className="absolute -left-4 bottom-8 lg:-left-6 lg:bottom-12 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-lifted border border-white"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-display text-emerald-700">
-                    400+
-                  </div>
-                  <div className="text-ink-600 text-xs">
-                    Pacientes Atendidos
-                  </div>
-                </div>
-              </motion.div>
-            </div>
           </motion.div>
         </div>
 
-        {/* Trust strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-16 lg:mt-20 pt-8 border-t border-emerald-900/10 flex flex-wrap items-center justify-center lg:justify-between gap-x-10 gap-y-4"
-        >
-          {trustPoints.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2.5 text-ink-600">
-              <Icon size={18} className="text-emerald-600" />
-              <span className="text-sm font-medium">{label}</span>
-            </div>
-          ))}
+        {/* ---------- TEXTO + CTA ---------- */}
+        <motion.div style={{ y: copyY }} className="relative order-2 -mt-3 lg:order-1 lg:mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="mb-3 inline-flex items-center gap-2 text-[13px] font-medium text-ink-600 lg:mb-[min(1.5rem,2.5svh)] lg:rounded-full lg:border lg:border-mint-100 lg:bg-white/70 lg:px-4 lg:py-1.5 lg:text-sm lg:shadow-soft"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            CRP 01/28432 · Psicóloga Clínica
+          </motion.div>
+
+          <RevealTitle text="Cuide da sua mente com quem entende de verdade." accent="mente" />
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.8, ease: EASE }}
+            className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-600 sm:text-lg lg:mt-[min(1.5rem,2.5svh)]"
+          >
+            Psicoterapia online para quem quer cuidar da saúde mental com seriedade
+            <span className="hidden sm:inline">
+              {" "}— ansiedade, depressão, tristeza e conflitos emocionais, com escuta e
+              método.
+            </span>
+            <span className="sm:hidden">.</span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8, ease: EASE }}
+            className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-[min(2.25rem,4svh)]"
+          >
+            <MagneticCta href={whatsapp} />
+            <a
+              href="#testimonials"
+              className="hidden items-center justify-center gap-2 px-3 py-3 font-medium text-ink-700 transition-colors hover:text-brand sm:inline-flex"
+            >
+              Ver depoimentos
+              <ArrowDown size={16} />
+            </a>
+          </motion.div>
+
+          <motion.dl
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.95, duration: 0.8 }}
+            className="mt-4 grid grid-cols-3 gap-2 lg:mt-[min(3rem,5svh)] lg:max-w-lg lg:border-t lg:border-ink-900/10 lg:pt-6"
+          >
+            {trust.map((t) => (
+              <div key={t.big} className="text-center lg:text-left">
+                <dt className="text-[15px] font-semibold text-ink-900 lg:font-display lg:text-2xl lg:font-normal">
+                  {t.big}
+                </dt>
+                <dd className="text-[11.5px] leading-tight text-ink-600 lg:text-sm">{t.small}</dd>
+              </div>
+            ))}
+          </motion.dl>
         </motion.div>
       </div>
     </section>

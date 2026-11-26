@@ -10,12 +10,13 @@ import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
+import StickyWhatsBar from "../components/StickyWhatsBar";
 import WhatsApp from "../components/WhatsApp";
 
 function Home() {
   return (
     <WhatsAppProvider>
-      <div className="bg-slate-50 min-h-screen">
+      <div className="bg-mist min-h-screen">
         <Navbar />
         <Hero />
         <Services />
@@ -27,7 +28,8 @@ function Home() {
         <Contact />
         <ComplianceNotice />
         <Footer />
-        <WhatsApp />
+        <WhatsApp desktopOnly />
+        <StickyWhatsBar />
       </div>
     </WhatsAppProvider>
   );

@@ -39,15 +39,15 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`sticky top-0 w-full z-50 transition-colors duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-soft"
-          : "bg-white/40 backdrop-blur-sm"
+          ? "bg-mist/85 backdrop-blur-md shadow-soft"
+          : "bg-mist/60 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 flex items-center justify-center font-display text-white text-lg shadow-glow transition-transform duration-300 group-hover:-rotate-6">
+            <div className="relative w-10 h-10 lg:w-11 lg:h-11 rounded-2xl bg-gradient-to-br from-mint-500 to-brand flex items-center justify-center font-display text-white text-lg shadow-glow transition-transform duration-300 group-hover:-rotate-6">
               LP
             </div>
             <div>
@@ -93,7 +93,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden text-ink-800 p-2"
+            className="lg:hidden text-ink-800 w-11 h-11 -mr-2 grid place-items-center rounded-full"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Abrir menu"
           >
@@ -145,7 +145,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className="h-[2px] bg-emerald-500 transition-[width] duration-150 ease-out"
+        className="h-[2px] bg-brand transition-[width] duration-150 ease-out"
         style={{ width: `${progress * 100}%` }}
       />
     </motion.nav>

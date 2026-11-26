@@ -8,9 +8,11 @@ import Exterior from "./routes/Exterior.tsx";
 import Home from "./routes/Home.tsx";
 import Privacidade from "./routes/Privacidade.tsx";
 import Termos from "./routes/Termos.tsx";
+import { initSmoothScroll } from "./lib/smoothScroll";
 import { initWhatsappTracking } from "./whatsappTracking";
 
 initWhatsappTracking();
+initSmoothScroll();
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>

@@ -5,16 +5,24 @@
 html {
   scroll-behavior: smooth;
 }
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
 
 body {
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  background-color: #fbfaf8;
+  font-family: "Onest", ui-sans-serif, system-ui, sans-serif;
+  background-color: #f4f8f6;
+  color: #0f2a22;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: #059669;
+  background-color: #0e8a6a;
   color: #ffffff;
 }
 
@@ -48,7 +56,7 @@ body {
 }
 
 .font-display {
-  font-family: "Fraunces", ui-serif, Georgia, serif;
+  font-family: "Young Serif", ui-serif, Georgia, serif;
 }
 
 .text-balance {
@@ -84,4 +92,27 @@ body {
   .carousel-item {
     width: 90%;
   }
+}
+
+/* Linhas de título reveladas por máscara (ver useReveal) */
+.line-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.line-mask > span {
+  display: block;
+  will-change: transform;
+}
+
+/* Espaço para a barra fixa do WhatsApp no celular */
+.safe-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* Nenhum elemento decorativo pode criar rolagem lateral no celular.
+   `clip` (e não `hidden`) para não quebrar o position: sticky da navbar. */
+#root {
+  overflow-x: clip;
 }

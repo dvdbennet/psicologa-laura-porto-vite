@@ -8,7 +8,7 @@ import IconeWhats from "./IconeWhats";
 // no celular (cada toque contava como conversão no Google Ads).
 const SHOW_AFTER_VIEWPORT_RATIO = 0.6;
 
-export default function WhatsApp() {
+export default function WhatsApp({ desktopOnly = false }: { desktopOnly?: boolean }) {
   const whatsapp = useWhatsApp();
   const [visible, setVisible] = useState(false);
 
@@ -41,7 +41,7 @@ export default function WhatsApp() {
               });
             }
           }}
-          className="fixed bottom-5 right-5 lg:bottom-8 lg:right-8 block z-[1000]"
+          className={`fixed bottom-5 right-5 lg:bottom-8 lg:right-8 z-[1000] ${desktopOnly ? "hidden lg:block" : "block"}`}
           aria-label="Conversar no WhatsApp"
         >
           <div className="relative w-12 h-12 lg:w-16 lg:h-16 p-2.5 lg:p-3 shadow-lifted rounded-full text-white bg-green-500">

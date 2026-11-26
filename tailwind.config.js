@@ -4,18 +4,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Fraunces"', 'ui-serif', 'Georgia', 'serif'],
-        sans: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Young Serif"', 'ui-serif', 'Georgia', 'serif'],
+        sans: ['"Onest"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
+        mist: '#F4F8F6',
+        mint: { 100: '#CFEFE4', 300: '#7FE0C2', 500: '#2BB39A' },
+        brand: { DEFAULT: '#0E8A6A', dark: '#0A6E54' },
         ink: {
           50: '#f5f6f6',
           100: '#e8eaea',
-          400: '#7c8886',
-          600: '#425652',
-          700: '#2f3e3b',
-          800: '#1f2b28',
-          900: '#141d1b',
+          400: '#7E928B',
+          600: '#4A6159',
+          700: '#2C463D',
+          800: '#1A362D',
+          900: '#0F2A22',
         },
       },
       boxShadow: {
@@ -28,6 +31,10 @@ export default {
           "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E\")",
       },
       keyframes: {
+        breathe: {
+          '0%, 100%': { transform: 'scale(0.9)' },
+          '50%': { transform: 'scale(1)' },
+        },
         float: {
           '0%, 100%': { transform: 'translate3d(0,0,0)' },
           '50%': { transform: 'translate3d(0,-18px,0)' },
@@ -46,6 +53,7 @@ export default {
         },
       },
       animation: {
+        breathe: 'breathe 8s ease-in-out infinite',
         float: 'float 7s ease-in-out infinite',
         'float-slow': 'float 11s ease-in-out infinite',
         marquee: 'marquee 32s linear infinite',
