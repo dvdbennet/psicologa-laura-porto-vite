@@ -63,12 +63,12 @@ const ImportanciaAdolescente = () => {
         >
           <Kicker className="justify-center mb-4">Entenda o processo</Kicker>
           <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Acompanhamento para{" "}
-            <span className="text-emerald-700">Adolescentes</span>
+            Nem tudo é{" "}
+            <span className="text-emerald-700">“só uma fase”</span>
           </h2>
           <p className="text-lg text-ink-600 leading-relaxed max-w-2xl mx-auto">
-            Ofereço um espaço terapêutico projetado para as necessidades
-            únicas dessa fase, com transparência sobre como o processo
+            Muitas vezes o adolescente está precisando de ajuda e não sabe pedir.
+            Entenda, com transparência, como o processo
             funciona.
           </p>
         </motion.div>
@@ -168,7 +168,7 @@ const ImportanciaAdolescente = () => {
             className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
           >
             <IconeWhats width={22} />
-            <span>Agendar Consulta</span>
+            <span>Agendar uma conversa</span>
           </motion.a>
         </motion.div>
       </div>

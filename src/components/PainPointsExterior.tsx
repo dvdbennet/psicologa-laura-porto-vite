@@ -140,12 +140,13 @@ const PainPointsExterior = () => {
             Morar fora tem outro lado
           </Kicker>
           <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Você se identifica com{" "}
-            <span className="text-emerald-700">algo disso?</span>
+            O lado de morar fora{" "}
+            <span className="text-emerald-700">que ninguém posta</span>
           </h2>
           <p className="text-lg text-ink-600 leading-relaxed">
-            Ninguém te preparou para essa parte da mudança. Reconhecer esses
-            sentimentos é o primeiro passo para lidar melhor com eles.
+            Ninguém te preparou para essa parte da mudança. Se você se reconhece
+            em algum destes pontos, saiba: é mais comum do que parece, e dá para
+            cuidar disso.
           </p>
         </motion.div>
 

@@ -28,7 +28,7 @@ export function FaqLayout({
             <SectionTitle text={title} accent={accent} />
             <Reveal delay={0.2} className="mt-8 hidden rounded-[1.75rem] bg-mist p-7 lg:block">
               <p className="font-display text-xl text-ink-900">Ainda com alguma dúvida?</p>
-              <p className="mt-2 text-ink-600">Me chame no WhatsApp e eu te respondo pessoalmente.</p>
+              <p className="mt-2 text-ink-600">Mande uma mensagem no WhatsApp. Tirar dúvidas não gera nenhum compromisso.</p>
               <WhatsButton location={ctaLocation} label="Perguntar no WhatsApp" size="md" className="mt-6" />
             </Reveal>
           </div>

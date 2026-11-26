@@ -52,11 +52,11 @@ const Testimonials = () => {
         <div className="mb-10 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <Kicker className="mb-5">Depoimentos</Kicker>
-            <SectionTitle text="O que meus clientes dizem" accent={["clientes", "dizem"]} />
+            <SectionTitle text="Quem já deu o primeiro passo" accent={["primeiro", "passo"]} />
             <Reveal delay={0.15}>
               <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-                Seus testemunhos refletem a eficácia e o valor do trabalho terapêutico que realizamos
-                juntos.
+                Pessoas que também hesitaram antes de mandar a primeira mensagem e decidiram cuidar de
+                si.
               </p>
               <p className="mt-2 text-sm italic text-ink-400">
                 (Todas as identidades foram alteradas para preservar a privacidade dos clientes.)
@@ -128,14 +128,14 @@ const Testimonials = () => {
               className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_35%_30%,#7FE0C2,transparent_60%),radial-gradient(circle_at_70%_70%,#2BB39A,transparent_62%)] opacity-40 blur-2xl animate-breathe lg:h-[620px] lg:w-[620px]"
             />
             <h3 className="relative mx-auto max-w-3xl font-display text-[1.9rem] leading-[1.1] sm:text-5xl lg:text-6xl">
-              Pronto para começar sua jornada de transformação?
+              O primeiro passo é só uma mensagem.
             </h3>
             <p className="relative mx-auto mt-5 max-w-xl leading-relaxed text-white/70 sm:text-lg">
-              Agende uma consulta hoje e descubra como a terapia pode ajudá-lo a alcançar seus
-              objetivos pessoais e emocionais.
+              Você não precisa ter tudo resolvido nem saber explicar o que sente. Me conte um pouco do
+              seu momento e eu te passo os horários disponíveis.
             </p>
             <div className="relative mt-9">
-              <WhatsButton location="testimonials_cta" label="Agendar consulta" variant="light" className="w-full sm:w-auto" />
+              <WhatsButton location="testimonials_cta" label="Mandar mensagem agora" variant="light" className="w-full sm:w-auto" />
             </div>
           </div>
         </Reveal>

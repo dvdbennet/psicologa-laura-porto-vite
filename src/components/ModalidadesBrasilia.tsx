@@ -53,8 +53,8 @@ const ModalidadesBrasilia = () => {
             <span className="text-emerald-700">presencial ou online</span>
           </h2>
           <p className="text-lg text-ink-600 leading-relaxed">
-            Escolha o formato que cabe na sua rotina. Se ela mudar, a gente
-            conversa sobre a modalidade que faz mais sentido para você.
+            Cuidar de você não pode virar mais uma tarefa difícil na agenda.
+            Escolha o formato que cabe na sua rotina; se ela mudar, a gente ajusta.
           </p>
         </motion.div>
 

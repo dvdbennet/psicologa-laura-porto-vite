@@ -46,9 +46,9 @@ const HeroExterior = () => {
             </motion.div>
 
             <h1 className="font-display text-[2.6rem] leading-[1.05] sm:text-6xl md:text-[4.2rem] text-ink-900 mb-6 tracking-tight text-balance">
-              Cuidar da mente também é{" "}
+              Longe do Brasil, mas{" "}
               <span className="relative inline-block text-emerald-700">
-                matar a saudade
+                perto de quem
                 <svg
                   aria-hidden
                   viewBox="0 0 200 12"
@@ -63,21 +63,21 @@ const HeroExterior = () => {
                   />
                 </svg>
               </span>{" "}
-              de casa.
+              te entende.
             </h1>
 
             <div className="text-lg text-ink-600 space-y-4 mb-8 leading-relaxed max-w-xl">
               <p>
-                Psicoterapia online, em português, para brasileiros que
-                vivem fora do Brasil.
+                Psicoterapia online, em português, com uma psicóloga brasileira e
+                no horário do seu fuso.
               </p>
               <p>
-                Morar fora traz conquistas, mas também{" "}
+                Por trás das fotos bonitas,{" "}
                 <strong className="text-ink-800 font-semibold">
-                  saudade, isolamento, ansiedade e dificuldade de adaptação
+                  saudade, solidão, cansaço de se adaptar e a pressão de “dar certo”
                 </strong>
-                . Você não precisa enfrentar isso sozinho — nem em outro
-                idioma.
+                . Você não precisa dar conta de tudo isso sozinho, nem explicar o
+                que sente em outro idioma.
               </p>
             </div>
 
@@ -109,7 +109,7 @@ const HeroExterior = () => {
                 className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-glow hover:bg-emerald-700 transition-colors"
               >
                 <IconeWhats width={22} />
-                <span>Agendar no WhatsApp</span>
+                <span>Agendar minha sessão</span>
               </motion.a>
               <a
                 href="#testimonials"

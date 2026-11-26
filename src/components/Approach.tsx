@@ -68,14 +68,14 @@ const Approach = () => {
         <div className="mb-10 grid gap-6 lg:mb-16 lg:grid-cols-2 lg:items-end lg:gap-16">
           <div>
             <Kicker className="mb-5">Metodologia</Kicker>
-            <SectionTitle text="Minha Abordagem" accent={["Abordagem"]} />
+            <SectionTitle text="Escuta acolhedora, método científico." accent={["método", "científico"]} />
           </div>
           <Reveal delay={0.15}>
             <p className="text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-              Atuo com base na Análise do Comportamento, focando na compreensão das relações entre o
-              comportamento e o ambiente. O processo terapêutico busca identificar padrões que mantêm
-              comportamentos disfuncionais e desenvolver repertórios mais eficazes, promovendo
-              autonomia, adaptação e qualidade de vida.
+              Trabalho com a Análise do Comportamento, uma abordagem baseada em evidências científicas.
+              Na prática, isso significa entender o que você sente dentro do contexto da sua vida,
+              identificar o que mantém o sofrimento e construir, junto com você, mudanças concretas no
+              dia a dia.
             </p>
           </Reveal>
         </div>

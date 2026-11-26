@@ -46,9 +46,9 @@ const HeroAdolescente = () => {
             </motion.div>
 
             <h1 className="font-display text-[2.75rem] leading-[1.05] sm:text-6xl md:text-7xl text-ink-900 mb-6 tracking-tight text-balance">
-              Um espaço para{" "}
+              Seu filho anda{" "}
               <span className="relative inline-block text-emerald-700">
-                adolescentes
+                diferente
                 <svg
                   aria-hidden
                   viewBox="0 0 200 12"
@@ -63,21 +63,21 @@ const HeroAdolescente = () => {
                   />
                 </svg>
               </span>{" "}
-              serem ouvidos de verdade.
+              e você não sabe como ajudar?
             </h1>
 
             <div className="text-lg text-ink-600 space-y-4 mb-8 leading-relaxed max-w-xl">
               <p>
-                Psicoterapia online e presencial para adolescentes que querem
-                cuidar da saúde mental com seriedade.
+                Psicoterapia online e presencial para adolescentes: um espaço seguro
+                e com sigilo para falar do que é difícil dizer em casa.
               </p>
               <p>
-                Se o seu filho — ou você — enfrenta{" "}
+                Isolamento, irritação,{" "}
                 <strong className="text-ink-800 font-semibold">
-                  ansiedade, tristeza, conflitos emocionais
+                  ansiedade, tristeza, queda nas notas
                 </strong>
-                , entre outros, a terapia pode ajudar a compreender os
-                sentimentos e construir novos caminhos.
+                : nem tudo é “só uma fase”. Quanto antes ele tiver apoio, mais
+                leve fica para toda a família.
               </p>
             </div>
 
@@ -109,7 +109,7 @@ const HeroAdolescente = () => {
                 className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-glow hover:bg-emerald-700 transition-colors"
               >
                 <IconeWhats width={22} />
-                <span>Agendar no WhatsApp</span>
+                <span>Agendar uma conversa</span>
               </motion.a>
               <a
                 href="#testimonials"
@@ -149,7 +149,7 @@ const HeroAdolescente = () => {
                 <div className="flex items-center space-x-3">
                   <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
                   <span className="text-ink-800 font-medium text-sm">
-                    Disponível Agora
+                    Online e presencial
                   </span>
                 </div>
               </motion.div>

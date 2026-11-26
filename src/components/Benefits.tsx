@@ -6,15 +6,15 @@ import Kicker from "./ui/Kicker";
 import { ParallaxImage, Reveal, SectionTitle, WhatsButton } from "./ui/motion";
 
 const points = [
-  "Lidar com ansiedade, estresse e emoções difíceis com mais equilíbrio.",
-  "Compreender padrões de pensamento e comportamento.",
-  "Desenvolver mais clareza e segurança nas decisões.",
-  "Fortalecer autoestima e recursos emocionais.",
-  "Construir mudanças reais na forma de se relacionar consigo e com os outros.",
+  "Entender a sua ansiedade, em vez de só lutar contra ela.",
+  "Reconhecer os padrões que fazem você repetir as mesmas situações.",
+  "Tomar decisões com mais clareza e menos medo.",
+  "Se cobrar menos e se tratar com mais respeito.",
+  "Se relacionar de um jeito mais leve, com os outros e com você.",
 ];
 
 const QUESTION =
-  "Você sente que gostaria de compreender melhor suas emoções e lidar com os desafios da vida com mais clareza e segurança?";
+  "E se você não precisasse mais carregar tudo isso sozinho?";
 
 function Word({ w, i, total, progress }: { w: string; i: number; total: number; progress: MotionValue<number> }) {
   const start = i / total;
@@ -51,15 +51,14 @@ const Benefits = () => {
         <Kicker light className="mb-5">
           Benefícios
         </Kicker>
-        <SectionTitle light text="Benefícios da Psicoterapia Comigo" accent={["Psicoterapia", "Comigo"]} className="mb-10 lg:mb-14" />
+        <SectionTitle light text="O que muda quando você decide cuidar disso" accent={["cuidar", "disso"]} className="mb-10 lg:mb-14" />
 
         <div className="max-w-4xl">
           <ScrubQuestion />
           <Reveal>
             <p className="mt-7 max-w-2xl text-[16px] leading-relaxed text-white/65 sm:text-lg">
-              A psicoterapia oferece um espaço de escuta qualificada e reflexão, onde é possível
-              compreender padrões de pensamento, fortalecer recursos emocionais e desenvolver novas
-              formas de enfrentar as dificuldades do dia a dia.
+              A terapia não apaga o que você viveu. Ela te ajuda a entender o que sente, por que reage
+              como reage e o que dá para fazer diferente, com escuta qualificada e método.
             </p>
           </Reveal>
         </div>
@@ -78,9 +77,8 @@ const Benefits = () => {
           <div>
             <Reveal>
               <p className="text-[16px] leading-relaxed text-white/75 sm:text-lg">
-                Ao longo do acompanhamento, você desenvolve mais consciência sobre si mesmo, aprende
-                a lidar melhor com o que sente e constrói caminhos mais alinhados com seus valores e
-                necessidades.
+                Cada processo é único e tem o seu tempo. Ao longo das sessões, a gente trabalha para que
+                você possa:
               </p>
             </Reveal>
             <ul className="mt-8 space-y-3">
@@ -100,7 +98,7 @@ const Benefits = () => {
               ))}
             </ul>
             <Reveal className="mt-10">
-              <WhatsButton location="benefits_cta" label="Agendar consulta" variant="light" className="w-full sm:w-auto" />
+              <WhatsButton location="benefits_cta" label="Dar o primeiro passo" variant="light" className="w-full sm:w-auto" />
             </Reveal>
           </div>
         </div>

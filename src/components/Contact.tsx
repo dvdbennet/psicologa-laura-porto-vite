@@ -21,11 +21,11 @@ const Contact = () => {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mb-10 max-w-3xl lg:mb-14">
           <Kicker className="mb-5">Contato</Kicker>
-          <SectionTitle text="Entre em Contato" accent={["Contato"]} />
+          <SectionTitle text="Vamos conversar?" accent={["conversar"]} />
           <Reveal delay={0.15}>
             <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-              Estou aqui para ajudar você em sua jornada de autoconhecimento e bem-estar emocional.
-              Entre em contato pelos meus canais de comunicação.
+              Escolha o canal mais confortável para você. Se for a sua primeira vez, o WhatsApp é o
+              caminho mais rápido.
             </p>
           </Reveal>
         </div>

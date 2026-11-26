@@ -8,7 +8,7 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 - Evento `dataLayer.push({ event: "whatsapp_click", click_location })` em todo botão de WhatsApp.
 - `whatsappTracking.ts` (gclid/gbraid/wbraid, 90 dias).
 - Rotas `/`, `/exterior`, `/adolescente`, `/brasilia`, `/privacidade`, `/termos` e o SEO por rota.
-- Textos, depoimentos, FAQ e dados de contato (conteúdo real, nada inventado).
+- Depoimentos, dados de contato, formação, CRP e números (conteúdo real, nada inventado). Copy persuasiva reescrita em 2026-11-26 a pedido do usuário: toca na dor e chama para ação, sem prometer resultado (Código de Ética do Psicólogo, art. 20).
 
 ## Direção
 - **Conceito "respiro"**: uma forma orgânica 3D (Three.js, shader próprio) que respira num

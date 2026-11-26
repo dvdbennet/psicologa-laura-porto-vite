@@ -38,8 +38,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="mb-5 text-sm leading-relaxed text-white/55">
-              Oferecendo serviços de psicoterapia compassivos e profissionais para ajudá-lo a navegar
-              pelos desafios da vida e alcançar crescimento pessoal.
+              Psicoterapia online e presencial para adultos e adolescentes, com escuta acolhedora,
+              sigilo e base científica.
             </p>
             <div className="text-xs text-white/40">
               CRP 01/28432 • Conselho Regional de Psicologia do Distrito Federal

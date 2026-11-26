@@ -25,7 +25,7 @@ const services = [
     icon: Brain,
     title: "Depressão",
     description:
-      "A depressão pode envolver tristeza persistente, desânimo, perda de interesse em atividades antes prazerosas e dificuldade de encontrar motivação no dia a dia. A psicoterapia oferece apoio para compreender esse sofrimento e desenvolver novos recursos emocionais.",
+      "Acordar sem energia, perder o interesse pelo que antes fazia sentido, sentir que até as tarefas simples exigem um esforço enorme. Isso não é preguiça nem fraqueza. Na terapia, a gente entende o que mantém esse peso e constrói, no seu ritmo, recursos para retomar a vida aos poucos.",
     features: [
       "Compreensão do sofrimento emocional",
       "Desenvolvimento de novos recursos internos",
@@ -36,7 +36,7 @@ const services = [
     icon: Clock,
     title: "Ansiedade",
     description:
-      "A ansiedade pode aparecer como preocupação constante, tensão, pensamentos acelerados ou sintomas físicos como insônia e dificuldade de concentração. A psicoterapia ajuda a compreender os gatilhos e desenvolver formas mais equilibradas de lidar com esses sintomas.",
+      "A cabeça que não desliga, o aperto no peito, a insônia, a sensação de que algo ruim vai acontecer a qualquer momento. A ansiedade cansa, e muitas vezes ninguém ao redor percebe. Na terapia, você aprende a reconhecer seus gatilhos e a responder a eles de um jeito mais equilibrado.",
     features: [
       "Identificação de gatilhos e padrões de ansiedade",
       "Estratégias para lidar com pensamentos acelerados",
@@ -47,7 +47,7 @@ const services = [
     icon: User,
     title: "Desafios e Momentos Difíceis",
     description:
-      "Mudanças importantes, perdas ou períodos de sobrecarga emocional fazem parte da vida. A psicoterapia oferece um espaço de acolhimento para compreender essas experiências e desenvolver recursos para lidar com os desafios.",
+      "Uma perda, uma mudança brusca, uma fase em que tudo parece desabar ao mesmo tempo. Você não precisa atravessar isso fingindo força. A terapia é o espaço para organizar o que aconteceu e encontrar apoio para dar o próximo passo.",
     features: [
       "Apoio em momentos de transição ou crise",
       "Desenvolvimento de habilidades emocionais",
@@ -58,7 +58,7 @@ const services = [
     icon: HeartHandshake,
     title: "Dificuldades nos Relacionamentos",
     description:
-      "Conflitos nos relacionamentos podem gerar frustração, insegurança e dificuldades de comunicação. A psicoterapia ajuda a compreender padrões de comportamento e desenvolver formas mais saudáveis de se relacionar.",
+      "As mesmas brigas se repetindo, a sensação de não ser ouvido, o medo de dizer o que pensa e perder alguém. Na terapia, a gente identifica os padrões que se repetem nas suas relações e desenvolve formas mais claras e saudáveis de se relacionar.",
     features: [
       "Melhora na comunicação interpessoal",
       "Desenvolvimento de limites saudáveis",
@@ -69,7 +69,7 @@ const services = [
     icon: Briefcase,
     title: "Burnout e Sobrecarga no Trabalho",
     description:
-      "A pressão constante, o excesso de responsabilidades e a dificuldade de desconectar podem levar ao esgotamento físico e emocional. A psicoterapia ajuda a compreender esses sinais e a construir formas mais saudáveis de lidar com o trabalho.",
+      "Domingo à noite já vem a angústia. O corpo cobra, a cabeça não descansa e nem nas férias você consegue desligar. Na terapia, você aprende a reconhecer os sinais de esgotamento e a construir limites que protejam sua saúde.",
     features: [
       "Reconhecimento e prevenção do burnout",
       "Desenvolvimento de limites saudáveis",
@@ -80,7 +80,7 @@ const services = [
     icon: UserCheck,
     title: "Insegurança e Baixa Autoestima",
     description:
-      "Dúvidas constantes sobre si mesmo, medo de errar ou sensação de não ser suficiente podem impactar decisões e relacionamentos. A psicoterapia contribui para fortalecer a autoconfiança e desenvolver uma relação mais saudável consigo mesmo.",
+      "Aquela voz interna que diz que você não é suficiente, o medo de errar, a comparação constante com os outros. Na terapia, a gente entende de onde vem essa autocrítica e constrói uma relação mais justa e segura com você mesmo.",
     features: [
       "Fortalecimento da autoestima",
       "Compreensão de padrões de autocrítica",
@@ -91,7 +91,7 @@ const services = [
     icon: Repeat,
     title: "Comportamentos Compulsivos e Vícios",
     description:
-      "Alguns comportamentos podem se tornar repetitivos e difíceis de controlar, como o uso excessivo de álcool, redes sociais, jogos ou compras. A psicoterapia ajuda a compreender as causas desses padrões e desenvolver novas formas de lidar com impulsos.",
+      "Quando o álcool, o celular, os jogos ou as compras viram uma forma de fugir do que se sente, e depois vem a culpa. Na terapia, você entende o que esse comportamento está tentando aliviar e desenvolve novas formas de lidar com o impulso.",
     features: [
       "Compreensão dos gatilhos emocionais",
       "Desenvolvimento de estratégias de autocontrole",
@@ -102,7 +102,7 @@ const services = [
     icon: GitBranch,
     title: "Dificuldade em Tomar Decisões",
     description:
-      "Em alguns momentos, escolher um caminho pode gerar dúvidas, medo de errar ou sensação de paralisia diante das possibilidades. A psicoterapia ajuda a compreender os fatores emocionais envolvidos e desenvolver mais clareza nas escolhas.",
+      "Travar diante de uma escolha, adiar decisões importantes por medo de errar, sentir que qualquer caminho pode dar errado. A terapia ajuda a entender o que está te paralisando e a escolher com mais clareza e autonomia.",
     features: [
       "Maior clareza sobre prioridades e valores",
       "Redução do medo de errar",
@@ -113,7 +113,7 @@ const services = [
     icon: Target,
     title: "Autocobrança e Perfeccionismo",
     description:
-      "A busca constante por desempenho e perfeição pode gerar cansaço, frustração e sensação de nunca ser suficiente. A psicoterapia auxilia na construção de uma relação mais equilibrada com expectativas e metas pessoais.",
+      "Nada nunca está bom o bastante, o descanso vem acompanhado de culpa e cada erro parece um fracasso. Na terapia, você revê essa cobrança constante e aprende a construir metas mais realistas, sem abrir mão do que é importante para você.",
     features: [
       "Compreensão dos padrões de autocobrança",
       "Desenvolvimento de autocompaixão",
@@ -124,7 +124,7 @@ const services = [
     icon: UserMinus,
     title: "Sentimentos de Solidão",
     description:
-      "Mesmo cercadas por pessoas, muitas vezes é possível sentir-se sozinho ou emocionalmente desconectado. A psicoterapia oferece um espaço para compreender esses sentimentos e fortalecer vínculos mais saudáveis.",
+      "Estar rodeado de gente e, mesmo assim, sentir que ninguém realmente te conhece. Na terapia, você encontra um espaço para entender essa desconexão e fortalecer vínculos mais próximos e verdadeiros.",
     features: [
       "Compreensão das necessidades emocionais",
       "Desenvolvimento de relações mais significativas",
@@ -135,7 +135,7 @@ const services = [
     icon: HeartCrack,
     title: "Medo de Abandono e Rejeição",
     description:
-      "O receio de ser deixado, rejeitado ou não ser valorizado pode impactar relacionamentos e gerar insegurança emocional. Na psicoterapia é possível compreender a origem desses sentimentos e desenvolver formas mais seguras de se relacionar.",
+      "O medo de ser deixado faz você aceitar menos do que merece, se esforçar demais para agradar ou se afastar antes de ser rejeitado. Na terapia, a gente entende a origem desse medo e constrói formas mais seguras de se vincular.",
     features: [
       "Identificação de padrões nos relacionamentos",
       "Fortalecimento da segurança emocional",
@@ -146,7 +146,7 @@ const services = [
     icon: Timer,
     title: "Procrastinação",
     description:
-      "A dificuldade de iniciar ou concluir tarefas pode gerar frustração e sensação de estagnação. A psicoterapia ajuda a compreender os fatores emocionais envolvidos e desenvolver estratégias mais saudáveis de organização e ação.",
+      "Saber o que precisa ser feito e, mesmo assim, não conseguir começar, e depois se culpar por isso. Procrastinar raramente é falta de disciplina. Na terapia, a gente entende o que está por trás do adiamento e cria estratégias práticas para agir.",
     features: [
       "Identificação de padrões de adiamento",
       "Desenvolvimento de organização e foco",
@@ -157,7 +157,7 @@ const services = [
     icon: Shield,
     title: "Dificuldade em Impor Limites",
     description:
-      "Muitas pessoas têm dificuldade em dizer não ou priorizar suas próprias necessidades. A psicoterapia contribui para desenvolver comunicação mais assertiva e relações mais equilibradas.",
+      "Dizer sim quando queria dizer não, colocar todo mundo na frente e chegar ao fim do dia sem energia para si. Na terapia, você aprende a se posicionar com firmeza e respeito, sem culpa.",
     features: [
       "Desenvolvimento de comunicação assertiva",
       "Fortalecimento da autonomia emocional",
@@ -168,7 +168,7 @@ const services = [
     icon: Sparkles,
     title: "Autoconhecimento e Cuidado com a Saúde Mental",
     description:
-      "Nem sempre é preciso estar passando por uma crise para buscar psicoterapia. Muitas pessoas procuram a terapia como um espaço de reflexão e crescimento pessoal.",
+      "Você não precisa estar em crise para cuidar da sua saúde mental. A terapia também é um espaço para se conhecer melhor, fazer escolhas mais conscientes e crescer com mais segurança.",
     features: [
       "Ampliação do autoconhecimento",
       "Desenvolvimento de inteligência emocional",
@@ -210,11 +210,11 @@ const Services = () => {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mb-10 max-w-3xl lg:mb-16">
           <Kicker className="mb-5">O que eu trato</Kicker>
-          <SectionTitle text="Serviços de Psicoterapia para o que está pesando agora." accent={["Psicoterapia"]} />
+          <SectionTitle text="O que te trouxe até aqui?" accent={["aqui"]} />
           <Reveal delay={0.2}>
             <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-              Ofereço serviços terapêuticos para adultos e adolescentes, projetados para atender
-              suas necessidades únicas e apoiar sua jornada em direção ao bem-estar mental.
+              Toque no que mais se parece com o seu momento. Você não precisa saber dar nome ao que
+              sente para começar: essa clareza a gente constrói junto, sessão a sessão.
             </p>
           </Reveal>
         </div>
@@ -305,14 +305,14 @@ const Services = () => {
                     <Detail s={current} />
                   </motion.div>
                 </AnimatePresence>
-                <WhatsButton location="services_cta" label="Agendar consulta" size="md" className="relative mt-9" />
+                <WhatsButton location="services_cta" label="Quero falar sobre isso" size="md" className="relative mt-9" />
               </div>
             </div>
           </div>
         </div>
 
         <Reveal className="mt-10 lg:hidden">
-          <WhatsButton location="services_cta" label="Agendar consulta" className="w-full" />
+          <WhatsButton location="services_cta" label="Quero falar sobre isso" className="w-full" />
         </Reveal>
       </div>
     </section>

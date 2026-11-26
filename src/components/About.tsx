@@ -66,7 +66,7 @@ const About = () => {
 
         {/* texto */}
         <div className="pt-4 lg:pt-10">
-          <Kicker className="mb-5">Sobre</Kicker>
+          <Kicker className="mb-5">Quem vai te ouvir</Kicker>
           <SectionTitle text="A pessoa por trás do cuidado." accent={["cuidado"]} />
           <Reveal delay={0.15}>
             <p className="mt-6 text-[16px] leading-relaxed text-ink-700 sm:text-lg">
@@ -122,7 +122,7 @@ const About = () => {
           </ul>
 
           <Reveal className="mt-9">
-            <WhatsButton location="about_cta" label="Agendar consulta" className="w-full sm:w-auto" />
+            <WhatsButton location="about_cta" label="Agendar com a Laura" className="w-full sm:w-auto" />
           </Reveal>
         </div>
       </div>

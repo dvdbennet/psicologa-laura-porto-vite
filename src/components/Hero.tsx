@@ -79,7 +79,7 @@ function MagneticCta({ href }: { href: string }) {
       <span className="relative h-[22px] w-[22px]">
         <IconeWhats />
       </span>
-      <span className="relative">Agendar no WhatsApp</span>
+      <span className="relative">Agendar minha sessão</span>
     </motion.a>
   );
 }
@@ -180,7 +180,7 @@ const Hero = () => {
             CRP 01/28432 · Psicóloga Clínica
           </motion.div>
 
-          <RevealTitle text="Cuide da sua mente com quem entende de verdade." accent="mente" />
+          <RevealTitle text="Cansou de fingir que está tudo bem?" accent="bem?" />
 
           <motion.p
             initial={{ opacity: 0, y: 14 }}
@@ -188,12 +188,11 @@ const Hero = () => {
             transition={{ delay: 0.55, duration: 0.8, ease: EASE }}
             className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-600 sm:text-lg lg:mt-[min(1.5rem,2.5svh)]"
           >
-            Psicoterapia online para quem quer cuidar da saúde mental com seriedade
+            Psicoterapia online para entender o que está pesando e voltar a respirar.
             <span className="hidden sm:inline">
-              {" "}— ansiedade, depressão, tristeza e conflitos emocionais, com escuta e
-              método.
+              {" "}Ansiedade, tristeza, esgotamento ou conflitos: com escuta atenta, método
+              científico e sigilo.
             </span>
-            <span className="sm:hidden">.</span>
           </motion.p>
 
           <motion.div

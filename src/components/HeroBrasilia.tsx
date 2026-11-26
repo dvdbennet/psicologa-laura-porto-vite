@@ -81,10 +81,10 @@ const HeroBrasilia = () => {
                 </em>
               </p>
               <p>
-                Se a ansiedade, a tristeza, o luto ou os conflitos nos
-                relacionamentos estão pesando, você não precisa lidar com isso sozinho. Um
-                espaço seguro, com psicóloga registrada e abordagem baseada
-                em evidências.
+                Se a ansiedade, o cansaço, o luto ou os conflitos estão tirando a
+                sua paz, você não precisa esperar piorar para buscar ajuda. Um
+                espaço seguro, com sigilo, psicóloga registrada e abordagem
+                baseada em evidências.
               </p>
             </div>
 
@@ -116,7 +116,7 @@ const HeroBrasilia = () => {
                 className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-glow hover:bg-emerald-700 transition-colors"
               >
                 <IconeWhats width={22} />
-                <span>Agendar no WhatsApp</span>
+                <span>Agendar minha sessão</span>
               </motion.a>
             </div>
           </motion.div>

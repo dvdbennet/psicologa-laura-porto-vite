@@ -31,8 +31,9 @@ const BenefitsExterior = () => {
             <span className="text-emerald-700">língua — literalmente</span>
           </h2>
           <p className="text-lg text-ink-600 leading-relaxed">
-            Você já lida com o suficiente se adaptando a um novo país. Na
-            terapia, você merece ser compreendido sem esforço extra.
+            Você já faz esforço demais se adaptando a um novo país. Na terapia,
+            você merece ser entendido de primeira, sem tradução e sem precisar
+            explicar de onde vem.
           </p>
         </motion.div>
 
@@ -111,7 +112,7 @@ const BenefitsExterior = () => {
             className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
           >
             <IconeWhats width={22} />
-            <span>Agendar Consulta</span>
+            <span>Agendar minha sessão online</span>
           </motion.a>
         </motion.div>
       </div>

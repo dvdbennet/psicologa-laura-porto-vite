@@ -172,7 +172,7 @@ const AboutAdolescente = () => {
               className="inline-flex w-fit items-center gap-2.5 bg-emerald-600 text-white px-7 py-3.5 rounded-full text-base font-semibold hover:bg-emerald-700 transition-colors"
             >
               <IconeWhats width={20} />
-              <span>Agendar Consulta</span>
+              <span>Agendar com a Laura</span>
             </motion.a>
           </motion.div>
         </div>

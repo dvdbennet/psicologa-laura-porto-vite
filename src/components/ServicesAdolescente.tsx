@@ -26,7 +26,7 @@ const services = [
     icon: Brain,
     title: "Depressão",
     description:
-      "A depressão pode envolver tristeza persistente, desânimo, perda de interesse em atividades antes prazerosas e dificuldade de encontrar motivação no dia a dia. A psicoterapia oferece apoio para compreender esse sofrimento e desenvolver novos recursos emocionais.",
+      "Passar horas fechado no quarto, perder o interesse por amigos e atividades, irritação ou tristeza que não vai embora. Nem sempre é “só uma fase”. Na terapia, o adolescente encontra um espaço seguro para entender o que sente e construir recursos para retomar a rotina.",
     features: [
       "Compreensão do sofrimento emocional",
       "Desenvolvimento de novos recursos internos",
@@ -37,7 +37,7 @@ const services = [
     icon: Clock,
     title: "Ansiedade",
     description:
-      "A ansiedade pode aparecer como preocupação constante, tensão, pensamentos acelerados ou sintomas físicos como insônia e dificuldade de concentração. A psicoterapia ajuda a compreender os gatilhos e desenvolver formas mais equilibradas de lidar com esses sintomas.",
+      "Medo de provas, de apresentar trabalhos, de não ser aceito. Dor de barriga antes da escola, insônia, pensamentos acelerados. Na terapia, o adolescente aprende a reconhecer os gatilhos e a lidar com a ansiedade de forma mais equilibrada.",
     features: [
       "Identificação de gatilhos e padrões de ansiedade",
       "Estratégias para lidar com pensamentos acelerados",
@@ -48,7 +48,7 @@ const services = [
     icon: User,
     title: "Desafios e Momentos Difíceis",
     description:
-      "Mudanças importantes, perdas ou períodos de sobrecarga emocional fazem parte da vida. A psicoterapia oferece um espaço de acolhimento para compreender essas experiências e desenvolver recursos para lidar com os desafios.",
+      "Mudança de escola, separação dos pais, perdas, o fim de um namoro. Na adolescência, tudo é sentido com mais intensidade. A terapia oferece apoio para atravessar essas fases sem que ele se sinta sozinho.",
     features: [
       "Apoio em momentos de transição ou crise",
       "Desenvolvimento de habilidades emocionais",
@@ -59,7 +59,7 @@ const services = [
     icon: HeartHandshake,
     title: "Dificuldades nos Relacionamentos",
     description:
-      "Conflitos nos relacionamentos podem gerar frustração, insegurança e dificuldades de comunicação. A psicoterapia ajuda a compreender padrões de comportamento e desenvolver formas mais saudáveis de se relacionar.",
+      "Conflitos com os pais, brigas com amigos, exclusão no grupo, dificuldade de se expressar. A terapia ajuda o adolescente a entender seus padrões de relação e a se comunicar de forma mais clara e segura.",
     features: [
       "Melhora na comunicação interpessoal",
       "Desenvolvimento de limites saudáveis",
@@ -70,7 +70,7 @@ const services = [
     icon: Briefcase,
     title: "Burnout e Sobrecarga no Contexto Acadêmico",
     description:
-      "A pressão constante, o excesso de responsabilidades e a dificuldade de desconectar podem levar ao esgotamento físico e emocional. A psicoterapia ajuda a compreender esses sinais e a construir formas mais saudáveis de lidar com o trabalho.",
+      "Vestibular, cobrança por notas, cursos extras e pouco tempo para descansar. Quando o desempenho vira a única medida de valor, o esgotamento aparece. A terapia ajuda a reconhecer esses sinais e a construir uma rotina de estudos mais saudável.",
     features: [
       "Reconhecimento e prevenção do burnout",
       "Desenvolvimento de limites saudáveis",
@@ -81,7 +81,7 @@ const services = [
     icon: UserCheck,
     title: "Insegurança e Baixa Autoestima",
     description:
-      "Dúvidas constantes sobre si mesmo, medo de errar ou sensação de não ser suficiente podem impactar decisões e relacionamentos. A psicoterapia contribui para fortalecer a autoconfiança e desenvolver uma relação mais saudável consigo mesmo.",
+      "Comparação nas redes sociais, insegurança com o corpo, medo de errar na frente dos outros. Na terapia, o adolescente constrói uma visão mais justa de si mesmo e fortalece a confiança para se posicionar.",
     features: [
       "Fortalecimento da autoestima",
       "Compreensão de padrões de autocrítica",
@@ -92,7 +92,7 @@ const services = [
     icon: Repeat,
     title: "Comportamentos Compulsivos e Vícios",
     description:
-      "Alguns comportamentos podem se tornar repetitivos e difíceis de controlar, como o uso excessivo de álcool, redes sociais, jogos ou compras. A psicoterapia ajuda a compreender as causas desses padrões e desenvolver novas formas de lidar com impulsos.",
+      "Horas no celular, jogos que tomam o lugar do sono e dos estudos, os primeiros contatos com álcool. Na terapia, o adolescente entende o que esse comportamento está aliviando e desenvolve formas mais saudáveis de lidar com os impulsos.",
     features: [
       "Compreensão dos gatilhos emocionais",
       "Desenvolvimento de estratégias de autocontrole",
@@ -103,7 +103,7 @@ const services = [
     icon: GitBranch,
     title: "Dificuldade em Tomar Decisões",
     description:
-      "Em alguns momentos, escolher um caminho pode gerar dúvidas, medo de errar ou sensação de paralisia diante das possibilidades. A psicoterapia ajuda a compreender os fatores emocionais envolvidos e desenvolver mais clareza nas escolhas.",
+      "Escolher curso, profissão, caminho: tudo parece definitivo e assustador. A terapia ajuda o adolescente a entender seus próprios valores e interesses para decidir com mais clareza e menos medo.",
     features: [
       "Maior clareza sobre prioridades e valores",
       "Redução do medo de errar",
@@ -114,7 +114,7 @@ const services = [
     icon: Target,
     title: "Autocobrança e Perfeccionismo",
     description:
-      "A busca constante por desempenho e perfeição pode gerar cansaço, frustração e sensação de nunca ser suficiente. A psicoterapia auxilia na construção de uma relação mais equilibrada com expectativas e metas pessoais.",
+      "Chorar por uma nota abaixo do esperado, não se permitir errar, sentir que nunca é suficiente. Na terapia, o adolescente revê essa cobrança e aprende a lidar com as expectativas de forma mais equilibrada.",
     features: [
       "Compreensão dos padrões de autocobrança",
       "Desenvolvimento de autocompaixão",
@@ -125,7 +125,7 @@ const services = [
     icon: UserMinus,
     title: "Sentimentos de Solidão",
     description:
-      "Mesmo cercadas por pessoas, muitas vezes é possível sentir-se sozinho ou emocionalmente desconectado. A psicoterapia oferece um espaço para compreender esses sentimentos e fortalecer vínculos mais saudáveis.",
+      "Estar no grupo e, ainda assim, sentir que ninguém entende. Muitos adolescentes guardam isso só para si. A terapia oferece um espaço para falar sem medo de julgamento e fortalecer vínculos verdadeiros.",
     features: [
       "Compreensão das necessidades emocionais",
       "Desenvolvimento de relações mais significativas",
@@ -136,7 +136,7 @@ const services = [
     icon: HeartCrack,
     title: "Medo de Abandono e Rejeição",
     description:
-      "O receio de ser deixado, rejeitado ou não ser valorizado pode impactar relacionamentos e gerar insegurança emocional. Na psicoterapia é possível compreender a origem desses sentimentos e desenvolver formas mais seguras de se relacionar.",
+      "Medo de ser excluído, de não ser escolhido, de perder amizades. Isso pode levar o adolescente a se anular para ser aceito. Na terapia, ele entende esses sentimentos e desenvolve formas mais seguras de se relacionar.",
     features: [
       "Identificação de padrões nos relacionamentos",
       "Fortalecimento da segurança emocional",
@@ -147,7 +147,7 @@ const services = [
     icon: Timer,
     title: "Procrastinação",
     description:
-      "A dificuldade de iniciar ou concluir tarefas pode gerar frustração e sensação de estagnação. A psicoterapia ajuda a compreender os fatores emocionais envolvidos e desenvolver estratégias mais saudáveis de organização e ação.",
+      "Deixar tudo para a última hora, travar diante das tarefas e depois se sentir culpado. Nem sempre é preguiça. A terapia ajuda a entender o que está por trás do adiamento e a criar estratégias práticas de organização e foco.",
     features: [
       "Identificação de padrões de adiamento",
       "Desenvolvimento de organização e foco",
@@ -158,7 +158,7 @@ const services = [
     icon: Shield,
     title: "Dificuldade em Impor Limites",
     description:
-      "Muitas pessoas têm dificuldade em dizer não ou priorizar suas próprias necessidades. A psicoterapia contribui para desenvolver comunicação mais assertiva e relações mais equilibradas.",
+      "Dificuldade em dizer não aos amigos e em resistir à pressão do grupo para ser aceito. Na terapia, o adolescente aprende a se posicionar com segurança e respeito por si mesmo.",
     features: [
       "Desenvolvimento de comunicação assertiva",
       "Fortalecimento da autonomia emocional",
@@ -169,7 +169,7 @@ const services = [
     icon: Brain,
     title: "Autoconhecimento e Cuidado com a Saúde Mental",
     description:
-      "Nem sempre é preciso estar passando por uma crise para buscar psicoterapia. Muitas pessoas procuram a terapia como um espaço de reflexão e crescimento pessoal.",
+      "A adolescência é a fase de descobrir quem se é. A terapia é um espaço para fazer isso com apoio: entender as emoções, desenvolver inteligência emocional e crescer com mais segurança.",
     features: [
       "Ampliação do autoconhecimento",
       "Desenvolvimento de inteligência emocional",
@@ -221,13 +221,12 @@ const ServicesAdolescente = () => {
         >
           <Kicker className="justify-center mb-4">O que eu trato</Kicker>
           <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Serviços de Psicoterapia para{" "}
-            <span className="text-emerald-700">Adolescentes</span>
+            Sinais de que{" "}
+            <span className="text-emerald-700">vale procurar ajuda</span>
           </h2>
           <p className="text-lg text-ink-600 leading-relaxed">
-            Ofereço serviços terapêuticos para adolescentes, projetados para
-            atender suas necessidades únicas e apoiar sua jornada em direção
-            ao bem-estar mental.
+            Estas são as situações que mais trazem adolescentes à terapia.
+            Se alguma delas descreve o que você vê em casa, vale conversar.
           </p>
         </motion.div>
 
@@ -324,7 +323,7 @@ const ServicesAdolescente = () => {
             className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
           >
             <IconeWhats width={22} />
-            <span>Agendar Consulta</span>
+            <span>Quero conversar sobre isso</span>
           </motion.a>
         </motion.div>
       </div>

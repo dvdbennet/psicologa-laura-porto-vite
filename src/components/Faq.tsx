@@ -3,10 +3,27 @@ import { FaqItem, FaqLayout } from "./ui/FaqLayout";
 export default function Faq() {
   return (
     <FaqLayout>
+          <FaqItem question="Como sei se preciso de terapia?">
+            <p>
+              Se o que você sente está atrapalhando seu sono, seu trabalho, suas relações ou
+              simplesmente tirando a sua paz há algum tempo, vale conversar. Não existe sofrimento
+              “pequeno demais” para a terapia.
+            </p>
+            <p>
+              E você não precisa estar em crise: muitas pessoas procuram a psicoterapia para se
+              conhecer melhor e prevenir que as coisas pesem mais.
+            </p>
+          </FaqItem>
+          <FaqItem question="E se eu não souber o que falar na primeira sessão?">
+            <p>
+              Isso é muito comum, e está tudo bem. Você não precisa chegar com nada preparado. A
+              primeira conversa acontece no seu ritmo, e o caminho a gente encontra junto.
+            </p>
+          </FaqItem>
           <FaqItem question="Como posso marcar uma consulta?">
             <p>
-              Você pode agendar uma consulta diretamente através do nosso
-              site, clicando no botão de AGENDAR.
+              É só tocar em qualquer botão de agendamento desta página e me mandar uma mensagem no
+              WhatsApp. Respondo com os horários disponíveis.
             </p>
             <p>
               Também vai encontrar todas as minhas redes na seção de contato,
