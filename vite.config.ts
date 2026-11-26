@@ -1,6 +1,7 @@
 import { defineConfig, type Plugin } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths'
 import react from '@vitejs/plugin-react';
+import adolescenteSeo from './src/seo/adolescente.json';
 import brasiliaSeo from './src/seo/brasilia.json';
 import exteriorSeo from './src/seo/exterior.json';
 
@@ -53,7 +54,7 @@ function routeStaticHtml(routes: RouteSeo[]): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths({ projects: ['./tsconfig.app.json'] }), routeStaticHtml([exteriorSeo, brasiliaSeo])],
+  plugins: [react(), tsconfigPaths({ projects: ['./tsconfig.app.json'] }), routeStaticHtml([exteriorSeo, brasiliaSeo, adolescenteSeo])],
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

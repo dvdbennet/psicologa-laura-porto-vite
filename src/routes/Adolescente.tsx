@@ -13,8 +13,12 @@ import ServicesAdolescente from "../components/ServicesAdolescente";
 import Testimonials from "../components/Testimonials";
 import StickyWhatsBar from "../components/StickyWhatsBar";
 import WhatsApp from "../components/WhatsApp";
+import seo from "../seo/adolescente.json";
+import { useRouteSeo } from "../seo/useRouteSeo";
 
 function Adolescente() {
+  useRouteSeo(seo);
+
   return (
     <WhatsAppProvider message="Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre terapia para adolescente e horários.">
       <div className="bg-mist min-h-screen">
