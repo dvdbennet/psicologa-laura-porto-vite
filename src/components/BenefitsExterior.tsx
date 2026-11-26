@@ -12,11 +12,11 @@ const points = [
 const BenefitsExterior = () => (
   <Benefits
     kicker="Por que eu"
-    title="Terapia que fala a sua língua — literalmente"
+    title="Terapia que fala a sua língua, literalmente"
     accent={["sua", "língua"]}
     question="E se a terapia fosse o único lugar onde você não precisa traduzir nada?"
     intro="Você já faz esforço demais se adaptando a um novo país. Na terapia, você merece ser entendido de primeira, sem tradução e sem precisar explicar de onde vem."
-    listIntro="O processo terapêutico ajuda a compreender o que você sente, fortalecer recursos emocionais e construir uma rotina mais leve — mesmo a milhares de quilômetros de casa."
+    listIntro="O processo terapêutico ajuda a compreender o que você sente, fortalecer recursos emocionais e construir uma rotina mais leve, mesmo a milhares de quilômetros de casa."
     items={points}
     image={benefitsImage}
     imageAlt="Dra. Laura Porto"

@@ -22,7 +22,7 @@ const ComplianceNotice = () => {
             <ul className="text-sm text-ink-600 space-y-1.5">
               <li>• CRP 01/28432</li>
               <li>• Conselho Regional de Psicologia do Distrito Federal</li>
-              <li>• Formação: Psicologia - UniCEUB</li>
+              <li>• Formação: Psicologia, UniCEUB</li>
             </ul>
           </div>
 
@@ -70,7 +70,7 @@ const ComplianceNotice = () => {
             </div>
             <div>
               <h4 className="font-medium text-ink-800 mb-1.5">
-                LGPD - Lei Geral de Proteção de Dados:
+                LGPD, Lei Geral de Proteção de Dados:
               </h4>
               <p>
                 Seus dados pessoais são protegidos conforme a LGPD.

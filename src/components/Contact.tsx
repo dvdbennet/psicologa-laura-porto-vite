@@ -5,13 +5,13 @@ import { Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
 const contactInfo = [
   { icon: Phone, title: "(61) 99991-4224", subtitle: "WhatsApp" },
   { icon: Mail, title: "lauraporto.psi@gmail.com", subtitle: "Email p/ contato" },
-  { icon: MapPin, title: "Sudoeste, Brasília - DF", subtitle: "Atendimento presencial" },
+  { icon: MapPin, title: "Sudoeste, Brasília, DF", subtitle: "Atendimento presencial" },
   { icon: Video, title: "Sessões Online", subtitle: "Plataforma de vídeo segura" },
 ];
 
 const hours = [
-  { day: "Segunda - Sexta", time: "8:00 - 20:00" },
-  { day: "Sábado", time: "10:00 - 16:00" },
+  { day: "Segunda a Sexta", time: "8:00 às 20:00" },
+  { day: "Sábado", time: "10:00 às 16:00" },
   { day: "Domingo", time: "Fechado" },
 ];
 

@@ -10,7 +10,7 @@ const getCredentials = (audience: string) => [
   {
     icon: Award,
     title: "Psicóloga Clínica Registrada",
-    description: "CRP 01/28432 - Conselho Regional de Psicologia",
+    description: "CRP 01/28432, Conselho Regional de Psicologia",
   },
   {
     icon: GraduationCap,
@@ -20,7 +20,7 @@ const getCredentials = (audience: string) => [
   {
     icon: Heart,
     title: "Formação Especializada",
-    description: "Análise do Comportamento - Terapia Baseada em Evidências",
+    description: "Análise do Comportamento, Terapia Baseada em Evidências",
   },
   {
     icon: Users,
@@ -32,7 +32,23 @@ const getCredentials = (audience: string) => [
 const DEFAULT_INTRO =
   "Sou Psicóloga Clínica, formada pelo UniCEUB e pós-graduada em Análise do Comportamento (IBAC) e Neuropsicologia (IPOG). Realizo atendimentos psicológicos online voltados para adultos e adolescentes, com a proposta de oferecer um ambiente acolhedor, seguro e empático, onde você possa lidar com questões emocionais, aprofundar o autoconhecimento e cuidar da sua saúde mental.";
 const DEFAULT_APPROACH =
-  "Durante as sessões, busco aliar uma escuta atenta, sensibilidade nas relações e embasamento técnico, colaborando com cada pessoa na construção de caminhos alinhados aos seus valores e à vida que deseja levar. Vejo a psicoterapia como uma ferramenta poderosa de transformação — não apenas para aliviar o sofrimento, mas também para ampliar possibilidades e desenvolver recursos diante dos desafios cotidianos.";
+  "Durante as sessões, busco aliar uma escuta atenta, sensibilidade nas relações e embasamento técnico, colaborando com cada pessoa na construção de caminhos alinhados aos seus valores e à vida que deseja levar. Vejo a psicoterapia como uma ferramenta poderosa de transformação, não apenas para aliviar o sofrimento, mas também para ampliar possibilidades e desenvolver recursos diante dos desafios cotidianos.";
+
+/** Formação em destaque (verde, seminegrito) dentro do texto de apresentação. */
+const CREDENTIALS_PHRASE =
+  "formada pelo UniCEUB e pós-graduada em Análise do Comportamento (IBAC) e Neuropsicologia (IPOG)";
+
+function withHighlightedCredentials(text: string) {
+  const i = text.indexOf(CREDENTIALS_PHRASE);
+  if (i < 0) return text;
+  return (
+    <>
+      {text.slice(0, i)}
+      <strong className="font-semibold text-brand">{CREDENTIALS_PHRASE}</strong>
+      {text.slice(i + CREDENTIALS_PHRASE.length)}
+    </>
+  );
+}
 
 const About = ({
   intro = DEFAULT_INTRO,
@@ -86,7 +102,7 @@ const About = ({
           <SectionTitle text="A pessoa por trás do cuidado." accent={["cuidado"]} />
           <Reveal delay={0.15}>
             <p className="mt-6 text-[16px] leading-relaxed text-ink-700 sm:text-lg">
-              {intro}
+              {withHighlightedCredentials(intro)}
             </p>
           </Reveal>
           <Reveal delay={0.2}>

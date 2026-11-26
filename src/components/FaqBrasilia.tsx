@@ -5,7 +5,7 @@ export default function FaqBrasilia() {
     <FaqLayout title="Dúvidas sobre terapia em Brasília" accent={["Brasília"]}>
           <FaqItem question="Onde fica o consultório em Brasília?">
             <p>
-              No Sudoeste, em Brasília - DF. Quando você agendar pelo
+              No Sudoeste, em Brasília, DF. Quando você agendar pelo
               WhatsApp, envio todas as informações para chegar ao
               consultório.
             </p>
@@ -26,7 +26,7 @@ export default function FaqBrasilia() {
           >
             <p>
               Para a maior parte das demandas, sim. A escuta, o método e o
-              sigilo são os mesmos — o que muda é só o lugar onde você está.
+              sigilo são os mesmos, o que muda é só o lugar onde você está.
             </p>
             <p>
               Muitas pessoas escolhem o online pela praticidade de não

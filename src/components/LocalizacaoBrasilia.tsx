@@ -3,8 +3,8 @@ import Kicker from "./ui/Kicker";
 import { Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
 
 const hours = [
-  { day: "Segunda a sexta", time: "8:00 - 20:00" },
-  { day: "Sábado", time: "10:00 - 16:00" },
+  { day: "Segunda a sexta", time: "8:00 às 20:00" },
+  { day: "Sábado", time: "10:00 às 16:00" },
 ];
 
 /** "Uma hora para você": grade em bento — horários, online e o cartão do primeiro passo. */
@@ -18,7 +18,7 @@ const LocalizacaoBrasilia = () => {
           <Reveal delay={0.15}>
             <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
               Trânsito, trabalho, cobranças, gente precisando de você o tempo todo. A terapia é o lugar
-              onde você para, respira e é ouvido sem pressa e sem julgamento — no consultório do
+              onde você para, respira e é ouvido sem pressa e sem julgamento, no consultório do
               Sudoeste ou do sofá da sua casa.
             </p>
           </Reveal>

@@ -2,7 +2,7 @@ import Hero from "./Hero";
 
 const HeroBrasilia = () => (
   <Hero
-    chip="CRP 01/28432 · Sudoeste, Brasília - DF"
+    chip="CRP 01/28432 · Sudoeste, Brasília, DF"
     title="Psicóloga em Brasília"
     accent={["Brasília"]}
     lead="Presencial no Sudoeste ou online. Você não precisa esperar piorar para buscar ajuda."

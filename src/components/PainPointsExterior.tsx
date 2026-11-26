@@ -31,7 +31,7 @@ const slides = [
         icon: UserMinus,
         title: "Solidão mesmo cercado de gente",
         description:
-          "É possível ter uma rotina cheia e uma vida social nova e, ainda assim, se sentir sozinho — sem alguém que realmente entenda sua história.",
+          "É possível ter uma rotina cheia e uma vida social nova e, ainda assim, se sentir sozinho, sem alguém que realmente entenda sua história.",
       },
       {
         icon: Globe,
@@ -55,7 +55,7 @@ const slides = [
         icon: Languages,
         title: "Barreira do idioma para falar de sentimentos",
         description:
-          "Mesmo fluente no dia a dia, colocar em palavras emoções complexas em outro idioma pode ser exaustivo — e a terapia deveria ser um alívio, não mais um esforço.",
+          "Mesmo fluente no dia a dia, colocar em palavras emoções complexas em outro idioma pode ser exaustivo, e a terapia deveria ser um alívio, não mais um esforço.",
       },
     ],
   },

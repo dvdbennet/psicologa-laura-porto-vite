@@ -8,7 +8,7 @@ const modalidades = [
     tag: "Presencial",
     title: "Consultório no Sudoeste",
     description:
-      "Um espaço reservado e acolhedor no Sudoeste, em Brasília - DF, para quem prefere o encontro olho no olho.",
+      "Um espaço reservado e acolhedor no Sudoeste, em Brasília, DF, para quem prefere o encontro olho no olho.",
     points: [
       "Prático para quem mora ou trabalha no Sudoeste, Octogonal, Cruzeiro e Plano Piloto",
       "Ambiente tranquilo, pensado para você se sentir à vontade",

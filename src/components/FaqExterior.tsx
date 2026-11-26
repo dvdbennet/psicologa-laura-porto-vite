@@ -42,7 +42,7 @@ export default function FaqExterior() {
             <p>
               Sim. O sigilo profissional é garantido pelo Código de Ética
               Profissional do Psicólogo independentemente de onde o
-              atendimento acontece — os mesmos princípios de
+              atendimento acontece, os mesmos princípios de
               confidencialidade valem para sessões presenciais e online.
             </p>
           </FaqItem>
@@ -63,7 +63,7 @@ export default function FaqExterior() {
             <p>
               Também acompanho demandas do dia a dia, como ansiedade, luto,
               conflitos nos relacionamentos, autoestima, esgotamento e
-              momentos de transição — estejam ou não relacionadas à mudança
+              momentos de transição, estejam ou não relacionadas à mudança
               de país. O que importa é o que você está vivendo agora.
             </p>
           </FaqItem>
