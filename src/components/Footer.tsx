@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
+import { Reveal, WhatsButton } from "./ui/motion";
 
 const navLinks = [
   { href: "#about", label: "Sobre Dra. Laura" },
@@ -11,45 +12,50 @@ const navLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-ink-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
+    <footer className="relative overflow-clip bg-ink-900 pb-28 pt-16 text-white lg:pb-10 lg:pt-24">
+      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand/25 blur-[120px]" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="flex flex-col gap-8 border-b border-white/10 pb-14 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal>
+            <p className="max-w-xl font-display text-[2rem] leading-[1.1] sm:text-5xl">
+              Cuidar da mente começa com <span className="text-mint-300">uma conversa.</span>
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <WhatsButton location="footer_cta" label="Agendar no WhatsApp" variant="light" className="w-full sm:w-auto" />
+          </Reveal>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center font-display text-white">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-mint-500 to-brand font-display text-white">
                 LP
               </div>
               <div>
-                <div className="text-white font-display text-lg">
-                  Dra. Laura Porto
-                </div>
-                <div className="text-white/40 text-xs">CRP 01/28432</div>
+                <div className="font-display text-lg text-white">Dra. Laura Porto</div>
+                <div className="text-xs text-white/40">CRP 01/28432</div>
               </div>
             </div>
-            <p className="text-white/50 leading-relaxed mb-6 text-sm">
-              Oferecendo serviços de psicoterapia compassivos e profissionais
-              para ajudá-lo a navegar pelos desafios da vida e alcançar
-              crescimento pessoal.
+            <p className="mb-5 text-sm leading-relaxed text-white/55">
+              Oferecendo serviços de psicoterapia compassivos e profissionais para ajudá-lo a navegar
+              pelos desafios da vida e alcançar crescimento pessoal.
             </p>
-            <div className="text-white/40 text-xs">
-              CRP 01/28432 • Conselho Regional de Psicologia do Distrito
-              Federal
+            <div className="text-xs text-white/40">
+              CRP 01/28432 • Conselho Regional de Psicologia do Distrito Federal
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wide">
-              Navegação
-            </h3>
-            <ul className="space-y-3">
+            <h3 className="mb-5 text-sm font-semibold text-white">Navegação</h3>
+            <ul className="space-y-1">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-white/50 hover:text-white transition-colors text-sm"
+                    className="group inline-flex items-center py-1.5 text-[15px] text-white/55 transition-colors hover:text-white"
                   >
+                    <span className="h-px w-0 bg-mint-300 transition-all duration-300 group-hover:mr-2 group-hover:w-4" />
                     {link.label}
                   </a>
                 </li>
@@ -57,47 +63,34 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wide">
-              Informação de Contato
-            </h3>
-            <div className="space-y-4">
+            <h3 className="mb-5 text-sm font-semibold text-white">Informação de Contato</h3>
+            <div className="space-y-4 text-[15px] text-white/55">
               <div className="flex items-center gap-3">
-                <Phone className="text-emerald-400" size={16} />
-                <span className="text-white/50 text-sm">
-                  (61) 99991-4224
-                </span>
+                <Phone className="text-mint-300" size={16} />
+                (61) 99991-4224
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="text-emerald-400" size={16} />
-                <span className="text-white/50 text-sm">
-                  lauraporto.psi@gmail.com
-                </span>
+                <Mail className="text-mint-300" size={16} />
+                lauraporto.psi@gmail.com
               </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="text-emerald-400 mt-0.5" size={16} />
-                <div className="text-white/50 text-sm">
-                  <div>Sudoeste, Brasília - DF</div>
-                </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="text-mint-300" size={16} />
+                Sudoeste, Brasília - DF
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-white/40 text-xs">
-              © 2024 Dra. Laura Porto. Todos os direitos reservados.
-            </div>
-            <div className="flex items-center gap-6 text-white/40 text-xs">
-              <Link to="/privacidade" className="hover:text-white transition-colors">
-                Política de Privacidade
-              </Link>
-              <Link to="/termos" className="hover:text-white transition-colors">
-                Termos de Serviço
-              </Link>
-            </div>
+        <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/40 md:flex-row md:items-center">
+          <div>© {new Date().getFullYear()} Dra. Laura Porto. Todos os direitos reservados.</div>
+          <div className="flex items-center gap-6">
+            <Link to="/privacidade" className="transition-colors hover:text-white">
+              Política de Privacidade
+            </Link>
+            <Link to="/termos" className="transition-colors hover:text-white">
+              Termos de Serviço
+            </Link>
           </div>
         </div>
       </div>

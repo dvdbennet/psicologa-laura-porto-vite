@@ -31,8 +31,8 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 - Touch targets ≥ 48px. Nada de hover como única forma de revelar informação.
 
 ## Motion
-- Lenis (rolagem suave no desktop; no celular mantém a rolagem nativa).
-- GSAP + ScrollTrigger: títulos revelados por linha com máscara, parallax interno nas fotos,
+- Lenis (rolagem suave no desktop; no celular mantém a rolagem nativa). Animações com Framer Motion (useScroll/whileInView); GSAP foi descartado por não ser necessário.
+- Títulos revelados por linha com máscara, parallax interno nas fotos,
   depoimentos em trilho arrastável.
 - `prefers-reduced-motion` e aparelhos fracos: forma 3D vira imagem estática, sem scroll suave.
 
@@ -44,7 +44,7 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 ## Etapas
 1. ✅ Base no branch `redesign-exterior-brasilia` + ajustes de rastreamento da SITE-MELHORADO.
 2. ✅ Paleta escolhida (A).
-3. Tema global (cores, fontes) + hero 3D da Home + barra fixa mobile → **esboço para aprovação**.
-4. Seções da Home (Serviços, Sobre, Benefícios, Abordagem, Depoimentos, FAQ, Contato) com motion.
+3. ✅ Tema global (cores, fontes) + hero 3D da Home + barra fixa mobile → **esboço para aprovação**.
+4. ✅ Seções da Home (Serviços, Sobre, Benefícios, Abordagem, Depoimentos, FAQ, Contato) com motion.
 5. Mesmo tratamento nos heros e seções de `/exterior`, `/adolescente`, `/brasilia`.
 6. Verificação: celular 375/390, laptop baixo (~650px), Lighthouse, eventos no dataLayer.

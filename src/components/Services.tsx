@@ -1,25 +1,24 @@
-import { useWhatsApp } from "@/context/WhatsAppProvider";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Brain,
   Briefcase,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   GitBranch,
   HeartCrack,
   HeartHandshake,
+  Plus,
   Repeat,
   Shield,
+  Sparkles,
   Target,
   Timer,
   User,
   UserCheck,
   UserMinus,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import IconeWhats from "./IconeWhats";
+import { useState } from "react";
 import Kicker from "./ui/Kicker";
+import { EASE, Reveal, SectionTitle, WhatsButton } from "./ui/motion";
 
 const services = [
   {
@@ -166,7 +165,7 @@ const services = [
     ],
   },
   {
-    icon: Brain,
+    icon: Sparkles,
     title: "Autoconhecimento e Cuidado com a Saúde Mental",
     description:
       "Nem sempre é preciso estar passando por uma crise para buscar psicoterapia. Muitas pessoas procuram a terapia como um espaço de reflexão e crescimento pessoal.",
@@ -178,155 +177,143 @@ const services = [
   },
 ];
 
-const Services = () => {
-  const whatsapp = useWhatsApp();
-  const [currentPage, setCurrentPage] = useState(0);
-  const [servicesPerPage, setServicesPerPage] = useState(2);
+type Service = (typeof services)[number];
 
-  useEffect(() => {
-    const updateServicesPerPage = () => {
-      setServicesPerPage(window.innerWidth < 768 ? 1 : 2);
-    };
-
-    updateServicesPerPage();
-    window.addEventListener("resize", updateServicesPerPage);
-
-    return () => window.removeEventListener("resize", updateServicesPerPage);
-  }, []);
-
-  const totalPages = Math.ceil(services.length / servicesPerPage);
-
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  };
-
-  const currentServices = services.slice(
-    currentPage * servicesPerPage,
-    (currentPage + 1) * servicesPerPage,
+function Detail({ s }: { s: Service }) {
+  return (
+    <>
+      <p className="leading-relaxed text-ink-600">{s.description}</p>
+      <ul className="mt-5 space-y-2.5">
+        {s.features.map((f) => (
+          <li key={f} className="flex items-start gap-3 text-ink-800">
+            <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    </>
   );
+}
+
+/**
+ * "O que eu trato": índice de temas.
+ * Celular: acordeão (um aberto por vez, toque grande).
+ * Desktop: lista à esquerda + painel fixo à direita que troca no hover/clique.
+ */
+const Services = () => {
+  const [active, setActive] = useState(0);
+  const [open, setOpen] = useState<number | null>(0);
+  const current = services[active];
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14 max-w-3xl mx-auto"
-        >
-          <Kicker className="justify-center mb-4">O que eu trato</Kicker>
-          <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Serviços de{" "}
-            <span className="text-emerald-700">Psicoterapia</span>
-          </h2>
-          <p className="text-lg text-ink-600 leading-relaxed">
-            Ofereço serviços terapêuticos para adultos e adolescentes,
-            projetados para atender suas necessidades únicas e apoiar sua
-            jornada em direção ao bem-estar mental.
-          </p>
-        </motion.div>
-
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            onClick={prevPage}
-            aria-label="Anterior"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronLeft className="text-emerald-700" size={20} />
-          </button>
-          <div className="flex gap-1.5">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i)}
-                aria-label={`Página ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === currentPage
-                    ? "bg-emerald-600 w-6"
-                    : "bg-emerald-200 w-1.5"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={nextPage}
-            aria-label="Próximo"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronRight className="text-emerald-700" size={20} />
-          </button>
+    <section id="services" className="relative bg-white py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-10 max-w-3xl lg:mb-16">
+          <Kicker className="mb-5">O que eu trato</Kicker>
+          <SectionTitle text="Serviços de Psicoterapia para o que está pesando agora." accent={["Psicoterapia"]} />
+          <Reveal delay={0.2}>
+            <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
+              Ofereço serviços terapêuticos para adultos e adolescentes, projetados para atender
+              suas necessidades únicas e apoiar sua jornada em direção ao bem-estar mental.
+            </p>
+          </Reveal>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
-          >
-            {currentServices.map((service) => (
-              <div
-                key={service.title}
-                className="group bg-white rounded-3xl p-8 border border-ink-100 hover:border-emerald-200 shadow-soft hover:shadow-lifted transition-all"
-              >
-                <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors">
-                  <service.icon className="text-emerald-600" size={26} />
-                </div>
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+          {/* lista */}
+          <ul className="border-t border-ink-900/10">
+            {services.map((s, i) => {
+              const isOpen = open === i;
+              const isActive = active === i;
+              return (
+                <Reveal as="li" key={s.title} delay={Math.min(i, 6) * 0.03} y={16} className="border-b border-ink-900/10">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActive(i);
+                      setOpen(isOpen ? null : i);
+                    }}
+                    onMouseEnter={() => setActive(i)}
+                    aria-expanded={isOpen}
+                    className="group flex w-full items-center gap-4 py-4 text-left lg:py-5"
+                  >
+                    <span
+                      className={`grid h-11 w-11 flex-shrink-0 place-items-center rounded-2xl transition-colors duration-300 ${
+                        isActive ? "bg-brand text-white" : "bg-mist text-brand"
+                      }`}
+                    >
+                      <s.icon size={20} />
+                    </span>
+                    <span
+                      className={`flex-1 font-display text-[1.2rem] leading-snug transition-[color,transform] duration-500 ease-out sm:text-2xl lg:group-hover:translate-x-2 ${
+                        isActive ? "text-ink-900" : "text-ink-700"
+                      }`}
+                    >
+                      {s.title}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-ink-900/10 text-ink-700 lg:hidden"
+                    >
+                      <Plus size={16} />
+                    </motion.span>
+                  </button>
 
-                <h3 className="text-xl font-semibold text-ink-900 mb-3">
-                  {service.title}
-                </h3>
+                  {/* celular: conteúdo inline */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.45, ease: EASE }}
+                        className="overflow-hidden lg:hidden"
+                      >
+                        <div className="pb-6 pl-[3.75rem] text-[15px]">
+                          <Detail s={s} />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </Reveal>
+              );
+            })}
+          </ul>
 
-                <p className="text-ink-600 mb-5 leading-relaxed text-sm">
-                  {service.description}
-                </p>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
-                      <span className="text-ink-700 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+          {/* desktop: painel fixo */}
+          <div className="hidden lg:block">
+            <div className="sticky top-28">
+              <div className="relative overflow-hidden rounded-[2rem] bg-mist p-10">
+                <div
+                  aria-hidden
+                  className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-mint-300/40 blur-3xl animate-breathe"
+                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                    className="relative"
+                  >
+                    <span className="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-white text-brand shadow-soft">
+                      <current.icon size={26} />
+                    </span>
+                    <h3 className="mb-4 font-display text-3xl text-ink-900">{current.title}</h3>
+                    <Detail s={current} />
+                  </motion.div>
+                </AnimatePresence>
+                <WhatsButton location="services_cta" label="Agendar consulta" size="md" className="relative mt-9" />
               </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+            </div>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-16"
-        >
-          <motion.a
-            target="_blank"
-            href={whatsapp}
-            onClick={() => {
-              if (typeof window !== "undefined" && window.dataLayer) {
-                window.dataLayer.push({
-                  event: "whatsapp_click",
-                  click_location: "services_cta",
-                });
-              }
-            }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
-          >
-            <IconeWhats width={22} />
-            <span>Agendar Consulta</span>
-          </motion.a>
-        </motion.div>
+        <Reveal className="mt-10 lg:hidden">
+          <WhatsButton location="services_cta" label="Agendar consulta" className="w-full" />
+        </Reveal>
       </div>
     </section>
   );
