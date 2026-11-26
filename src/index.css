@@ -18,7 +18,23 @@ body {
   background-color: #f4f8f6;
   color: #0f2a22;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+}
+
+/* Página "presa" na horizontal: sem rolagem nem "samba" lateral no celular.
+   - overflow-x: clip em html E body (o iOS ignora o hidden só no body);
+     clip não cria contêiner de rolagem, então o position: sticky continua funcionando.
+   - overscroll-behavior-x: none tira o efeito elástico lateral.
+   Trilhos horizontais (depoimentos) continuam roláveis: eles têm overflow-x próprio. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
 }
 
 ::selection {
