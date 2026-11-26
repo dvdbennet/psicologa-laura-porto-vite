@@ -11,6 +11,7 @@ import ModalidadesBrasilia from "../components/ModalidadesBrasilia";
 import Navbar from "../components/Navbar";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
+import StickyWhatsBar from "../components/StickyWhatsBar";
 import WhatsApp from "../components/WhatsApp";
 import seo from "../seo/brasilia.json";
 import { useRouteSeo } from "../seo/useRouteSeo";
@@ -22,7 +23,7 @@ function Brasilia() {
     <WhatsAppProvider
       message="Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre horários para terapia em Brasília."
     >
-      <div className="bg-slate-50 min-h-screen">
+      <div className="bg-mist min-h-screen">
         <Navbar />
         <HeroBrasilia />
         <ModalidadesBrasilia />
@@ -35,7 +36,8 @@ function Brasilia() {
         <Contact />
         <ComplianceNotice />
         <Footer />
-        <WhatsApp />
+        <WhatsApp desktopOnly />
+        <StickyWhatsBar />
       </div>
     </WhatsAppProvider>
   );

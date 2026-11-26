@@ -6,7 +6,7 @@ import deskImage from "../assets/images/hero-image-2.jpeg";
 import Kicker from "./ui/Kicker";
 import { ParallaxImage, Reveal, SectionTitle, WhatsButton } from "./ui/motion";
 
-const credentials = [
+const getCredentials = (audience: string) => [
   {
     icon: Award,
     title: "Psicóloga Clínica Registrada",
@@ -25,11 +25,27 @@ const credentials = [
   {
     icon: Users,
     title: "+400 Pacientes Atendidos",
-    description: "Atendendo adultos e adolescentes",
+    description: audience,
   },
 ];
 
-const About = () => {
+const DEFAULT_INTRO =
+  "Sou Psicóloga Clínica, formada pelo UniCEUB e pós-graduada em Análise do Comportamento (IBAC) e Neuropsicologia (IPOG). Realizo atendimentos psicológicos online voltados para adultos e adolescentes, com a proposta de oferecer um ambiente acolhedor, seguro e empático, onde você possa lidar com questões emocionais, aprofundar o autoconhecimento e cuidar da sua saúde mental.";
+const DEFAULT_APPROACH =
+  "Durante as sessões, busco aliar uma escuta atenta, sensibilidade nas relações e embasamento técnico, colaborando com cada pessoa na construção de caminhos alinhados aos seus valores e à vida que deseja levar. Vejo a psicoterapia como uma ferramenta poderosa de transformação — não apenas para aliviar o sofrimento, mas também para ampliar possibilidades e desenvolver recursos diante dos desafios cotidianos.";
+
+const About = ({
+  intro = DEFAULT_INTRO,
+  approach = DEFAULT_APPROACH,
+  audience = "Atendendo adultos e adolescentes",
+  location = "about_cta",
+}: {
+  intro?: string;
+  approach?: string;
+  audience?: string;
+  location?: string;
+}) => {
+  const credentials = getCredentials(audience);
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -70,20 +86,12 @@ const About = () => {
           <SectionTitle text="A pessoa por trás do cuidado." accent={["cuidado"]} />
           <Reveal delay={0.15}>
             <p className="mt-6 text-[16px] leading-relaxed text-ink-700 sm:text-lg">
-              Sou Psicóloga Clínica, formada pelo UniCEUB e pós-graduada em Análise do
-              Comportamento (IBAC) e Neuropsicologia (IPOG). Realizo atendimentos psicológicos
-              online voltados para adultos e adolescentes, com a proposta de oferecer um ambiente
-              acolhedor, seguro e empático, onde você possa lidar com questões emocionais,
-              aprofundar o autoconhecimento e cuidar da sua saúde mental.
+              {intro}
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-4 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-              Durante as sessões, busco aliar uma escuta atenta, sensibilidade nas relações e
-              embasamento técnico, colaborando com cada pessoa na construção de caminhos alinhados
-              aos seus valores e à vida que deseja levar. Vejo a psicoterapia como uma ferramenta
-              poderosa de transformação — não apenas para aliviar o sofrimento, mas também para
-              ampliar possibilidades e desenvolver recursos diante dos desafios cotidianos.
+              {approach}
             </p>
           </Reveal>
 
@@ -122,7 +130,7 @@ const About = () => {
           </ul>
 
           <Reveal className="mt-9">
-            <WhatsButton location="about_cta" label="Agendar com a Laura" className="w-full sm:w-auto" />
+            <WhatsButton location={location} label="Agendar com a Laura" className="w-full sm:w-auto" />
           </Reveal>
         </div>
       </div>

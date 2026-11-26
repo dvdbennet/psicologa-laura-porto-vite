@@ -1,10 +1,6 @@
-import { useWhatsApp } from "@/context/WhatsAppProvider";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   Brain,
   Briefcase,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   GitBranch,
   HeartCrack,
@@ -17,11 +13,9 @@ import {
   UserCheck,
   UserMinus,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import IconeWhats from "./IconeWhats";
-import Kicker from "./ui/Kicker";
+import { ServicesIndex, type Service } from "./Services";
 
-const services = [
+const services: Service[] = [
   {
     icon: Brain,
     title: "Depressão",
@@ -178,157 +172,16 @@ const services = [
   },
 ];
 
-const ServicesAdolescente = () => {
-  const whatsapp = useWhatsApp();
-  const [currentPage, setCurrentPage] = useState(0);
-  const [servicesPerPage, setServicesPerPage] = useState(2);
-
-  useEffect(() => {
-    const updateServicesPerPage = () => {
-      setServicesPerPage(window.innerWidth < 768 ? 1 : 2);
-    };
-
-    updateServicesPerPage();
-    window.addEventListener("resize", updateServicesPerPage);
-
-    return () => window.removeEventListener("resize", updateServicesPerPage);
-  }, []);
-
-  const totalPages = Math.ceil(services.length / servicesPerPage);
-
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  };
-
-  const currentServices = services.slice(
-    currentPage * servicesPerPage,
-    (currentPage + 1) * servicesPerPage,
-  );
-
-  return (
-    <section id="services" className="py-24 lg:py-32 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14 max-w-3xl mx-auto"
-        >
-          <Kicker className="justify-center mb-4">O que eu trato</Kicker>
-          <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Sinais de que{" "}
-            <span className="text-emerald-700">vale procurar ajuda</span>
-          </h2>
-          <p className="text-lg text-ink-600 leading-relaxed">
-            Estas são as situações que mais trazem adolescentes à terapia.
-            Se alguma delas descreve o que você vê em casa, vale conversar.
-          </p>
-        </motion.div>
-
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            onClick={prevPage}
-            aria-label="Anterior"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronLeft className="text-emerald-700" size={20} />
-          </button>
-          <div className="flex gap-1.5">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i)}
-                aria-label={`Página ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === currentPage
-                    ? "bg-emerald-600 w-6"
-                    : "bg-emerald-200 w-1.5"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={nextPage}
-            aria-label="Próximo"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronRight className="text-emerald-700" size={20} />
-          </button>
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
-          >
-            {currentServices.map((service) => (
-              <div
-                key={service.title}
-                className="group bg-white rounded-3xl p-8 border border-ink-100 hover:border-emerald-200 shadow-soft hover:shadow-lifted transition-all"
-              >
-                <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors">
-                  <service.icon className="text-emerald-600" size={26} />
-                </div>
-
-                <h3 className="text-xl font-semibold text-ink-900 mb-3">
-                  {service.title}
-                </h3>
-
-                <p className="text-ink-600 mb-5 leading-relaxed text-sm">
-                  {service.description}
-                </p>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
-                      <span className="text-ink-700 text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-16"
-        >
-          <motion.a
-            target="_blank"
-            href={whatsapp}
-            onClick={() => {
-              if (typeof window !== "undefined" && window.dataLayer) {
-                window.dataLayer.push({
-                  event: "whatsapp_click",
-                  click_location: "services_adolescente_cta",
-                });
-              }
-            }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
-          >
-            <IconeWhats width={22} />
-            <span>Quero conversar sobre isso</span>
-          </motion.a>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+const ServicesAdolescente = () => (
+  <ServicesIndex
+    items={services}
+    kicker="Quando procurar ajuda"
+    title="Sinais de que vale procurar ajuda"
+    accent={["procurar", "ajuda"]}
+    intro="Estas são as situações que mais trazem adolescentes à terapia. Se alguma delas descreve o que você vê em casa, vale conversar."
+    ctaLabel="Quero conversar sobre isso"
+    location="services_adolescente_cta"
+  />
+);
 
 export default ServicesAdolescente;

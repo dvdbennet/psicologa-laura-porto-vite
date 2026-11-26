@@ -1,8 +1,6 @@
-import { useWhatsApp } from "@/context/WhatsAppProvider";
-import { motion } from "framer-motion";
-import { CheckCircle2, MapPin, Video } from "lucide-react";
-import IconeWhats from "./IconeWhats";
+import { Check, MapPin, Video } from "lucide-react";
 import Kicker from "./ui/Kicker";
+import { Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
 
 const modalidades = [
   {
@@ -35,86 +33,86 @@ const modalidades = [
   },
 ];
 
+/** Presencial x online: dois cartões lado a lado, o online em destaque escuro. */
 const ModalidadesBrasilia = () => {
-  const whatsapp = useWhatsApp();
   return (
-    <section id="benefits" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16 max-w-3xl mx-auto"
-        >
-          <Kicker className="justify-center mb-4">Como você prefere</Kicker>
-          <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Terapia em Brasília,{" "}
-            <span className="text-emerald-700">presencial ou online</span>
-          </h2>
-          <p className="text-lg text-ink-600 leading-relaxed">
-            Cuidar de você não pode virar mais uma tarefa difícil na agenda.
-            Escolha o formato que cabe na sua rotina; se ela mudar, a gente ajusta.
-          </p>
-        </motion.div>
+    <section id="benefits" className="relative bg-white py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-10 max-w-3xl lg:mb-14">
+          <Kicker className="mb-5">Como você prefere</Kicker>
+          <SectionTitle text="Terapia em Brasília, presencial ou online" accent={["presencial", "online"]} />
+          <Reveal delay={0.15}>
+            <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
+              Cuidar de você não pode virar mais uma tarefa difícil na agenda. Escolha o formato que
+              cabe na sua rotina; se ela mudar, a gente ajusta.
+            </p>
+          </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {modalidades.map((item, index) => (
-            <motion.div
-              key={item.tag}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: index * 0.12 }}
-              className="flex flex-col p-8 lg:p-10 rounded-3xl border border-ink-100 hover:border-emerald-200 hover:shadow-lifted transition-all bg-gradient-to-br from-white to-emerald-50/40"
-            >
-              <div className="flex items-center justify-between mb-8">
-                <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center">
-                  <item.icon className="text-emerald-600" size={26} />
-                </div>
-                <span className="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold uppercase tracking-wider">
-                  {item.tag}
-                </span>
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl text-ink-900 mb-3">
-                {item.title}
-              </h3>
-              <p className="text-ink-600 leading-relaxed mb-6">
-                {item.description}
-              </p>
-              <ul className="space-y-3.5 mb-10">
-                {item.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3">
-                    <CheckCircle2
-                      size={20}
-                      className="text-emerald-600 flex-shrink-0 mt-0.5"
-                    />
-                    <span className="text-ink-800 text-sm leading-relaxed">
-                      {point}
+        <div className="grid gap-5 lg:grid-cols-2">
+          {modalidades.map((m, i) => {
+            const dark = i === 1;
+            return (
+              <Reveal key={m.title} delay={i * 0.1} y={36}>
+                <TiltCard
+                  max={4}
+                  className={`relative flex h-full flex-col overflow-hidden rounded-[2rem] p-7 sm:p-10 ${
+                    dark ? "bg-ink-900 text-white" : "bg-mist text-ink-900"
+                  }`}
+                >
+                  <div
+                    aria-hidden
+                    className={`absolute -right-20 -top-20 h-64 w-64 rounded-full blur-3xl animate-breathe ${
+                      dark ? "bg-brand/40" : "bg-mint-300/40"
+                    }`}
+                  />
+                  <div className="relative flex items-center justify-between">
+                    <span
+                      className={`grid h-14 w-14 place-items-center rounded-2xl ${
+                        dark ? "bg-white/10 text-mint-300" : "bg-white text-brand shadow-soft"
+                      }`}
+                    >
+                      <m.icon size={26} />
                     </span>
-                  </li>
-                ))}
-              </ul>
-              <motion.a
-                target="_blank"
-                href={whatsapp}
-                onClick={() => {
-                  if (typeof window !== "undefined" && window.dataLayer) {
-                    window.dataLayer.push({
-                      event: "whatsapp_click",
-                      click_location: item.trackingId,
-                    });
-                  }
-                }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="mt-auto self-start inline-flex items-center gap-2.5 bg-emerald-600 text-white px-7 py-3.5 rounded-full font-semibold hover:bg-emerald-700 transition-colors"
-              >
-                <IconeWhats width={20} />
-                <span>{item.cta}</span>
-              </motion.a>
-            </motion.div>
-          ))}
+                    <span
+                      className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold ${
+                        dark ? "bg-mint-300 text-ink-900" : "bg-white text-brand"
+                      }`}
+                    >
+                      {m.tag}
+                    </span>
+                  </div>
+                  <h3 className="relative mt-8 font-display text-[1.75rem] leading-tight sm:text-4xl">{m.title}</h3>
+                  <p className={`relative mt-3 leading-relaxed sm:text-lg ${dark ? "text-white/70" : "text-ink-600"}`}>
+                    {m.description}
+                  </p>
+                  <ul className="relative mt-7 space-y-3">
+                    {m.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-3">
+                        <span
+                          className={`mt-0.5 grid h-6 w-6 flex-shrink-0 place-items-center rounded-full ${
+                            dark ? "bg-mint-300 text-ink-900" : "bg-brand text-white"
+                          }`}
+                        >
+                          <Check size={13} strokeWidth={3} />
+                        </span>
+                        <span className={`text-[15px] leading-relaxed ${dark ? "text-white/85" : "text-ink-800"}`}>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="relative mt-auto pt-9">
+                    <WhatsButton
+                      location={m.trackingId}
+                      label={m.cta}
+                      size="md"
+                      variant={dark ? "light" : "brand"}
+                      className="w-full sm:w-auto"
+                    />
+                  </div>
+                </TiltCard>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

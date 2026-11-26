@@ -10,6 +10,7 @@ import HeroExterior from "../components/HeroExterior";
 import Navbar from "../components/Navbar";
 import PainPointsExterior from "../components/PainPointsExterior";
 import Testimonials from "../components/Testimonials";
+import StickyWhatsBar from "../components/StickyWhatsBar";
 import WhatsApp from "../components/WhatsApp";
 import seo from "../seo/exterior.json";
 import { useRouteSeo } from "../seo/useRouteSeo";
@@ -21,7 +22,7 @@ function Exterior() {
     <WhatsAppProvider
       message="Olá, Dra. Laura! Moro no exterior e gostaria de saber sobre horários para terapia online."
     >
-      <div className="bg-slate-50 min-h-screen">
+      <div className="bg-mist min-h-screen">
         <Navbar />
         <HeroExterior />
         <PainPointsExterior />
@@ -33,7 +34,8 @@ function Exterior() {
         <Contact />
         <ComplianceNotice />
         <Footer />
-        <WhatsApp />
+        <WhatsApp desktopOnly />
+        <StickyWhatsBar />
       </div>
     </WhatsAppProvider>
   );

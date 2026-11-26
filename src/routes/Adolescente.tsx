@@ -11,12 +11,13 @@ import ImportanciaAdolescente from "../components/ImportanciaAdolescente";
 import Navbar from "../components/Navbar";
 import ServicesAdolescente from "../components/ServicesAdolescente";
 import Testimonials from "../components/Testimonials";
+import StickyWhatsBar from "../components/StickyWhatsBar";
 import WhatsApp from "../components/WhatsApp";
 
 function Adolescente() {
   return (
     <WhatsAppProvider message="Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre terapia para adolescente e horários.">
-      <div className="bg-slate-50 min-h-screen">
+      <div className="bg-mist min-h-screen">
         <Navbar />
         <HeroAdolescente />
         <ImportanciaAdolescente />
@@ -29,7 +30,8 @@ function Adolescente() {
         <Contact />
         <ComplianceNotice />
         <Footer />
-        <WhatsApp />
+        <WhatsApp desktopOnly />
+        <StickyWhatsBar />
       </div>
     </WhatsAppProvider>
   );

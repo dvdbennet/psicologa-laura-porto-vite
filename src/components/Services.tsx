@@ -15,12 +15,13 @@ import {
   User,
   UserCheck,
   UserMinus,
+  type LucideIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Kicker from "./ui/Kicker";
 import { EASE, Reveal, SectionTitle, WhatsButton } from "./ui/motion";
 
-const services = [
+const services: Service[] = [
   {
     icon: Brain,
     title: "Depressão",
@@ -177,7 +178,12 @@ const services = [
   },
 ];
 
-type Service = (typeof services)[number];
+export type Service = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  features: string[];
+};
 
 function Detail({ s }: { s: Service }) {
   return (
@@ -200,7 +206,24 @@ function Detail({ s }: { s: Service }) {
  * Celular: acordeão (um aberto por vez, toque grande).
  * Desktop: lista à esquerda + painel fixo à direita que troca no hover/clique.
  */
-const Services = () => {
+export function ServicesIndex({
+  items,
+  kicker = "O que eu trato",
+  title,
+  accent,
+  intro,
+  ctaLabel = "Quero falar sobre isso",
+  location = "services_cta",
+}: {
+  items: Service[];
+  kicker?: string;
+  title: string;
+  accent: string[];
+  intro: ReactNode;
+  ctaLabel?: string;
+  location?: string;
+}) {
+  const services = items;
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState<number | null>(0);
   const current = services[active];
@@ -209,13 +232,10 @@ const Services = () => {
     <section id="services" className="relative bg-white py-20 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mb-10 max-w-3xl lg:mb-16">
-          <Kicker className="mb-5">O que eu trato</Kicker>
-          <SectionTitle text="O que te trouxe até aqui?" accent={["aqui"]} />
+          <Kicker className="mb-5">{kicker}</Kicker>
+          <SectionTitle text={title} accent={accent} />
           <Reveal delay={0.2}>
-            <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
-              Toque no que mais se parece com o seu momento. Você não precisa saber dar nome ao que
-              sente para começar: essa clareza a gente constrói junto, sessão a sessão.
-            </p>
+            <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">{intro}</p>
           </Reveal>
         </div>
 
@@ -305,18 +325,27 @@ const Services = () => {
                     <Detail s={current} />
                   </motion.div>
                 </AnimatePresence>
-                <WhatsButton location="services_cta" label="Quero falar sobre isso" size="md" className="relative mt-9" />
+                <WhatsButton location={location} label={ctaLabel} size="md" className="relative mt-9" />
               </div>
             </div>
           </div>
         </div>
 
         <Reveal className="mt-10 lg:hidden">
-          <WhatsButton location="services_cta" label="Quero falar sobre isso" className="w-full" />
+          <WhatsButton location={location} label={ctaLabel} className="w-full" />
         </Reveal>
       </div>
     </section>
   );
-};
+}
+
+const Services = () => (
+  <ServicesIndex
+    items={services}
+    title="O que te trouxe até aqui?"
+    accent={["aqui"]}
+    intro="Toque no que mais se parece com o seu momento. Você não precisa saber dar nome ao que sente para começar: essa clareza a gente constrói junto, sessão a sessão."
+  />
+);
 
 export default Services;

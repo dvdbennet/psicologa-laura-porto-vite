@@ -23,7 +23,7 @@ function Word({ w, i, total, progress }: { w: string; i: number; total: number; 
 }
 
 /** Pergunta que "acende" palavra por palavra conforme a rolagem. */
-function ScrubQuestion() {
+function ScrubQuestion({ text: QUESTION }: { text: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.85", "end 0.45"] });
@@ -40,7 +40,33 @@ function ScrubQuestion() {
   );
 }
 
-const Benefits = () => {
+export type BenefitsProps = {
+  kicker?: string;
+  title?: string;
+  accent?: string[];
+  question?: string;
+  intro?: string;
+  listIntro?: string;
+  items?: string[];
+  image?: string;
+  imageAlt?: string;
+  ctaLabel?: string;
+  location?: string;
+};
+
+const Benefits = ({
+  kicker = "Benefícios",
+  title = "O que muda quando você decide cuidar disso",
+  accent = ["cuidar", "disso"],
+  question = QUESTION,
+  intro = "A terapia não apaga o que você viveu. Ela te ajuda a entender o que sente, por que reage como reage e o que dá para fazer diferente, com escuta qualificada e método.",
+  listIntro = "Cada processo é único e tem o seu tempo. Ao longo das sessões, a gente trabalha para que você possa:",
+  items = points,
+  image = benefitsImage,
+  imageAlt = "Psicóloga Laura Porto",
+  ctaLabel = "Dar o primeiro passo",
+  location = "benefits_cta",
+}: BenefitsProps) => {
   return (
     <section id="benefits" className="relative overflow-clip bg-ink-900 py-20 text-white lg:py-32">
       <div
@@ -49,16 +75,15 @@ const Benefits = () => {
       />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Kicker light className="mb-5">
-          Benefícios
+          {kicker}
         </Kicker>
-        <SectionTitle light text="O que muda quando você decide cuidar disso" accent={["cuidar", "disso"]} className="mb-10 lg:mb-14" />
+        <SectionTitle light text={title} accent={accent} className="mb-10 lg:mb-14" />
 
         <div className="max-w-4xl">
-          <ScrubQuestion />
+          <ScrubQuestion text={question} />
           <Reveal>
             <p className="mt-7 max-w-2xl text-[16px] leading-relaxed text-white/65 sm:text-lg">
-              A terapia não apaga o que você viveu. Ela te ajuda a entender o que sente, por que reage
-              como reage e o que dá para fazer diferente, com escuta qualificada e método.
+              {intro}
             </p>
           </Reveal>
         </div>
@@ -66,8 +91,8 @@ const Benefits = () => {
         <div className="mt-14 grid items-center gap-12 lg:mt-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal y={40}>
             <ParallaxImage
-              src={benefitsImage}
-              alt="Psicóloga Laura Porto"
+              src={image}
+              alt={imageAlt}
               strength={10}
               className="aspect-[4/5] rounded-[2rem] lg:aspect-[5/6]"
               imgClassName="object-[50%_15%]"
@@ -77,12 +102,11 @@ const Benefits = () => {
           <div>
             <Reveal>
               <p className="text-[16px] leading-relaxed text-white/75 sm:text-lg">
-                Cada processo é único e tem o seu tempo. Ao longo das sessões, a gente trabalha para que
-                você possa:
+                {listIntro}
               </p>
             </Reveal>
             <ul className="mt-8 space-y-3">
-              {points.map((p, i) => (
+              {items.map((p, i) => (
                 <Reveal
                   as="li"
                   key={p}
@@ -98,7 +122,7 @@ const Benefits = () => {
               ))}
             </ul>
             <Reveal className="mt-10">
-              <WhatsButton location="benefits_cta" label="Dar o primeiro passo" variant="light" className="w-full sm:w-auto" />
+              <WhatsButton location={location} label={ctaLabel} variant="light" className="w-full sm:w-auto" />
             </Reveal>
           </div>
         </div>

@@ -46,5 +46,5 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 2. ✅ Paleta escolhida (A).
 3. ✅ Tema global (cores, fontes) + hero 3D da Home + barra fixa mobile → **esboço para aprovação**.
 4. ✅ Seções da Home (Serviços, Sobre, Benefícios, Abordagem, Depoimentos, FAQ, Contato) com motion.
-5. Mesmo tratamento nos heros e seções de `/exterior`, `/adolescente`, `/brasilia`.
+5. ✅ Mesmo tratamento nos heros e seções de `/exterior`, `/adolescente`, `/brasilia` (hero único configurável; Serviços, Sobre, Benefícios e FAQ reaproveitados).
 6. Verificação: celular 375/390, laptop baixo (~650px), Lighthouse, eventos no dataLayer.

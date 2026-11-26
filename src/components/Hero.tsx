@@ -18,21 +18,23 @@ import IconeWhats from "./IconeWhats";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const trust = [
+export type TrustItem = { big: string; small: string };
+
+const homeTrust: TrustItem[] = [
   { big: "400+", small: "pacientes atendidos" },
   { big: "Adultos", small: "e adolescentes" },
   { big: "Online", small: "todo o Brasil" },
 ];
 
 /** Título revelado palavra por palavra, cada uma subindo de dentro de uma máscara. */
-function RevealTitle({ text, accent }: { text: string; accent: string }) {
+function RevealTitle({ text, accent }: { text: string; accent: string[] }) {
   const words = text.split(" ");
   return (
     <h1 className="font-display text-ink-900 text-[2.15rem] leading-[1.06] min-[400px]:text-[2.4rem] sm:text-6xl lg:text-[clamp(3rem,9.2svh,4.4rem)] lg:leading-[1.02] tracking-[-0.015em] text-balance">
       {words.map((w, i) => (
         <span key={i} className="inline-block overflow-clip pb-[0.1em] -mb-[0.1em] align-top">
           <motion.span
-            className={`inline-block ${w === accent ? "text-brand" : ""}`}
+            className={`inline-block ${accent.includes(w.replace(/[.,!?]/g, "")) ? "text-brand" : ""}`}
             initial={{ y: "110%" }}
             animate={{ y: "0%" }}
             transition={{ duration: 0.9, delay: 0.15 + i * 0.055, ease: EASE }}
@@ -47,7 +49,7 @@ function RevealTitle({ text, accent }: { text: string; accent: string }) {
 }
 
 /** Botão do WhatsApp com efeito magnético no desktop (no toque ele só "afunda"). */
-function MagneticCta({ href }: { href: string }) {
+function MagneticCta({ href, label, location }: { href: string; label: string; location: string }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useSpring(0, { stiffness: 220, damping: 18 });
   const y = useSpring(0, { stiffness: 220, damping: 18 });
@@ -59,7 +61,7 @@ function MagneticCta({ href }: { href: string }) {
       href={href}
       target="_blank"
       rel="noopener"
-      onClick={() => trackWhatsApp("hero")}
+      onClick={() => trackWhatsApp(location)}
       onPointerMove={(e) => {
         if (e.pointerType !== "mouse" || !ref.current) return;
         const r = ref.current.getBoundingClientRect();
@@ -79,12 +81,37 @@ function MagneticCta({ href }: { href: string }) {
       <span className="relative h-[22px] w-[22px]">
         <IconeWhats />
       </span>
-      <span className="relative">Agendar minha sessão</span>
+      <span className="relative">{label}</span>
     </motion.a>
   );
 }
 
-const Hero = () => {
+export type HeroProps = {
+  chip?: string;
+  title?: string;
+  accent?: string[];
+  lead?: string;
+  leadMore?: string;
+  ctaLabel?: string;
+  location?: string;
+  badge?: string;
+  trust?: TrustItem[];
+  /** px descontados da altura da tela para a foto no celular (títulos longos pedem mais) */
+  photoOffset?: number;
+};
+
+const Hero = ({
+  chip = "CRP 01/28432 · Psicóloga Clínica",
+  title = "Cansou de fingir que está tudo bem?",
+  accent = ["bem"],
+  lead = "Psicoterapia online para entender o que está pesando e voltar a respirar.",
+  leadMore = "Ansiedade, tristeza, esgotamento ou conflitos: com escuta atenta, método científico e sigilo.",
+  ctaLabel = "Agendar minha sessão",
+  location = "hero",
+  badge = "Respire. Você chegou.",
+  trust = homeTrust,
+  photoOffset = 440,
+}: HeroProps) => {
   const whatsapp = useWhatsApp();
   const reduce = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
@@ -129,8 +156,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.1, ease: EASE }}
-            style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
-            className="relative mx-auto aspect-[3/4] h-[clamp(220px,calc(100svh-440px),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
+            style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d", ["--hero-off" as string]: `${photoOffset}px` }}
+            className="relative mx-auto aspect-[3/4] h-[clamp(200px,calc(100svh_-_var(--hero-off)),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
           >
             <div className="absolute inset-0 overflow-clip rounded-t-[999px] rounded-b-[28px] bg-mint-100 shadow-[0_40px_80px_-30px_rgba(15,42,34,0.45)] [mask-image:linear-gradient(#000_78%,transparent)] lg:[mask-image:none]">
               <motion.img
@@ -154,13 +181,13 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.7, ease: EASE }}
               style={{ transform: "translateZ(60px)" }}
-              className="absolute -right-6 bottom-[9%] flex items-center gap-2.5 rounded-full border border-white/70 bg-white/80 py-2 pl-2 pr-4 text-[12.5px] font-medium text-ink-800 shadow-soft backdrop-blur-md lg:-right-10 lg:bottom-[22%] lg:text-sm"
+              className="absolute -right-6 bottom-[9%] flex items-center gap-2.5 whitespace-nowrap rounded-full border border-white/70 bg-white/80 py-2 pl-2 pr-4 text-[12.5px] font-medium text-ink-800 shadow-soft backdrop-blur-md lg:-right-10 lg:bottom-[22%] lg:text-sm"
             >
               <span className="relative grid h-6 w-6 place-items-center">
                 <span className="absolute inset-0 rounded-full bg-mint-300/60 animate-breathe" />
                 <span className="relative h-2.5 w-2.5 rounded-full bg-brand" />
               </span>
-              Respire. Você chegou.
+              {badge}
             </motion.div>
           </motion.div>
         </div>
@@ -177,10 +204,10 @@ const Hero = () => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            CRP 01/28432 · Psicóloga Clínica
+            {chip}
           </motion.div>
 
-          <RevealTitle text="Cansou de fingir que está tudo bem?" accent="bem?" />
+          <RevealTitle text={title} accent={accent} />
 
           <motion.p
             initial={{ opacity: 0, y: 14 }}
@@ -188,11 +215,8 @@ const Hero = () => {
             transition={{ delay: 0.55, duration: 0.8, ease: EASE }}
             className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-600 sm:text-lg lg:mt-[min(1.5rem,2.5svh)]"
           >
-            Psicoterapia online para entender o que está pesando e voltar a respirar.
-            <span className="hidden sm:inline">
-              {" "}Ansiedade, tristeza, esgotamento ou conflitos: com escuta atenta, método
-              científico e sigilo.
-            </span>
+            {lead}
+            {leadMore && <span className="hidden sm:inline"> {leadMore}</span>}
           </motion.p>
 
           <motion.div
@@ -201,7 +225,7 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.8, ease: EASE }}
             className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-[min(2.25rem,4svh)]"
           >
-            <MagneticCta href={whatsapp} />
+            <MagneticCta href={whatsapp} label={ctaLabel} location={location} />
             <a
               href="#testimonials"
               className="hidden items-center justify-center gap-2 px-3 py-3 font-medium text-ink-700 transition-colors hover:text-brand sm:inline-flex"

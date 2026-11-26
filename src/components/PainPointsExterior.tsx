@@ -1,9 +1,7 @@
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   BatteryLow,
   Brain,
-  ChevronLeft,
-  ChevronRight,
   CloudRain,
   Flower2,
   Frown,
@@ -15,10 +13,9 @@ import {
   UserMinus,
   Users,
 } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Kicker from "./ui/Kicker";
-
-const AUTOPLAY_MS = 20000;
+import { EASE, Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
 
 const slides = [
   {
@@ -105,206 +102,96 @@ const slides = [
   },
 ];
 
+/**
+ * Dores de quem mora fora: duas abas (vida no exterior / dia a dia) e cartões
+ * com inclinação 3D no desktop. No celular vira uma lista enxuta, sem carrossel
+ * automático (que escondia conteúdo e atrapalhava a leitura).
+ */
 const PainPointsExterior = () => {
-  const [[active, direction], setSlide] = useState<[number, number]>([0, 0]);
-  const [hovered, setHovered] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(carouselRef, { amount: 0.3 });
-  const paused = hovered || !inView;
-
-  const goTo = useCallback((index: number, dir: number) => {
-    setSlide([(index + slides.length) % slides.length, dir]);
-  }, []);
-
-  const next = useCallback(() => goTo(active + 1, 1), [active, goTo]);
-  const prev = useCallback(() => goTo(active - 1, -1), [active, goTo]);
-
-  // Reinicia a contagem a cada troca de slide (manual ou automática).
-  useEffect(() => {
-    if (paused) return;
-    const timer = setTimeout(next, AUTOPLAY_MS);
-    return () => clearTimeout(timer);
-  }, [active, paused, next]);
+  const [tab, setTab] = useState(0);
+  const slide = slides[tab];
 
   return (
-    <section className="py-24 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12 max-w-3xl mx-auto"
-        >
-          <Kicker className="justify-center mb-4">
-            Morar fora tem outro lado
-          </Kicker>
-          <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            O lado de morar fora{" "}
-            <span className="text-emerald-700">que ninguém posta</span>
-          </h2>
-          <p className="text-lg text-ink-600 leading-relaxed">
-            Ninguém te preparou para essa parte da mudança. Se você se reconhece
-            em algum destes pontos, saiba: é mais comum do que parece, e dá para
-            cuidar disso.
-          </p>
-        </motion.div>
+    <section id="services" className="relative bg-white py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-10 flex flex-col gap-8 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <Kicker className="mb-5">Morar fora tem outro lado</Kicker>
+            <SectionTitle text="O lado de morar fora que ninguém posta" accent={["ninguém", "posta"]} />
+            <Reveal delay={0.15}>
+              <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
+                Ninguém te preparou para essa parte da mudança. Se você se reconhece em algum destes
+                pontos, saiba: é mais comum do que parece, e dá para cuidar disso.
+              </p>
+            </Reveal>
+          </div>
 
-        <div
-          ref={carouselRef}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onFocus={() => setHovered(true)}
-          onBlur={() => setHovered(false)}
-          role="region"
-          aria-roledescription="carrossel"
-          aria-label="Situações em que a terapia pode ajudar"
-        >
-          <div className="flex justify-center mb-10">
-            <div
-              role="tablist"
-              className="inline-flex p-1.5 rounded-full bg-ink-50 border border-ink-100"
-            >
-              {slides.map((slide, index) => (
+          <Reveal delay={0.2}>
+            <div role="tablist" aria-label="Situações" className="relative inline-flex w-full rounded-full bg-mist p-1.5 sm:w-auto">
+              {slides.map((sl, i) => (
                 <button
-                  key={slide.label}
-                  type="button"
+                  key={sl.label}
                   role="tab"
-                  aria-selected={active === index}
-                  onClick={() => goTo(index, index > active ? 1 : -1)}
-                  className={`relative px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
-                    active === index
-                      ? "text-white"
-                      : "text-ink-600 hover:text-ink-900"
-                  }`}
-                >
-                  {active === index && (
-                    <motion.span
-                      layoutId="painpoints-tab"
-                      className="absolute inset-0 rounded-full bg-emerald-700 shadow-soft"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative">{slide.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Ver situações anteriores"
-              className="hidden xl:flex absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-ink-100 bg-white items-center justify-center text-emerald-700 hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-lifted transition-all"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Ver próximas situações"
-              className="hidden xl:flex absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-ink-100 bg-white items-center justify-center text-emerald-700 hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-lifted transition-all"
-            >
-              <ChevronRight size={22} />
-            </button>
-
-            <div className="overflow-hidden -m-3 p-3">
-              <AnimatePresence mode="wait" initial={false} custom={direction}>
-                <motion.div
-                  key={active}
-                  custom={direction}
-                  variants={{
-                    enter: (dir: number) => ({ opacity: 0, x: dir * 60 }),
-                    center: { opacity: 1, x: 0 },
-                    exit: (dir: number) => ({ opacity: 0, x: dir * -60 }),
-                  }}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.15}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.x < -80) next();
-                    else if (info.offset.x > 80) prev();
-                  }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                  {slides[active].points.map((point, index) => (
-                    <motion.div
-                      key={point.title}
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-60px" }}
-                      transition={{ duration: 0.6, delay: index * 0.08 }}
-                      whileHover={{ y: -6 }}
-                      className="p-7 rounded-3xl border border-ink-100 hover:border-emerald-200 hover:shadow-lifted transition-all bg-white"
-                    >
-                      <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6">
-                        <point.icon className="text-emerald-600" size={26} />
-                      </div>
-                      <h3 className="text-lg font-semibold text-ink-900 mb-3 leading-snug">
-                        {point.title}
-                      </h3>
-                      <p className="text-ink-600 text-sm leading-relaxed">
-                        {point.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          <div className="mt-10 flex items-center justify-center gap-5">
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Ver situações anteriores"
-              className="xl:hidden w-11 h-11 rounded-full border border-ink-100 bg-white flex items-center justify-center text-emerald-700 hover:border-emerald-200 hover:bg-emerald-50 transition-all"
-            >
-              <ChevronLeft size={20} />
-            </button>
-
-            <div className="flex items-center gap-2">
-              {slides.map((slide, index) => (
-                <button
-                  key={slide.label}
                   type="button"
-                  onClick={() => goTo(index, index > active ? 1 : -1)}
-                  aria-label={`Ir para: ${slide.label}`}
-                  className={`relative h-2 rounded-full overflow-hidden transition-all duration-500 ${
-                    active === index ? "w-14 bg-emerald-100" : "w-2 bg-ink-100 hover:bg-ink-400"
+                  aria-selected={tab === i}
+                  onClick={() => setTab(i)}
+                  className={`relative flex-1 whitespace-nowrap rounded-full px-5 py-3 text-[14.5px] font-semibold transition-colors sm:flex-none ${
+                    tab === i ? "text-white" : "text-ink-700 hover:text-ink-900"
                   }`}
                 >
-                  {active === index && (
+                  {tab === i && (
                     <motion.span
-                      key={`${active}-${paused}`}
-                      className="absolute inset-y-0 left-0 bg-emerald-600 rounded-full"
-                      initial={{ width: "0%" }}
-                      animate={{ width: paused ? "0%" : "100%" }}
-                      transition={{
-                        duration: paused ? 0 : AUTOPLAY_MS / 1000,
-                        ease: "linear",
-                      }}
+                      layoutId="pain-tab"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      className="absolute inset-0 rounded-full bg-ink-900"
                     />
                   )}
+                  <span className="relative">{sl.label}</span>
                 </button>
               ))}
             </div>
-
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Ver próximas situações"
-              className="xl:hidden w-11 h-11 rounded-full border border-ink-100 bg-white flex items-center justify-center text-emerald-700 hover:border-emerald-200 hover:bg-emerald-50 transition-all"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+          </Reveal>
         </div>
+
+        <AnimatePresence mode="wait">
+          <motion.ul
+            key={tab}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5"
+          >
+            {slide.points.map((pt, i) => (
+              <motion.li
+                key={pt.title}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05, duration: 0.5, ease: EASE }}
+              >
+                <TiltCard
+                  max={6}
+                  className="group flex h-full gap-4 rounded-[1.5rem] bg-mist p-5 transition-colors duration-300 hover:bg-mint-100/70 sm:flex-col sm:p-7"
+                >
+                  <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-2xl bg-white text-brand shadow-soft transition-transform duration-500 group-hover:-rotate-6 sm:h-12 sm:w-12">
+                    <pt.icon size={22} />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-[1.15rem] leading-snug text-ink-900 sm:text-[1.3rem]">{pt.title}</h3>
+                    <p className="mt-2 text-[14.5px] leading-relaxed text-ink-600 sm:text-[15px]">{pt.description}</p>
+                  </div>
+                </TiltCard>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </AnimatePresence>
+
+        <Reveal className="mt-10 flex flex-col items-start gap-4 rounded-[1.75rem] border border-ink-900/10 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <p className="max-w-xl font-display text-xl leading-snug text-ink-900 sm:text-2xl">
+            Se reconheceu? Esse já é o primeiro passo.
+          </p>
+          <WhatsButton location="pain_points_exterior_cta" label="Quero falar sobre isso" size="md" className="w-full sm:w-auto" />
+        </Reveal>
       </div>
     </section>
   );

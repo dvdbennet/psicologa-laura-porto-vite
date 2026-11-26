@@ -1,9 +1,8 @@
-import { useWhatsApp } from "@/context/WhatsAppProvider";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import IconeWhats from "./IconeWhats";
+import { Lock, MessagesSquare, Sprout, Users } from "lucide-react";
 import Kicker from "./ui/Kicker";
+import { Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
+
+const icons = [MessagesSquare, Sprout, Users, Lock];
 
 const topics = [
   {
@@ -42,135 +41,66 @@ const topics = [
   },
 ];
 
+/**
+ * "Entenda o processo": título fixo à esquerda no desktop, os quatro tópicos
+ * empilhados à direita (antes era um carrossel que escondia 3 dos 4 textos).
+ */
 const ImportanciaAdolescente = () => {
-  const whatsapp = useWhatsApp();
-  const [currentPage, setCurrentPage] = useState(0);
-
-  const nextPage = () => setCurrentPage((prev) => (prev + 1) % topics.length);
-  const prevPage = () =>
-    setCurrentPage((prev) => (prev - 1 + topics.length) % topics.length);
-  const topic = topics[currentPage];
-
   return (
-    <section id="importancia" className="py-24 lg:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
-        >
-          <Kicker className="justify-center mb-4">Entenda o processo</Kicker>
-          <h2 className="font-display text-4xl md:text-5xl text-ink-900 mb-6 text-balance">
-            Nem tudo é{" "}
-            <span className="text-emerald-700">“só uma fase”</span>
-          </h2>
-          <p className="text-lg text-ink-600 leading-relaxed max-w-2xl mx-auto">
-            Muitas vezes o adolescente está precisando de ajuda e não sabe pedir.
-            Entenda, com transparência, como o processo
-            funciona.
-          </p>
-        </motion.div>
-
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            onClick={prevPage}
-            aria-label="Tópico anterior"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronLeft className="text-emerald-700" size={20} />
-          </button>
-          <div className="flex gap-1.5">
-            {topics.map((t, i) => (
-              <button
-                key={t.title}
-                onClick={() => setCurrentPage(i)}
-                aria-label={`Tópico ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === currentPage
-                    ? "bg-emerald-600 w-6"
-                    : "bg-emerald-200 w-1.5"
-                }`}
-              />
-            ))}
+    <section id="importancia" className="relative bg-mist py-20 lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div>
+          <div className="lg:sticky lg:top-28">
+            <Kicker className="mb-5">Entenda o processo</Kicker>
+            <SectionTitle text="Nem tudo é “só uma fase”" accent={["“só", "uma", "fase”"]} />
+            <Reveal delay={0.15}>
+              <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
+                Muitas vezes o adolescente está precisando de ajuda e não sabe pedir. Entenda, com
+                transparência, como o processo funciona.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2} className="mt-8 hidden lg:block">
+              <WhatsButton location="importancia_adolescente_cta" label="Agendar uma conversa" />
+            </Reveal>
           </div>
-          <button
-            onClick={nextPage}
-            aria-label="Próximo tópico"
-            className="p-2.5 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-colors"
-          >
-            <ChevronRight className="text-emerald-700" size={20} />
-          </button>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-            className="bg-slate-50 rounded-3xl p-8 md:p-12"
-          >
-            <div className="flex items-start gap-4 mb-6">
-              <span className="font-display text-emerald-300 text-2xl leading-none pt-1 flex-shrink-0">
-                {String(currentPage + 1).padStart(2, "0")}
-              </span>
-              <h3 className="font-display text-2xl md:text-3xl text-ink-900">
-                {topic.title}
-              </h3>
-            </div>
-
-            <p className="text-ink-600 leading-relaxed whitespace-pre-line mb-6">
-              {topic.description}
-            </p>
-
-            {topic.features.length > 0 && (
-              <ul className="space-y-3 mb-6">
-                {topic.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-ink-800">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {topic.additionalText && (
-              <p className="text-ink-600 leading-relaxed whitespace-pre-line border-t border-ink-100 pt-6">
-                {topic.additionalText}
-              </p>
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-14"
-        >
-          <motion.a
-            target="_blank"
-            href={whatsapp}
-            onClick={() => {
-              if (typeof window !== "undefined" && window.dataLayer) {
-                window.dataLayer.push({
-                  event: "whatsapp_click",
-                  click_location: "importancia_adolescente_cta",
-                });
-              }
-            }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-700 transition-colors"
-          >
-            <IconeWhats width={22} />
-            <span>Agendar uma conversa</span>
-          </motion.a>
-        </motion.div>
+        <div className="space-y-4 lg:space-y-5">
+          {topics.map((t, i) => {
+            const Icon = icons[i % icons.length];
+            return (
+              <Reveal key={t.title} y={30} delay={i * 0.05}>
+                <TiltCard max={3} className="rounded-[1.75rem] bg-white p-6 shadow-soft sm:p-9">
+                  <div className="flex items-start gap-4">
+                    <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl bg-mist text-brand">
+                      <Icon size={22} />
+                    </span>
+                    <h3 className="pt-1.5 font-display text-[1.3rem] leading-snug text-ink-900 sm:text-[1.6rem]">{t.title}</h3>
+                  </div>
+                  <div className="mt-5 space-y-3 text-[15.5px] leading-relaxed text-ink-600">
+                    {t.description.split("\n\n").map((para) => (
+                      <p key={para}>{para}</p>
+                    ))}
+                  </div>
+                  {t.features.length > 0 && (
+                    <ul className="mt-4 space-y-2.5">
+                      {t.features.map((f) => (
+                        <li key={f} className="flex items-start gap-3 text-ink-800">
+                          <span className="mt-[9px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand" />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {t.additionalText && <p className="mt-4 text-[15.5px] leading-relaxed text-ink-600">{t.additionalText}</p>}
+                </TiltCard>
+              </Reveal>
+            );
+          })}
+          <Reveal className="lg:hidden">
+            <WhatsButton location="importancia_adolescente_cta" label="Agendar uma conversa" className="w-full" />
+          </Reveal>
+        </div>
       </div>
     </section>
   );
