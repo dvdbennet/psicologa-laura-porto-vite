@@ -95,7 +95,7 @@ const Benefits = ({
               alt={imageAlt}
               strength={10}
               className="aspect-[4/5] rounded-[2rem] lg:aspect-[5/6]"
-              imgClassName="object-[50%_25%]"
+              imgClassName="object-[50%_20%]"
             />
           </Reveal>
 
