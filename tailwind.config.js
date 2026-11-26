@@ -8,7 +8,7 @@ export default {
         sans: ['"Onest"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
-        mist: '#F4F8F6',
+        mist: '#FAF9F6',
         mint: { 100: '#CFEFE4', 300: '#7FE0C2', 500: '#2BB39A' },
         brand: { DEFAULT: '#0A7F62', dark: '#0A6E54' },
         ink: {

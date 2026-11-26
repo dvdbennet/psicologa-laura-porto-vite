@@ -14,7 +14,7 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 - **Conceito "respiro"**: uma forma orgânica 3D (Three.js, shader próprio) que respira num
   ciclo lento atrás da foto da Laura. Reage a toque/arraste, à inclinação do celular
   (giroscópio, quando o navegador permite) e à rolagem.
-- **Paleta A — verde refinado** (escolhida em 2026-11-26): fundo `#F4F8F6`, tinta `#0F2A22`,
+- **Paleta A — verde refinado** (escolhida em 2026-11-26): fundo `#FAF9F6` (off-white; era `#F4F8F6` até 2026-11-26), tinta `#0F2A22`,
   texto secundário `#4A6159`, marca `#0A7F62` (escurecida de `#0E8A6A` em 2026-11-26 para passar contraste AA), menta `#7FE0C2` / `#2BB39A` / `#CFEFE4`.
 - **Tipografia**: Young Serif (títulos — serifada calorosa, de traço "feito à mão", passa
   acolhimento sem cara de clínica) + Onest (texto — legível em tela pequena, sem cara de template).
