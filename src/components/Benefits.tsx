@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Check } from "lucide-react";
 import { useRef } from "react";
-import benefitsImage from "../assets/images/hero-image-4.jpeg";
+import benefitsImage from "../assets/images/laura-beneficios.webp";
 import Kicker from "./ui/Kicker";
 import { ParallaxImage, Reveal, SectionTitle, WhatsButton } from "./ui/motion";
 
@@ -95,7 +95,7 @@ const Benefits = ({
               alt={imageAlt}
               strength={10}
               className="aspect-[4/5] rounded-[2rem] lg:aspect-[5/6]"
-              imgClassName="object-[50%_15%]"
+              imgClassName="object-[50%_25%]"
             />
           </Reveal>
 

@@ -198,7 +198,7 @@ const Hero = ({
         </div>
 
         {/* ---------- TEXTO + CTA ---------- */}
-        <motion.div style={{ y: copyY }} className="relative order-2 -mt-3 lg:order-1 lg:mt-0">
+        <motion.div style={{ y: copyY }} className="relative order-2 -mt-3 text-center lg:order-1 lg:mt-0 lg:text-left">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -218,7 +218,7 @@ const Hero = ({
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.8, ease: EASE }}
-            className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-600 sm:text-lg lg:mt-[min(1.5rem,2.5svh)]"
+            className="mx-auto mt-3 max-w-xl text-[15.5px] lg:mx-0 leading-relaxed text-ink-600 sm:text-lg lg:mt-[min(1.5rem,2.5svh)]"
           >
             {lead}
             {leadMore && <span className="hidden sm:inline"> {leadMore}</span>}
