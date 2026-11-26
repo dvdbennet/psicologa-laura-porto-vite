@@ -20,9 +20,7 @@ function Brasilia() {
 
   return (
     <WhatsAppProvider
-      message="Olá!
-
-Vi o site e gostaria de saber mais sobre a terapia com a Dra. Laura (presencial no Sudoeste, em Brasília, ou online) e os horários disponíveis."
+      message="Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre horários para terapia em Brasília."
     >
       <div className="bg-slate-50 min-h-screen">
         <Navbar />

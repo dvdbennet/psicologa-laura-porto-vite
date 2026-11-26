@@ -19,9 +19,7 @@ function Exterior() {
 
   return (
     <WhatsAppProvider
-      message="Olá!
-
-Moro no exterior e gostaria de saber mais sobre o atendimento psicológico online em português, os horários disponíveis considerando meu fuso e os próximos passos para iniciar o processo terapêutico."
+      message="Olá, Dra. Laura! Moro no exterior e gostaria de saber sobre horários para terapia online."
     >
       <div className="bg-slate-50 min-h-screen">
         <Navbar />

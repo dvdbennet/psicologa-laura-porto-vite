@@ -15,10 +15,7 @@ import WhatsApp from "../components/WhatsApp";
 
 function Adolescente() {
   return (
-    <WhatsAppProvider message="Olá!
-
-
-Estou em busca de um atendimento psicológico especializado para adolescentes e gostaria de receber mais informações sobre como funciona o acompanhamento, os horários disponíveis e os próximos passos para iniciar o processo terapêutico.">
+    <WhatsAppProvider message="Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre terapia para adolescente e horários.">
       <div className="bg-slate-50 min-h-screen">
         <Navbar />
         <HeroAdolescente />

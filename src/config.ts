@@ -2,7 +2,7 @@ import clsx, { type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const whatsapp = (
-  message: string = "Olá!\nGostaria de saber mais sobre o processo terapêutico (atendimento presencial em Brasília-DF ou atendimento online disponível para todo o Brasil) e horários disponíveis.",
+  message: string = "Olá, Dra. Laura! Vim pelo site e gostaria de saber sobre horários para terapia.",
 ) => {
   const codPais = "55";
   const ddd = "61";
