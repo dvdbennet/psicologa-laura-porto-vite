@@ -106,7 +106,7 @@ export type HeroProps = {
 
 const Hero = ({
   chip = "CRP 01/28432 · Psicóloga Clínica",
-  title = "Cuidar da sua saúde mental é o maior investimento em você.",
+  title = "Saúde mental é o maior investimento em você.",
   accent = ["investimento"],
   lead = "Psicoterapia online para entender o que está pesando e voltar a respirar.",
   leadMore = "Ansiedade, tristeza, esgotamento ou conflitos: com escuta atenta, método científico e sigilo.",
@@ -114,7 +114,7 @@ const Hero = ({
   location = "hero",
   badge = "Respire. Você chegou.",
   trust = homeTrust,
-  photoOffset = 440,
+  photoOffset = 470,
 }: HeroProps) => {
   const whatsapp = useWhatsApp();
   const reduce = useReducedMotion();
@@ -148,7 +148,7 @@ const Hero = ({
         className="pointer-events-none absolute inset-x-0 top-0 h-[70%] bg-[radial-gradient(60%_60%_at_50%_20%,rgba(127,224,194,0.28),transparent_70%)] lg:bg-[radial-gradient(45%_70%_at_75%_40%,rgba(127,224,194,0.3),transparent_70%)]"
       />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-x-12 px-5 pb-10 pt-3 sm:px-8 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.05fr_1fr] lg:py-10">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-x-12 px-5 pb-10 pt-3 sm:px-8 lg:min-h-[calc(100svh-80px)] lg:grid-cols-[1.05fr_1fr] lg:py-6">
         {/* ---------- FOTO + FORMA 3D ---------- */}
         <div
           className="relative order-1 mx-auto w-full max-w-[420px] lg:order-2 lg:max-w-none"
@@ -162,7 +162,7 @@ const Hero = ({
             animate={{ y: 0, scale: 1 }}
             transition={{ duration: 1.1, ease: EASE }}
             style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d", ["--hero-off" as string]: `${photoOffset}px` }}
-            className="relative mx-auto aspect-[3/4] h-[clamp(200px,calc(100svh_-_var(--hero-off)),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
+            className="relative mx-auto aspect-[3/4] h-[clamp(170px,calc(var(--app-vh,100svh)_-_var(--hero-off)),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
           >
             <div className="absolute inset-0 overflow-clip rounded-t-[999px] rounded-b-[28px] bg-mint-100 shadow-[0_40px_80px_-30px_rgba(15,42,34,0.45)] [mask-image:linear-gradient(#000_78%,transparent)] lg:[mask-image:none]">
               <motion.img
@@ -244,7 +244,7 @@ const Hero = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.95, duration: 0.8 }}
-            className="mt-4 grid grid-cols-3 gap-2 lg:mt-[min(3rem,5svh)] lg:max-w-lg lg:border-t lg:border-ink-900/10 lg:pt-6"
+            className="mt-4 grid grid-cols-3 gap-2 lg:mt-[min(2.5rem,4svh)] lg:max-w-lg lg:border-t lg:border-ink-900/10 lg:pt-5"
           >
             {trust.map((t) => (
               <div key={t.big} className="text-center lg:text-left">

@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!--
+      Altura da tela "congelada" na abertura (--app-vh). Navegadores dentro de apps
+      (ex.: app do Google no iPhone) mudam a altura ao esconder as barras na rolagem,
+      e o svh acompanha essa mudança, fazendo a foto do hero pular. Só recalcula
+      quando a LARGURA muda (girar o celular).
+    -->
+    <script>
+      (function () {
+        var w = window.innerWidth;
+        var set = function () {
+          document.documentElement.style.setProperty("--app-vh", window.innerHeight + "px");
+        };
+        set();
+        window.addEventListener("resize", function () {
+          if (window.innerWidth !== w) {
+            w = window.innerWidth;
+            set();
+          }
+        });
+      })();
+    </script>
     <meta name="theme-color" content="#FAF9F6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
