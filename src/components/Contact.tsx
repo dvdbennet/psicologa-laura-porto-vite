@@ -71,7 +71,7 @@ const Contact = () => {
             <Reveal delay={0.18} className="rounded-[1.75rem] bg-white p-6 shadow-soft sm:p-8">
               <div className="mb-5 flex items-center gap-3">
                 <Clock className="text-brand" size={20} />
-                <h4 className="font-semibold text-ink-900">Horário de Atendimento</h4>
+                <h3 className="font-semibold text-ink-900">Horário de Atendimento</h3>
               </div>
               <div className="space-y-3">
                 {hours.map((h) => (

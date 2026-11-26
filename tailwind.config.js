@@ -10,7 +10,7 @@ export default {
       colors: {
         mist: '#F4F8F6',
         mint: { 100: '#CFEFE4', 300: '#7FE0C2', 500: '#2BB39A' },
-        brand: { DEFAULT: '#0E8A6A', dark: '#0A6E54' },
+        brand: { DEFAULT: '#0A7F62', dark: '#0A6E54' },
         ink: {
           50: '#f5f6f6',
           100: '#e8eaea',

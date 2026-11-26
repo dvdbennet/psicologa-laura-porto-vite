@@ -7,10 +7,29 @@
     <meta name="theme-color" content="#F4F8F6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Foto do hero (LCP): baixa em paralelo com o JS, em vez de esperar o React montar -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/laura-hero-1200.webp"
+      imagesrcset="/images/laura-hero-720.webp 720w, /images/laura-hero-1200.webp 1200w, /images/laura-hero-1800.webp 1800w"
+      imagesizes="(min-width: 1024px) 500px, 82vw"
+      fetchpriority="high"
     />
+    <!-- Fontes sem bloquear a renderização (display=swap) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
     <title>
       Dra. Laura Porto - CRP 01/28432 | Psicóloga Clínica | Psicoterapia Online
       e Presencial

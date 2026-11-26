@@ -15,7 +15,7 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
   ciclo lento atrás da foto da Laura. Reage a toque/arraste, à inclinação do celular
   (giroscópio, quando o navegador permite) e à rolagem.
 - **Paleta A — verde refinado** (escolhida em 2026-11-26): fundo `#F4F8F6`, tinta `#0F2A22`,
-  texto secundário `#4A6159`, marca `#0E8A6A`, menta `#7FE0C2` / `#2BB39A` / `#CFEFE4`.
+  texto secundário `#4A6159`, marca `#0A7F62` (escurecida de `#0E8A6A` em 2026-11-26 para passar contraste AA), menta `#7FE0C2` / `#2BB39A` / `#CFEFE4`.
 - **Tipografia**: Young Serif (títulos — serifada calorosa, de traço "feito à mão", passa
   acolhimento sem cara de clínica) + Onest (texto — legível em tela pequena, sem cara de template).
 
@@ -47,4 +47,4 @@ Objetivo: elevar o site a nível Awwwards **sem perder conversão**. Toda decis�
 3. ✅ Tema global (cores, fontes) + hero 3D da Home + barra fixa mobile → **esboço para aprovação**.
 4. ✅ Seções da Home (Serviços, Sobre, Benefícios, Abordagem, Depoimentos, FAQ, Contato) com motion.
 5. ✅ Mesmo tratamento nos heros e seções de `/exterior`, `/adolescente`, `/brasilia` (hero único configurável; Serviços, Sobre, Benefícios e FAQ reaproveitados).
-6. Verificação: celular 375/390, laptop baixo (~650px), Lighthouse, eventos no dataLayer.
+6. ✅ Verificação: celular 375/390, laptop baixo (~650px), Lighthouse, eventos no dataLayer. Lighthouse mobile (build de produção, local): LCP 2,0–2,2 s nas landings e 2,5–2,6 s na Home (antes 3,2–3,7 s); desempenho 93–96, SEO 100.

@@ -59,7 +59,7 @@ export function FaqItem({ question, children }: { question: string; children: Re
           {question}
         </h3>
         <motion.span
-          animate={{ rotate: isOpen ? 45 : 0, backgroundColor: isOpen ? "#0E8A6A" : "#F4F8F6" }}
+          animate={{ rotate: isOpen ? 45 : 0, backgroundColor: isOpen ? "#0A7F62" : "#F4F8F6" }}
           transition={{ duration: 0.3 }}
           className={`grid h-10 w-10 flex-shrink-0 place-items-center rounded-full ${isOpen ? "text-white" : "text-ink-800"}`}
         >

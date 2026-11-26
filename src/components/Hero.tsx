@@ -10,13 +10,17 @@ import {
 } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
-import hero1200 from "../assets/images/laura-hero-1200.webp";
-import hero1800 from "../assets/images/laura-hero-1800.webp";
-import hero720 from "../assets/images/laura-hero-720.webp";
 import BlobCanvas from "./hero/BlobCanvas";
 import IconeWhats from "./IconeWhats";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+// Fotos em /public (nome fixo) para o index.html poder fazer preload antes do JS: é o LCP.
+// Se mudar aqui, mude também o <link rel="preload"> do index.html.
+const hero720 = "/images/laura-hero-720.webp";
+const hero1200 = "/images/laura-hero-1200.webp";
+const hero1800 = "/images/laura-hero-1800.webp";
+export const HERO_SIZES = "(min-width: 1024px) 500px, 82vw";
 
 export type TrustItem = { big: string; small: string };
 
@@ -153,8 +157,9 @@ const Hero = ({
           <BlobCanvas className="absolute left-1/2 top-[48%] h-[135%] w-[150%] -translate-x-1/2 -translate-y-1/2 lg:h-[125%] lg:w-[135%]" />
 
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            // sem opacity 0 no início: a foto é o LCP e precisa pintar já no primeiro quadro
+            initial={{ y: 30, scale: 0.97 }}
+            animate={{ y: 0, scale: 1 }}
             transition={{ duration: 1.1, ease: EASE }}
             style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d", ["--hero-off" as string]: `${photoOffset}px` }}
             className="relative mx-auto aspect-[3/4] h-[clamp(200px,calc(100svh_-_var(--hero-off)),460px)] max-w-[82%] lg:h-[min(76svh,660px)] lg:max-w-[88%]"
@@ -163,7 +168,7 @@ const Hero = ({
               <motion.img
                 src={hero1200}
                 srcSet={`${hero720} 720w, ${hero1200} 1200w, ${hero1800} 1800w`}
-                sizes="(min-width: 1024px) 500px, 82vw"
+                sizes={HERO_SIZES}
                 alt="Psicóloga Laura Porto sorrindo em seu consultório"
                 width={1200}
                 height={1600}
