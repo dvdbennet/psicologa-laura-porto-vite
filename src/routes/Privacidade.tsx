@@ -36,6 +36,18 @@ function Privacidade() {
             de anúncios (Google Ads, Facebook Ads) •⁠ ⁠Dados de redes sociais
             (quando você interage com nossos perfis)
           </p>
+          <p className="mb-4">
+            2.4 Registro de cliques no WhatsApp: quando você chega ao site por
+            um anúncio do Google, o site guarda no seu navegador, por até 90
+            dias, o identificador desse clique no anúncio (um código gerado
+            pelo Google, que não contém seu nome nem seu telefone). Se você
+            clicar em um botão de WhatsApp, registramos a data e a hora do
+            clique, a página, o tipo de aparelho (celular ou computador) e esse
+            identificador. Nenhum dado da sua conversa, nome ou número é
+            enviado ao site ou ao Google. O registro serve somente para medir
+            quais anúncios geram contatos e consultas, fica com acesso restrito
+            à Dra. Laura e não é vendido nem compartilhado.
+          </p>
           <h2 className="font-display text-2xl text-ink-900 mt-10 mb-3">
             3. Uso das Informações
           </h2>
@@ -108,7 +120,7 @@ function Privacidade() {
             publicação. Agradecemos por confiar em nós com suas informações
             pessoais e estamos comprometidos em protegê-las.
           </p>
-          <p className="mb-4">Última atualização: 11/09/2026</p>
+          <p className="mb-4">Última atualização: 27/11/2026</p>
         </div>
         <Contact />
         <Footer />
