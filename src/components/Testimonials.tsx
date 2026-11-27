@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
-import { whatsapp } from "../config";
+import { motion, useScroll } from "framer-motion";
+import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { useRef } from "react";
+import Kicker from "./ui/Kicker";
+import { Reveal, SectionTitle, TiltCard, WhatsButton } from "./ui/motion";
 
 const testimonials = [
   {
@@ -10,8 +12,8 @@ const testimonials = [
     session: "Online",
   },
   {
-    name: "Casal 12 anos de casados",
-    text: "Nossa terapia de casal com a Dra. Laura foi transformadora. Aprendemos a nos comunicar melhor e a resolver nossos conflitos de forma saudável.",
+    name: "Mulher 22 anos",
+    text: "Consegui gerenciar e tomar algumas decisões importantes a partir de reflexoes na psicoterapia com a Dra. Laura. Recomendo muito!",
     rating: 5,
     session: "Online",
   },
@@ -29,94 +31,114 @@ const testimonials = [
   },
 ];
 
+/**
+ * Trilho horizontal: rolagem nativa com snap (arrasta com o dedo no celular,
+ * setas e trackpad no desktop) + barra de progresso.
+ */
 const Testimonials = () => {
+  const track = useRef<HTMLDivElement>(null);
+  const { scrollXProgress } = useScroll({ container: track });
+
+  const step = (dir: 1 | -1) => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    el.scrollBy({ left: dir * ((card?.offsetWidth ?? 320) + 16), behavior: "smooth" });
+  };
+
   return (
-    <section id="testimonials" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
-            Testemunho de {" "}
-            <span className="text-emerald-600 font-medium">Clientes</span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Leia o que meus clientes dizem sobre suas experiências de terapia. Seus testemunhos refletem a eficácia e o
-            valor do trabalho terapêutico que realizamos juntos.
-
-          </p>
-           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-
-            (Todas as indentidades foram alteradas para preservar a privacidade dos clientes.)
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="flex items-center space-x-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={20}
-                    className="text-yellow-400 fill-current"
-                  />
-                ))}
-              </div>
-
-              <Quote className="text-emerald-200 mb-4" size={32} />
-
-              <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                "{testimonial.text}"
+    <section id="testimonials" className="relative bg-mist py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-10 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <Kicker className="mb-5">Depoimentos</Kicker>
+            <SectionTitle text="Quem já deu o primeiro passo" accent={["primeiro", "passo"]} />
+            <Reveal delay={0.15}>
+              <p className="mt-5 text-[16px] leading-relaxed text-ink-600 sm:text-lg">
+                Pessoas que também hesitaram antes de mandar a primeira mensagem e decidiram cuidar de
+                si.
               </p>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-semibold text-slate-800">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-emerald-600 text-sm">
-                    {testimonial.session}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <div className="bg-emerald-50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-slate-800 mb-4">
-              Pronto para começar sua jornada de transformação?
-            </h3>
-            <p className="text-slate-600 mb-6 leading-relaxed">
-              Agende uma consulta hoje e descubra como a terapia pode ajudá-lo a alcançar seus objetivos pessoais e emocionais.
-            </p>
-            <motion.a
-              target="_blank"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={whatsapp()}
-              className="bg-emerald-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-emerald-700 transition-colors"
-            >
-              Agendar Consulta
-            </motion.a>
+              <p className="mt-2 text-sm italic text-ink-400">
+                (Todas as identidades foram alteradas para preservar a privacidade dos clientes.)
+              </p>
+            </Reveal>
           </div>
-        </motion.div>
+          <div className="hidden gap-2 lg:flex">
+            {[-1, 1].map((d) => (
+              <button
+                key={d}
+                type="button"
+                onClick={() => step(d as 1 | -1)}
+                aria-label={d < 0 ? "Depoimento anterior" : "Próximo depoimento"}
+                className="grid h-14 w-14 place-items-center rounded-full border border-ink-900/15 text-ink-800 transition-colors hover:bg-ink-900 hover:text-white"
+              >
+                {d < 0 ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div
+        ref={track}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-6 [scrollbar-width:none] sm:scroll-px-8 sm:px-8 lg:scroll-px-[max(2rem,calc((100vw_-_80rem)/2_+_2rem))] lg:px-[max(2rem,calc((100vw_-_80rem)/2_+_2rem))] [&::-webkit-scrollbar]:hidden"
+      >
+        {testimonials.map((t, i) => (
+          <Reveal
+            key={t.name}
+            delay={i * 0.08}
+            y={24}
+            className="w-[84%] flex-shrink-0 snap-start sm:w-[420px] last:snap-end"
+          >
+            <div data-card className="h-full">
+              <TiltCard max={5} className="flex h-full flex-col rounded-[1.75rem] bg-white p-7 shadow-soft sm:p-9">
+                <div className="mb-6 flex items-center gap-1 text-amber-400">
+                  {[...Array(t.rating)].map((_, k) => (
+                    <Star key={k} size={16} className="fill-current" />
+                  ))}
+                </div>
+                <p className="flex-1 font-display text-[1.2rem] leading-[1.45] text-ink-900 sm:text-[1.35rem]">
+                  "{t.text}"
+                </p>
+                <div className="mt-8 flex items-center justify-between border-t border-ink-900/10 pt-5 text-sm">
+                  <span className="font-semibold text-ink-900">{t.name}</span>
+                  <span className="rounded-full bg-mist px-3 py-1 text-[12.5px] font-medium text-brand">
+                    {t.session}
+                  </span>
+                </div>
+              </TiltCard>
+            </div>
+          </Reveal>
+        ))}
+        <div aria-hidden className="w-px flex-shrink-0" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="h-[3px] overflow-hidden rounded-full bg-ink-900/10">
+          <motion.div style={{ scaleX: scrollXProgress }} className="h-full origin-left bg-brand" />
+        </div>
+      </div>
+
+      {/* chamada final */}
+      <div className="mx-auto mt-20 max-w-7xl px-5 sm:px-8 lg:mt-28">
+        <Reveal y={40}>
+          <div className="relative overflow-hidden rounded-[2rem] bg-ink-900 px-7 py-14 text-center text-white sm:px-12 lg:py-24">
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_35%_30%,#7FE0C2,transparent_60%),radial-gradient(circle_at_70%_70%,#2BB39A,transparent_62%)] opacity-40 blur-2xl animate-breathe lg:h-[620px] lg:w-[620px]"
+            />
+            <h3 className="relative mx-auto max-w-3xl font-display text-[1.9rem] leading-[1.1] sm:text-5xl lg:text-6xl">
+              O primeiro passo é só uma mensagem.
+            </h3>
+            <p className="relative mx-auto mt-5 max-w-xl leading-relaxed text-white/70 sm:text-lg">
+              Você não precisa ter tudo resolvido nem saber explicar o que sente. Me conte um pouco do
+              seu momento e eu te passo os horários disponíveis.
+            </p>
+            <div className="relative mt-9">
+              <WhatsButton location="testimonials_cta" label="Mandar mensagem agora" variant="light" className="w-full sm:w-auto" />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

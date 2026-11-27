@@ -1,3 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  font-family: "Onest", ui-sans-serif, system-ui, sans-serif;
+  background-color: #faf9f6;
+  color: #0f2a22;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Página "presa" na horizontal: sem rolagem nem "samba" lateral no celular.
+   - overflow-x: clip em html E body (o iOS ignora o hidden só no body);
+     clip não cria contêiner de rolagem, então o position: sticky continua funcionando.
+   - overscroll-behavior-x: none tira o efeito elástico lateral.
+   Trilhos horizontais (depoimentos) continuam roláveis: eles têm overflow-x próprio. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+::selection {
+  background-color: #0a7f62;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f0efec;
+}
+::-webkit-scrollbar-thumb {
+  background: #a7c4ba;
+  border-radius: 999px;
+  border: 2px solid #f0efec;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6d9c8b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  font-family: "Young Serif", ui-serif, Georgia, serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 300px;
+  margin-right: 20px;
+  scroll-snap-align: start;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    width: 90%;
+  }
+}
+
+/* Linhas de título reveladas por máscara (ver useReveal) */
+.line-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.line-mask > span {
+  display: block;
+  will-change: transform;
+}
+
+/* Espaço para a barra fixa do WhatsApp no celular */
+.safe-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* Nenhum elemento decorativo pode criar rolagem lateral no celular.
+   `clip` (e não `hidden`) para não quebrar o position: sticky da navbar. */
+#root {
+  overflow-x: clip;
+}

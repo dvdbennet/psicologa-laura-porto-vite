@@ -1,36 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!--
+      Altura da tela "congelada" na abertura (--app-vh). Navegadores dentro de apps
+      (ex.: app do Google no iPhone) mudam a altura ao esconder as barras na rolagem,
+      e o svh acompanha essa mudança, fazendo a foto do hero pular. Só recalcula
+      quando a LARGURA muda (girar o celular).
+    -->
+    <script>
+      (function () {
+        var w = window.innerWidth;
+        var set = function () {
+          document.documentElement.style.setProperty("--app-vh", window.innerHeight + "px");
+        };
+        set();
+        window.addEventListener("resize", function () {
+          if (window.innerWidth !== w) {
+            w = window.innerWidth;
+            set();
+          }
+        });
+      })();
+    </script>
+    <meta name="theme-color" content="#FAF9F6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Foto do hero (LCP): baixa em paralelo com o JS, em vez de esperar o React montar -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/laura-hero-1200.webp"
+      imagesrcset="/images/laura-hero-720.webp 720w, /images/laura-hero-1200.webp 1200w, /images/laura-hero-1800.webp 1800w"
+      imagesizes="(min-width: 1024px) 500px, 82vw"
+      fetchpriority="high"
+    />
+    <!-- Fontes sem bloquear a renderização (display=swap) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Onest:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
     <title>
-      Dra. Laura Porto - CRP 01/28432 | Psicóloga Clínica | Psicoterapia Online
+      Dra. Laura Porto, CRP 01/28432 | Psicóloga Clínica | Psicoterapia Online
       e Presencial
     </title>
     <meta
       name="description"
-      content="Psicóloga clínica registrada CRP 01/28432. Atendimento psicoterapêutico online e presencial. Pós graduanda em Análise Comportamental e Neuropsicologia."
+      content="Psicóloga clínica registrada CRP 01/28432. Atendimento psicoterapêutico online e presencial. Pós graduada em Análise Comportamental e Neuropsicologia."
     />
     <meta
       name="keywords"
       content="psicóloga, psicoterapia, terapia online, psicologia clínica, CRP, Brasília, ansiedade, depressão"
     />
-    <meta name="author" content="Dra. Laura Porto - CRP 01/28432" />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-W6LDDTYJDZ"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-W6LDDTYJDZ");
-    </script>
+    <meta name="author" content="Dra. Laura Porto, CRP 01/28432" />
+    <link rel="canonical" href="https://psilauraporto.com/" />
+    <meta property="og:title" content="Dra. Laura Porto, CRP 01/28432 | Psicóloga Clínica | Psicoterapia Online e Presencial" />
+    <meta property="og:description" content="Psicóloga clínica registrada CRP 01/28432. Atendimento psicoterapêutico online e presencial. Pós graduada em Análise Comportamental e Neuropsicologia." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://psilauraporto.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dra. Laura Porto, CRP 01/28432 | Psicóloga Clínica | Psicoterapia Online e Presencial" />
+    <meta name="twitter:description" content="Psicóloga clínica registrada CRP 01/28432. Atendimento psicoterapêutico online e presencial. Pós graduada em Análise Comportamental e Neuropsicologia." />
     <!-- Compliance Meta Tags for Brazil -->
     <meta name="healthcare-provider" content="CRP 01/28432" />
     <meta
