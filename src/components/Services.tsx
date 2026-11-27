@@ -225,7 +225,7 @@ export function ServicesIndex({
 }) {
   const services = items;
   const [active, setActive] = useState(0);
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
   const current = services[active];
 
   return (
@@ -259,14 +259,14 @@ export function ServicesIndex({
                   >
                     <span
                       className={`grid h-11 w-11 flex-shrink-0 place-items-center rounded-2xl transition-colors duration-300 ${
-                        isActive ? "bg-brand text-white" : "bg-mist text-brand"
+                        isOpen ? "bg-brand text-white" : isActive ? "bg-mist text-brand lg:bg-brand lg:text-white" : "bg-mist text-brand"
                       }`}
                     >
                       <s.icon size={20} />
                     </span>
                     <span
                       className={`flex-1 font-display text-[1.2rem] leading-snug transition-[color,transform] duration-500 ease-out sm:text-2xl lg:group-hover:translate-x-2 ${
-                        isActive ? "text-ink-900" : "text-ink-700"
+                        isOpen ? "text-ink-900" : isActive ? "text-ink-700 lg:text-ink-900" : "text-ink-700"
                       }`}
                     >
                       {s.title}
